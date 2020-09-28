@@ -11,6 +11,7 @@
 		CDBCD4DF2521EB0100B6B644 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4DE2521EB0100B6B644 /* ContentView.swift */; };
 		CDBCD4E12521EB0100B6B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD4E02521EB0100B6B644 /* Assets.xcassets */; };
 		CDBCD4E42521EB0100B6B644 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD4E32521EB0100B6B644 /* Preview Assets.xcassets */; };
+		CDBCD4F925221B2900B6B644 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4F825221B2900B6B644 /* Meeting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		CDBCD4E32521EB0100B6B644 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CDBCD4E52521EB0100B6B644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDBCD4EC2521EB4A00B6B644 /* zoom-scheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "zoom-scheduler.entitlements"; sourceTree = "<group>"; };
+		CDBCD4F825221B2900B6B644 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 		CDBCD4DB2521EB0100B6B644 /* zoom-scheduler */ = {
 			isa = PBXGroup;
 			children = (
+				CDBCD4F625221AF000B6B644 /* Sources */,
 				CDBCD4EC2521EB4A00B6B644 /* zoom-scheduler.entitlements */,
 				CDBCD4DC2521EB0100B6B644 /* zoom_schedulerApp.swift */,
 				CDBCD4DE2521EB0100B6B644 /* ContentView.swift */,
@@ -69,6 +72,22 @@
 				CDBCD4E32521EB0100B6B644 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CDBCD4F525221AE200B6B644 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD4F825221B2900B6B644 /* Meeting.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CDBCD4F625221AF000B6B644 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD4F525221AE200B6B644 /* Models */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDBCD4DF2521EB0100B6B644 /* ContentView.swift in Sources */,
+				CDBCD4F925221B2900B6B644 /* Meeting.swift in Sources */,
 				CDBCD4DD2521EB0100B6B644 /* zoom_schedulerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,14 +296,13 @@
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "zoom-scheduler/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hipolabs.zoom-scheduler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -301,14 +320,13 @@
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "zoom-scheduler/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hipolabs.zoom-scheduler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
