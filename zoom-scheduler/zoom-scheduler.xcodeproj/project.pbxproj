@@ -9,24 +9,47 @@
 /* Begin PBXBuildFile section */
 		CDBCD4DD2521EB0100B6B644 /* zoom_schedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4DC2521EB0100B6B644 /* zoom_schedulerApp.swift */; };
 		CDBCD4DF2521EB0100B6B644 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4DE2521EB0100B6B644 /* ContentView.swift */; };
-		CDBCD4E12521EB0100B6B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD4E02521EB0100B6B644 /* Assets.xcassets */; };
+		CDBCD4E12521EB0100B6B644 /* PhoneAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD4E02521EB0100B6B644 /* PhoneAssets.xcassets */; };
 		CDBCD4E42521EB0100B6B644 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD4E32521EB0100B6B644 /* Preview Assets.xcassets */; };
 		CDBCD4F925221B2900B6B644 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4F825221B2900B6B644 /* Meeting.swift */; };
+		CDBCD50225226C4000B6B644 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD50125226C4000B6B644 /* AppDelegate.swift */; };
+		CDBCD50625226C4300B6B644 /* MacAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD50525226C4300B6B644 /* MacAssets.xcassets */; };
+		CDBCD50925226C4300B6B644 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD50825226C4300B6B644 /* Preview Assets.xcassets */; };
+		CDBCD51625226D1500B6B644 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4F825221B2900B6B644 /* Meeting.swift */; };
+		CDBCD536252270A400B6B644 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD50325226C4000B6B644 /* ContentView.swift */; };
+		CDBCD5542522764900B6B644 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD5532522764900B6B644 /* Menu.storyboard */; };
+		CDBCD561252282E100B6B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD560252282E100B6B644 /* Assets.xcassets */; };
+		CDBCD562252282E100B6B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD560252282E100B6B644 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CDBCD4D92521EB0100B6B644 /* zoom-scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBCD4DC2521EB0100B6B644 /* zoom_schedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zoom_schedulerApp.swift; sourceTree = "<group>"; };
 		CDBCD4DE2521EB0100B6B644 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		CDBCD4E02521EB0100B6B644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CDBCD4E02521EB0100B6B644 /* PhoneAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PhoneAssets.xcassets; sourceTree = "<group>"; };
 		CDBCD4E32521EB0100B6B644 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CDBCD4E52521EB0100B6B644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CDBCD4EC2521EB4A00B6B644 /* zoom-scheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "zoom-scheduler.entitlements"; sourceTree = "<group>"; };
 		CDBCD4F825221B2900B6B644 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
+		CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDBCD50125226C4000B6B644 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CDBCD50325226C4000B6B644 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CDBCD50525226C4300B6B644 /* MacAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MacAssets.xcassets; sourceTree = "<group>"; };
+		CDBCD50825226C4300B6B644 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CDBCD50D25226C4300B6B644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDBCD50E25226C4300B6B644 /* zoom_scheduler_mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = zoom_scheduler_mac.entitlements; sourceTree = "<group>"; };
+		CDBCD5532522764900B6B644 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		CDBCD560252282E100B6B644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CDBCD4D62521EB0100B6B644 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDBCD4FC25226C4000B6B644 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,7 +62,9 @@
 		CDBCD4D02521EB0100B6B644 = {
 			isa = PBXGroup;
 			children = (
+				CDBCD55D2522829500B6B644 /* Shared */,
 				CDBCD4DB2521EB0100B6B644 /* zoom-scheduler */,
+				CDBCD50025226C4000B6B644 /* zoom-scheduler-mac */,
 				CDBCD4DA2521EB0100B6B644 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				CDBCD4D92521EB0100B6B644 /* zoom-scheduler.app */,
+				CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,23 +81,10 @@
 		CDBCD4DB2521EB0100B6B644 /* zoom-scheduler */ = {
 			isa = PBXGroup;
 			children = (
-				CDBCD4F625221AF000B6B644 /* Sources */,
-				CDBCD4EC2521EB4A00B6B644 /* zoom-scheduler.entitlements */,
-				CDBCD4DC2521EB0100B6B644 /* zoom_schedulerApp.swift */,
-				CDBCD4DE2521EB0100B6B644 /* ContentView.swift */,
-				CDBCD4E02521EB0100B6B644 /* Assets.xcassets */,
-				CDBCD4E52521EB0100B6B644 /* Info.plist */,
-				CDBCD4E22521EB0100B6B644 /* Preview Content */,
+				CDCC1E4D25230A49004BFC55 /* Sources */,
+				CDCC1E4925230A03004BFC55 /* Resources */,
 			);
 			path = "zoom-scheduler";
-			sourceTree = "<group>";
-		};
-		CDBCD4E22521EB0100B6B644 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				CDBCD4E32521EB0100B6B644 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		CDBCD4F525221AE200B6B644 /* Models */ = {
@@ -82,12 +95,150 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		CDBCD4F625221AF000B6B644 /* Sources */ = {
+		CDBCD50025226C4000B6B644 /* zoom-scheduler-mac */ = {
+			isa = PBXGroup;
+			children = (
+				CDCC1E4E25230A55004BFC55 /* Sources */,
+				CDCC1E4B25230A2F004BFC55 /* Resources */,
+			);
+			path = "zoom-scheduler-mac";
+			sourceTree = "<group>";
+		};
+		CDBCD55D2522829500B6B644 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD55E252282A200B6B644 /* Sources */,
+				CDBCD55F252282C300B6B644 /* Resources */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		CDBCD55E252282A200B6B644 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				CDBCD4F525221AE200B6B644 /* Models */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		CDBCD55F252282C300B6B644 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD560252282E100B6B644 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CDCC1E4925230A03004BFC55 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CDCC1E4A25230A16004BFC55 /* Assets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CDCC1E4A25230A16004BFC55 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD4E32521EB0100B6B644 /* Preview Assets.xcassets */,
+				CDBCD4E02521EB0100B6B644 /* PhoneAssets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		CDCC1E4B25230A2F004BFC55 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CDCC1E4C25230A36004BFC55 /* Assets */,
+				CDCC1E5525230BFF004BFC55 /* Storyboards */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CDCC1E4C25230A36004BFC55 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD50825226C4300B6B644 /* Preview Assets.xcassets */,
+				CDBCD50525226C4300B6B644 /* MacAssets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		CDCC1E4D25230A49004BFC55 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CDCC1E5125230ABB004BFC55 /* App */,
+				CDCC1E4F25230A6F004BFC55 /* Screens */,
+				CDCC1E5325230B34004BFC55 /* Target Support Files */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		CDCC1E4E25230A55004BFC55 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CDCC1E5225230AC1004BFC55 /* App */,
+				CDCC1E5025230A78004BFC55 /* Screens */,
+				CDCC1E5425230BA7004BFC55 /* Target Support Files */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		CDCC1E4F25230A6F004BFC55 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD4DE2521EB0100B6B644 /* ContentView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		CDCC1E5025230A78004BFC55 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD50325226C4000B6B644 /* ContentView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		CDCC1E5125230ABB004BFC55 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD4DC2521EB0100B6B644 /* zoom_schedulerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CDCC1E5225230AC1004BFC55 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD50125226C4000B6B644 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CDCC1E5325230B34004BFC55 /* Target Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD4E52521EB0100B6B644 /* Info.plist */,
+			);
+			path = "Target Support Files";
+			sourceTree = "<group>";
+		};
+		CDCC1E5425230BA7004BFC55 /* Target Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD50D25226C4300B6B644 /* Info.plist */,
+				CDBCD50E25226C4300B6B644 /* zoom_scheduler_mac.entitlements */,
+			);
+			path = "Target Support Files";
+			sourceTree = "<group>";
+		};
+		CDCC1E5525230BFF004BFC55 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CDBCD5532522764900B6B644 /* Menu.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +261,23 @@
 			productReference = CDBCD4D92521EB0100B6B644 /* zoom-scheduler.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CDBCD4FE25226C4000B6B644 /* zoom-scheduler-mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDBCD50F25226C4300B6B644 /* Build configuration list for PBXNativeTarget "zoom-scheduler-mac" */;
+			buildPhases = (
+				CDBCD4FB25226C4000B6B644 /* Sources */,
+				CDBCD4FC25226C4000B6B644 /* Frameworks */,
+				CDBCD4FD25226C4000B6B644 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "zoom-scheduler-mac";
+			productName = "zoom-scheduler-mac";
+			productReference = CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -120,6 +288,9 @@
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					CDBCD4D82521EB0100B6B644 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					CDBCD4FE25226C4000B6B644 = {
 						CreatedOnToolsVersion = 12.0;
 					};
 				};
@@ -138,6 +309,7 @@
 			projectRoot = "";
 			targets = (
 				CDBCD4D82521EB0100B6B644 /* zoom-scheduler */,
+				CDBCD4FE25226C4000B6B644 /* zoom-scheduler-mac */,
 			);
 		};
 /* End PBXProject section */
@@ -148,7 +320,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDBCD4E42521EB0100B6B644 /* Preview Assets.xcassets in Resources */,
-				CDBCD4E12521EB0100B6B644 /* Assets.xcassets in Resources */,
+				CDBCD561252282E100B6B644 /* Assets.xcassets in Resources */,
+				CDBCD4E12521EB0100B6B644 /* PhoneAssets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDBCD4FD25226C4000B6B644 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDBCD5542522764900B6B644 /* Menu.storyboard in Resources */,
+				CDBCD50925226C4300B6B644 /* Preview Assets.xcassets in Resources */,
+				CDBCD562252282E100B6B644 /* Assets.xcassets in Resources */,
+				CDBCD50625226C4300B6B644 /* MacAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +346,16 @@
 				CDBCD4DF2521EB0100B6B644 /* ContentView.swift in Sources */,
 				CDBCD4F925221B2900B6B644 /* Meeting.swift in Sources */,
 				CDBCD4DD2521EB0100B6B644 /* zoom_schedulerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDBCD4FB25226C4000B6B644 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDBCD51625226D1500B6B644 /* Meeting.swift in Sources */,
+				CDBCD50225226C4000B6B644 /* AppDelegate.swift in Sources */,
+				CDBCD536252270A400B6B644 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,12 +483,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "zoom-scheduler/zoom-scheduler.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler/Resources/Assets/Preview Assets.xcassets\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "zoom-scheduler/Info.plist";
+				INFOPLIST_FILE = "zoom-scheduler/Sources/Target Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -313,12 +506,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "zoom-scheduler/zoom-scheduler.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler/Resources/Assets/Preview Assets.xcassets\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "zoom-scheduler/Info.plist";
+				INFOPLIST_FILE = "zoom-scheduler/Sources/Target Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -329,6 +521,54 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CDBCD51025226C4300B6B644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "zoom-scheduler-mac/Sources/Target Support Files/zoom_scheduler_mac.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler-mac/Resources/Assets/Preview Assets.xcassets\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "zoom-scheduler-mac/Sources/Target Support Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hipolabs.zoom-scheduler-mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CDBCD51125226C4300B6B644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "zoom-scheduler-mac/Sources/Target Support Files/zoom_scheduler_mac.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler-mac/Resources/Assets/Preview Assets.xcassets\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "zoom-scheduler-mac/Sources/Target Support Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hipolabs.zoom-scheduler-mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -349,6 +589,15 @@
 			buildConfigurations = (
 				CDBCD4E92521EB0100B6B644 /* Debug */,
 				CDBCD4EA2521EB0100B6B644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDBCD50F25226C4300B6B644 /* Build configuration list for PBXNativeTarget "zoom-scheduler-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDBCD51025226C4300B6B644 /* Debug */,
+				CDBCD51125226C4300B6B644 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

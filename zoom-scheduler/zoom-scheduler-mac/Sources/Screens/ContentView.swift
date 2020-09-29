@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  zoom-scheduler
+//  zoom-scheduler-mac
 //
 //  Created by Karasuluoglu on 28.09.2020.
 //
@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Zoom Scheduler")
-            .padding()
+        Text("Hello, World!")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
