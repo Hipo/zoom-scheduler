@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD6E9F7D2525D3D0007B28E4 /* EnterMeetingNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E9F7C2525D3D0007B28E4 /* EnterMeetingNameView.swift */; };
+		CD6E9F832525D463007B28E4 /* EnterMeetingDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E9F822525D463007B28E4 /* EnterMeetingDateView.swift */; };
+		CD8057A62523CC37008527FF /* RootScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8057A52523CC37008527FF /* RootScreen.swift */; };
+		CD8057AE2523D670008527FF /* SchedulerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8057AD2523D670008527FF /* SchedulerScreen.swift */; };
 		CDBCD4DD2521EB0100B6B644 /* zoom_schedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4DC2521EB0100B6B644 /* zoom_schedulerApp.swift */; };
 		CDBCD4DF2521EB0100B6B644 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4DE2521EB0100B6B644 /* ContentView.swift */; };
 		CDBCD4E12521EB0100B6B644 /* PhoneAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD4E02521EB0100B6B644 /* PhoneAssets.xcassets */; };
@@ -16,13 +20,17 @@
 		CDBCD50625226C4300B6B644 /* MacAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD50525226C4300B6B644 /* MacAssets.xcassets */; };
 		CDBCD50925226C4300B6B644 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD50825226C4300B6B644 /* Preview Assets.xcassets */; };
 		CDBCD51625226D1500B6B644 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4F825221B2900B6B644 /* Meeting.swift */; };
-		CDBCD536252270A400B6B644 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD50325226C4000B6B644 /* ContentView.swift */; };
 		CDBCD5542522764900B6B644 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD5532522764900B6B644 /* Menu.storyboard */; };
 		CDBCD561252282E100B6B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD560252282E100B6B644 /* Assets.xcassets */; };
 		CDBCD562252282E100B6B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD560252282E100B6B644 /* Assets.xcassets */; };
+		CDCC1E632523111F004BFC55 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCC1E622523111F004BFC55 /* WelcomeScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD6E9F7C2525D3D0007B28E4 /* EnterMeetingNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMeetingNameView.swift; sourceTree = "<group>"; };
+		CD6E9F822525D463007B28E4 /* EnterMeetingDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMeetingDateView.swift; sourceTree = "<group>"; };
+		CD8057A52523CC37008527FF /* RootScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScreen.swift; sourceTree = "<group>"; };
+		CD8057AD2523D670008527FF /* SchedulerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerScreen.swift; sourceTree = "<group>"; };
 		CDBCD4D92521EB0100B6B644 /* zoom-scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBCD4DC2521EB0100B6B644 /* zoom_schedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zoom_schedulerApp.swift; sourceTree = "<group>"; };
 		CDBCD4DE2521EB0100B6B644 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,13 +40,13 @@
 		CDBCD4F825221B2900B6B644 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBCD50125226C4000B6B644 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CDBCD50325226C4000B6B644 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CDBCD50525226C4300B6B644 /* MacAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MacAssets.xcassets; sourceTree = "<group>"; };
 		CDBCD50825226C4300B6B644 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CDBCD50D25226C4300B6B644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDBCD50E25226C4300B6B644 /* zoom_scheduler_mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = zoom_scheduler_mac.entitlements; sourceTree = "<group>"; };
 		CDBCD5532522764900B6B644 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		CDBCD560252282E100B6B644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CDCC1E622523111F004BFC55 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +67,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD6E9F7B2525D3AC007B28E4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD6E9F7C2525D3D0007B28E4 /* EnterMeetingNameView.swift */,
+				CD6E9F822525D463007B28E4 /* EnterMeetingDateView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CDBCD4D02521EB0100B6B644 = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +196,7 @@
 			children = (
 				CDCC1E5225230AC1004BFC55 /* App */,
 				CDCC1E5025230A78004BFC55 /* Screens */,
+				CD6E9F7B2525D3AC007B28E4 /* Views */,
 				CDCC1E5425230BA7004BFC55 /* Target Support Files */,
 			);
 			path = Sources;
@@ -195,7 +213,9 @@
 		CDCC1E5025230A78004BFC55 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				CDBCD50325226C4000B6B644 /* ContentView.swift */,
+				CD8057A52523CC37008527FF /* RootScreen.swift */,
+				CD8057AD2523D670008527FF /* SchedulerScreen.swift */,
+				CDCC1E622523111F004BFC55 /* WelcomeScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -353,9 +373,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6E9F7D2525D3D0007B28E4 /* EnterMeetingNameView.swift in Sources */,
+				CDCC1E632523111F004BFC55 /* WelcomeScreen.swift in Sources */,
 				CDBCD51625226D1500B6B644 /* Meeting.swift in Sources */,
 				CDBCD50225226C4000B6B644 /* AppDelegate.swift in Sources */,
-				CDBCD536252270A400B6B644 /* ContentView.swift in Sources */,
+				CD6E9F832525D463007B28E4 /* EnterMeetingDateView.swift in Sources */,
+				CD8057AE2523D670008527FF /* SchedulerScreen.swift in Sources */,
+				CD8057A62523CC37008527FF /* RootScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
