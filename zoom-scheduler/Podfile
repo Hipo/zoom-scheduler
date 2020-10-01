@@ -1,0 +1,18 @@
+use_frameworks!
+inhibit_all_warnings!
+
+def shared_pods
+  pod 'GTMAppAuth'
+end
+
+target 'zoom-scheduler' do
+  platform :ios, '14.0'
+
+  shared_pods
+end
+
+target 'zoom-scheduler-mac' do
+  platform :macos, '10.15'
+
+  shared_pods
+end

@@ -8,13 +8,30 @@
 import SwiftUI
 
 struct RootScreen: View {
-    @ObservedObject var zoomAPI: ZoomAPI
+    @ObservedObject
+    var zoomAPI: ZoomAPI
+    @ObservedObject
+    var googleCalendarAPI: GoogleCalendarAPI
+    @ObservedObject
+    var preferences: Preferences
 
     var body: some View {
         Group {
             switch zoomAPI.authState {
                 case .success:
-                    SchedulerScreen()
+                    if preferences.skipsSyncingGoogleCalendar {
+                        SchedulerScreen()
+                    } else {
+                        switch googleCalendarAPI.authState {
+                            case .connected:
+                                SchedulerScreen()
+                            default:
+                                SyncGoogleCalendarScreen(
+                                    googleCalendarAPI: googleCalendarAPI,
+                                    preferences: preferences
+                                )
+                        }
+                    }
                 default:
                     WelcomeScreen(zoomAPI: zoomAPI)
             }
@@ -34,6 +51,10 @@ struct RootScreen: View {
 
 struct RootScreen_Previews: PreviewProvider {
     static var previews: some View {
-        RootScreen(zoomAPI: ZoomAPI())
+        RootScreen(
+            zoomAPI: ZoomAPI(),
+            googleCalendarAPI: GoogleCalendarAPI(),
+            preferences: Preferences()
+        )
     }
 }

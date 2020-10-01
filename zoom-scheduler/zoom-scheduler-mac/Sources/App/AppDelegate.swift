@@ -15,6 +15,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
 
     private lazy var zoomAPI = ZoomAPI()
+    private lazy var googleCalendarAPI = GoogleCalendarAPI()
+
+    private lazy var preferences = Preferences()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         window = NSWindow(
@@ -26,7 +29,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.backgroundColor = NSColor(named: "Screens/Attributes/Background/primary")
         window.titlebarAppearsTransparent = true
         window.isReleasedWhenClosed = false
-        window.contentView = NSHostingView(rootView: RootScreen(zoomAPI: zoomAPI))
+        window.contentView = NSHostingView(
+            rootView: RootScreen(
+                zoomAPI: zoomAPI,
+                googleCalendarAPI: googleCalendarAPI,
+                preferences: preferences
+            )
+        )
         window.makeKeyAndOrderFront(nil)
 
         window.setFrameAutosaveName("Main Window")
@@ -41,7 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if url.scheme == "zoomscheduler" {
             zoomAPI.authCode = url.host
         } else {
-//            contentView.gcalAPIClient.authFlow?.resumeExternalUserAgentFlow(with: url)
+            googleCalendarAPI.authFlow?.resumeExternalUserAgentFlow(with: url)
         }
 
         window.makeKeyAndOrderFront(nil)
