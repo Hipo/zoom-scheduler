@@ -19,15 +19,15 @@ struct WelcomeScreen: View {
 
             Text("Welcome to Zoom Scheduler")
                 .font(.custom("SFProDisplay-Medium", size: 34))
-                .foregroundColor(Color("Views/Text/Title/primary"))
                 .kerning(0.37)
+                .foregroundColor(Color("Views/Text/Title/primary"))
                 .padding(.bottom, 20)
 
             Text("Scheduler is a Mac app for quickly creating calendar\nevents with attached Zoom calls.")
                 .font(.custom("SFProText-Regular", size: 15))
-                .foregroundColor(Color("Views/Text/Body/primary"))
                 .kerning(-0.24)
                 .lineSpacing(6.5)
+                .foregroundColor(Color("Views/Text/Body/primary"))
                 .multilineTextAlignment(.center)
                 .lineLimit(nil)
                 .padding(.bottom, 40)
@@ -47,9 +47,9 @@ struct WelcomeScreen: View {
 
                         Text(zoomAPI.authState == .success ? "Connected" : "Sign in Zoom Account")
                             .font(.custom("SFProText-Medium", size: 15))
-                            .foregroundColor(Color("Views/Button/Title/primary"))
                             .kerning(-0.24)
                             .lineSpacing(6.5)
+                            .foregroundColor(Color("Views/Button/Title/primary"))
                     }
                 }
                 .frame(width: 240, height: 52)
@@ -57,7 +57,7 @@ struct WelcomeScreen: View {
             }
             .buttonStyle(PlainButtonStyle())
             .cornerRadius(8)
-            .disabled(zoomAPI.authState == .connecting || zoomAPI.authState == .success)
+            .allowsHitTesting(zoomAPI.authState != .connecting && zoomAPI.authState != .success)
 
             if zoomAPI.authState == .failed {
                 Text("We couldn't sign in. Please try again.")
