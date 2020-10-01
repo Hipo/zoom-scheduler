@@ -21,7 +21,6 @@ struct EnterMeetingNameView: View {
                 text: $meeting.name
             )
             .multilineTextAlignment(.center)
-            .padding()
         }
     }
 }
