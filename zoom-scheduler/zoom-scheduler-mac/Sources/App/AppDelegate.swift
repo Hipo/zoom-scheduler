@@ -8,32 +8,42 @@
 import Cocoa
 import SwiftUI
 
+let windowSize = CGSize(width: 720.0, height: 562.0)
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
     var window: NSWindow!
 
+    private lazy var zoomAPI = ZoomAPI()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = RootScreen()
-
-        // Create the window and set the content view.
         window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
+            contentRect: NSRect(x: 0, y: 0, width: windowSize.width, height: windowSize.height),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
-            backing: .buffered, defer: false)
-        window.backgroundColor = .white
+            backing: .buffered,
+            defer: false
+        )
+        window.backgroundColor = NSColor(named: "Screens/Attributes/Background/primary")
         window.titlebarAppearsTransparent = true
         window.isReleasedWhenClosed = false
-        window.contentView = NSHostingView(rootView: contentView)
+        window.contentView = NSHostingView(rootView: RootScreen(zoomAPI: zoomAPI))
         window.makeKeyAndOrderFront(nil)
 
         window.setFrameAutosaveName("Main Window")
         window.center()
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+    func application(_ application: NSApplication, open urls: [URL]) {
+        guard let url = urls.first else {
+            return
+        }
+
+        if url.scheme == "zoomscheduler" {
+            zoomAPI.authCode = url.host
+        } else {
+//            contentView.gcalAPIClient.authFlow?.resumeExternalUserAgentFlow(with: url)
+        }
+
+        window.makeKeyAndOrderFront(nil)
     }
 }

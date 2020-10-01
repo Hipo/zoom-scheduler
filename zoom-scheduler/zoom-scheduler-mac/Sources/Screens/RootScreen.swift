@@ -8,28 +8,32 @@
 import SwiftUI
 
 struct RootScreen: View {
-    @State
-    private var hasOngoingScheduler = false
+    @ObservedObject var zoomAPI: ZoomAPI
 
     var body: some View {
         Group {
-            if hasOngoingScheduler {
-                SchedulerScreen()
-            } else {
-                WelcomeScreen {
-                    hasOngoingScheduler = true
-                }
+            switch zoomAPI.authState {
+                case .success:
+                    SchedulerScreen()
+                default:
+                    WelcomeScreen(zoomAPI: zoomAPI)
             }
         }
+        .background(Color("Screens/Attributes/Background/primary"))
         .frame(
+            minWidth: windowSize.width,
+            idealWidth: windowSize.width,
             maxWidth: .infinity,
-            maxHeight: .infinity
+            minHeight: windowSize.height,
+            idealHeight: windowSize.height,
+            maxHeight: .infinity,
+            alignment: .center
         )
     }
 }
 
 struct RootScreen_Previews: PreviewProvider {
     static var previews: some View {
-        RootScreen()
+        RootScreen(zoomAPI: ZoomAPI())
     }
 }
