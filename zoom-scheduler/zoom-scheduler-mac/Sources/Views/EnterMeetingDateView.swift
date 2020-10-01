@@ -19,7 +19,6 @@ struct EnterMeetingDateView: View {
                 in: Date()...,
                 displayedComponents: .date
             )
-            .padding()
 
             HStack {
                 Text("Duration")
@@ -30,9 +29,9 @@ struct EnterMeetingDateView: View {
                             meeting.duration = duration
                         }
                         .buttonStyle(PlainButtonStyle())
-                        .padding(EdgeInsets(top: 5.0, leading: 10.0, bottom: 5.0, trailing: 10.0))
+                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                         .background(meeting.duration == duration ? Color.orange : Color.yellow)
-                        .cornerRadius(10.0)
+                        .cornerRadius(10)
                     }
                 }
             }

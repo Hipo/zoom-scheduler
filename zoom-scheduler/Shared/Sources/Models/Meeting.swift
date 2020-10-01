@@ -11,6 +11,7 @@ final class Meeting: ObservableObject {
     @Published var name = ""
     @Published var date = Date()
     @Published var duration: Duration = .thirtyMins
+    @Published var invitees: [Invitee] = []
 }
 
 extension Meeting {
@@ -35,5 +36,12 @@ extension Meeting {
                     return "120 mins"
             }
         }
+    }
+}
+
+extension Meeting {
+    struct Invitee: Equatable {
+        let id = UUID().uuidString
+        let email: String
     }
 }

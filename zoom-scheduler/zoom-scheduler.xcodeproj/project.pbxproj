@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD65C52925260AD300911834 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD65C52825260AD300911834 /* EmailValidator.swift */; };
+		CD65C52A25260AD300911834 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD65C52825260AD300911834 /* EmailValidator.swift */; };
 		CD6E9F7D2525D3D0007B28E4 /* EnterMeetingNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E9F7C2525D3D0007B28E4 /* EnterMeetingNameView.swift */; };
 		CD6E9F832525D463007B28E4 /* EnterMeetingDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E9F822525D463007B28E4 /* EnterMeetingDateView.swift */; };
+		CD6E9F8B2525DD64007B28E4 /* EnterMeetingInviteesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E9F8A2525DD64007B28E4 /* EnterMeetingInviteesView.swift */; };
 		CD8057A62523CC37008527FF /* RootScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8057A52523CC37008527FF /* RootScreen.swift */; };
 		CD8057AE2523D670008527FF /* SchedulerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8057AD2523D670008527FF /* SchedulerScreen.swift */; };
 		CDBCD4DD2521EB0100B6B644 /* zoom_schedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4DC2521EB0100B6B644 /* zoom_schedulerApp.swift */; };
@@ -27,8 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD65C52825260AD300911834 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		CD6E9F7C2525D3D0007B28E4 /* EnterMeetingNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMeetingNameView.swift; sourceTree = "<group>"; };
 		CD6E9F822525D463007B28E4 /* EnterMeetingDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMeetingDateView.swift; sourceTree = "<group>"; };
+		CD6E9F8A2525DD64007B28E4 /* EnterMeetingInviteesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMeetingInviteesView.swift; sourceTree = "<group>"; };
 		CD8057A52523CC37008527FF /* RootScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScreen.swift; sourceTree = "<group>"; };
 		CD8057AD2523D670008527FF /* SchedulerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerScreen.swift; sourceTree = "<group>"; };
 		CDBCD4D92521EB0100B6B644 /* zoom-scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,11 +72,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD65C52725260AA600911834 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CD65C52825260AD300911834 /* EmailValidator.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		CD6E9F7B2525D3AC007B28E4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				CD6E9F7C2525D3D0007B28E4 /* EnterMeetingNameView.swift */,
 				CD6E9F822525D463007B28E4 /* EnterMeetingDateView.swift */,
+				CD6E9F8A2525DD64007B28E4 /* EnterMeetingInviteesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -134,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				CDBCD4F525221AE200B6B644 /* Models */,
+				CD65C52725260AA600911834 /* Utils */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -364,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDBCD4DF2521EB0100B6B644 /* ContentView.swift in Sources */,
+				CD65C52925260AD300911834 /* EmailValidator.swift in Sources */,
 				CDBCD4F925221B2900B6B644 /* Meeting.swift in Sources */,
 				CDBCD4DD2521EB0100B6B644 /* zoom_schedulerApp.swift in Sources */,
 			);
@@ -375,9 +391,11 @@
 			files = (
 				CD6E9F7D2525D3D0007B28E4 /* EnterMeetingNameView.swift in Sources */,
 				CDCC1E632523111F004BFC55 /* WelcomeScreen.swift in Sources */,
+				CD65C52A25260AD300911834 /* EmailValidator.swift in Sources */,
 				CDBCD51625226D1500B6B644 /* Meeting.swift in Sources */,
 				CDBCD50225226C4000B6B644 /* AppDelegate.swift in Sources */,
 				CD6E9F832525D463007B28E4 /* EnterMeetingDateView.swift in Sources */,
+				CD6E9F8B2525DD64007B28E4 /* EnterMeetingInviteesView.swift in Sources */,
 				CD8057AE2523D670008527FF /* SchedulerScreen.swift in Sources */,
 				CD8057A62523CC37008527FF /* RootScreen.swift in Sources */,
 			);

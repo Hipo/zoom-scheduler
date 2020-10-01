@@ -12,10 +12,14 @@ struct SchedulerScreen: View {
     private var meeting = Meeting()
 
     var body: some View {
-        VStack {
+        VStack (spacing: 30){
             EnterMeetingNameView(meeting: meeting)
+
             EnterMeetingDateView(meeting: meeting)
+
+            EnterMeetingInviteesView(meeting: meeting)
         }
+        .padding(.horizontal, 10)
         .frame(
             maxWidth: .infinity,
             maxHeight: .infinity
