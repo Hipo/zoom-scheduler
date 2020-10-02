@@ -16,6 +16,7 @@ struct ActivityIndicator: View {
             ForEach(0..<5) { index in
                 Group {
                     Circle()
+                        .foregroundColor(Color("Views/Custom/ActivityIndicator/tint"))
                         .frame(
                             width: geometry.size.width / 5,
                             height: geometry.size.height / 5

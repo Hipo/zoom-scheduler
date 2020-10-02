@@ -24,7 +24,7 @@ struct EnterMeetingDateView: View {
                 Text("Duration")
 
                 HStack {
-                    ForEach(Meeting.Duration.allCases, id: \.self) { duration in
+                    ForEach(Meeting.Duration.all, id: \.self) { duration in
                         Button(duration.description) {
                             meeting.duration = duration
                         }

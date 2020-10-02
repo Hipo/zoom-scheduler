@@ -20,11 +20,11 @@ struct RootScreen: View {
             switch zoomAPI.authState {
                 case .success:
                     if preferences.skipsSyncingGoogleCalendar {
-                        SchedulerScreen()
+                        HomeScreen(zoomAPI: zoomAPI)
                     } else {
                         switch googleCalendarAPI.authState {
                             case .connected:
-                                SchedulerScreen()
+                                HomeScreen(zoomAPI: zoomAPI)
                             default:
                                 SyncGoogleCalendarScreen(
                                     googleCalendarAPI: googleCalendarAPI,
