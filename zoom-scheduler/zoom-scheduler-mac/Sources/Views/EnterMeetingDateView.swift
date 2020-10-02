@@ -12,29 +12,20 @@ struct EnterMeetingDateView: View {
     var meeting: Meeting
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            Text("Event Name")
+                .font(.custom("SFProText-Regular", size: 13))
+                .kerning(-0.08)
+                .lineSpacing(3.5)
+                .foregroundColor(Color("Views/TextField/Placeholder/primary"))
+
             DatePicker(
-                "Meeting Date",
+                "",
                 selection: $meeting.date,
                 in: Date()...,
-                displayedComponents: .date
+                displayedComponents: [.date, .hourAndMinute]
             )
-
-            HStack {
-                Text("Duration")
-
-                HStack {
-                    ForEach(Meeting.Duration.all, id: \.self) { duration in
-                        Button(duration.description) {
-                            meeting.duration = duration
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                        .background(meeting.duration == duration ? Color.orange : Color.yellow)
-                        .cornerRadius(10)
-                    }
-                }
-            }
+            .datePickerStyle(StepperFieldDatePickerStyle())
         }
     }
 }
@@ -42,5 +33,6 @@ struct EnterMeetingDateView: View {
 struct EnterMeetingDateView_Previews: PreviewProvider {
     static var previews: some View {
         EnterMeetingDateView(meeting: Meeting())
+            .background(Color("Screens/Attributes/Background/primary"))
     }
 }

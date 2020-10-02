@@ -11,6 +11,8 @@ struct HomeScreen: View {
     @ObservedObject
     var zoomAPI: ZoomAPI
 
+    var googleCalendarAPI: GoogleCalendarAPI
+
     @State
     private var mode: Mode = .menu
 
@@ -24,7 +26,16 @@ struct HomeScreen: View {
                                 mode = .newEvent
                             }
                         case .newEvent:
-                            SchedulerScreen()
+                            ScheduleMeetingScreen(
+                                zoomAPI: zoomAPI,
+                                googleCalendarAPI: googleCalendarAPI,
+                                onSave: {
+                                    mode = .menu
+                                },
+                                onCancel: {
+                                    mode = .menu
+                                }
+                            )
                     }
                 default:
                     ActivityIndicator()
@@ -50,10 +61,13 @@ extension HomeScreen {
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreen(zoomAPI: ZoomAPI())
-            .frame(
-                width: windowSize.width,
-                height: windowSize.height
-            )
+        HomeScreen(
+            zoomAPI: ZoomAPI(),
+            googleCalendarAPI: GoogleCalendarAPI()
+        )
+        .frame(
+            width: windowSize.width,
+            height: windowSize.height
+        )
     }
 }
