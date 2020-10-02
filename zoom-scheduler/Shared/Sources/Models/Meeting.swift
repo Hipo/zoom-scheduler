@@ -8,7 +8,7 @@
 import Foundation
 
 final class Meeting: ObservableObject {
-    @Published var name = ""
+    @Published var name = "Zoom Meeting"
     @Published var date = Date()
     @Published var duration: Duration = .thirtyMins
     @Published var invitees: [Invitee] = []
@@ -35,10 +35,9 @@ extension Meeting {
         case fortyFiveMins = 45
         case oneHour = 60
         case oneAndHalfHour = 90
-        case twoHours = 120
 
         static var all: [Duration] =
-            [.thirtyMins, .fortyFiveMins, .oneHour, .oneAndHalfHour, .twoHours]
+            [.thirtyMins, .fortyFiveMins, .oneHour, .oneAndHalfHour]
 
         var description: String {
             switch self {
@@ -52,8 +51,6 @@ extension Meeting {
                     return "60 mins"
                 case .oneAndHalfHour:
                     return "90 mins"
-                case .twoHours:
-                    return "120 mins"
             }
         }
     }

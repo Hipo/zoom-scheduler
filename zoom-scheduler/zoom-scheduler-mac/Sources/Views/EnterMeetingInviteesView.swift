@@ -13,29 +13,62 @@ struct EnterMeetingInviteesView: View {
 
     @State
     private var emailInput = ""
+    @State
+    private var isEditing = false
 
     var body: some View {
-        VStack {
-            Text("Meeting Invitees")
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Invitees")
+                .font(.custom("SFProText-Regular", size: 13))
+                .kerning(-0.08)
+                .lineSpacing(3.5)
+                .foregroundColor(Color("Views/TextField/Placeholder/primary"))
 
-            TextField(
-                "Emails",
-                text: $emailInput,
-                onCommit: extractValidEmails
+            Group {
+                TextField(
+                    "Emails of invitees",
+                    text: $emailInput,
+                    onEditingChanged: { editing in
+                        isEditing = editing
+                    },
+                    onCommit: extractValidEmails
+                )
+                .textFieldStyle(PlainTextFieldStyle())
+                .font(.custom("SFProText-Regular", size: 15))
+                .foregroundColor(Color("Views/TextField/Input/primary"))
+                .frame(height: 44)
+                .padding(.horizontal, 16)
+            }
+            .background(Color("Views/TextField/Background/primary"))
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(
+                        isEditing ? Color("Views/TextField/Border/Editing/primary") : Color("Views/TextField/Border/primary"),
+                        lineWidth: 2
+                    )
             )
+            .shadow(
+                color: isEditing ?  Color("Views/TextField/Shadow/primary") : Color.clear,
+                radius: 4,
+                x: 0.0,
+                y: 0.0
+            )
+            .padding(.top, 8)
 
-            HStack {
-                VStack(alignment: .leading) {
-                    ForEach(meeting.invitees, id: \.email) { invitee in
-                        MeetingInviteeView(invitee: invitee) {
-                            if let idx = meeting.invitees.firstIndex(of: invitee) {
-                                meeting.invitees.remove(at: idx)
-                            }
+            VStack(alignment: .leading, spacing: 0) {
+                ForEach(meeting.invitees, id: \.email) { invitee in
+                    MeetingInviteeView(invitee: invitee) {
+                        if let idx = meeting.invitees.firstIndex(of: invitee) {
+                            meeting.invitees.remove(at: idx)
                         }
                     }
                 }
-                Spacer()
             }
+            .padding(.leading, 16)
+            .background(Color("Views/Attributes/Background/primary"))
+            .cornerRadius(12)
+            .padding(.top, 12)
         }
     }
 }
@@ -60,16 +93,26 @@ struct MeetingInviteeView: View {
     var body: some View {
         HStack {
             Text(invitee.email)
+                .font(.custom("SFProText-Regular", size: 13))
+                .kerning(-0.24)
+                .lineSpacing(7.5)
+                .foregroundColor(Color("Views/TextField/Input/primary"))
 
-            Button("X") {
-                onRemove()
+            Spacer()
+
+            Button(action: onRemove) {
+                Image("Screens/Icons/remove")
             }
+            .buttonStyle(PlainButtonStyle())
+            .frame(width: 32, height: 32)
         }
+        .padding(EdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 6))
     }
 }
 
 struct EnterMeetingInviteesView_Previews: PreviewProvider {
     static var previews: some View {
         EnterMeetingInviteesView(meeting: Meeting())
+            .background(Color("Screens/Attributes/Background/primary"))
     }
 }
