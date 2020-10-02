@@ -185,18 +185,28 @@ class GoogleCalendarAPI: NSObject, ObservableObject, OIDExternalUserAgent {
             attendees.append(["email": email])
         }
 
-        let payload: [String: Any] = [
-            "summary": meeting.title,
-            "location": "\(meeting.joinURL)",
-            "description": "\(meeting.joinURL)",
-            "start": [
-                "dateTime": dateFormatter.string(from: meeting.startDate),
-            ],
-            "end": [
-                "dateTime": dateFormatter.string(from: meeting.endDate),
-            ],
-            "attendees": attendees,
-        ]
+        var payload: [String: Any] = [:]
+
+        if let title = meeting.title {
+            payload["summary"] = title
+        }
+        if let joinUrl = meeting.joinUrl {
+            payload["description"] = joinUrl.absoluteString
+            payload["location"] = joinUrl.absoluteString
+        }
+        if let startDate = meeting.startDate {
+            payload["start"] = [
+                "dateTime": dateFormatter.string(from: startDate)
+            ]
+        }
+        if let endDate = meeting.endDate {
+            payload["end"] = [
+                "dateTime": dateFormatter.string(from: endDate)
+            ]
+        }
+        if !attendees.isEmpty {
+            payload["attendees"] = attendees
+        }
 
         guard let payloadData = try? JSONSerialization.data(withJSONObject: payload) else {
             return

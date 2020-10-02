@@ -15,20 +15,22 @@ public enum ZoomAuthState {
     case success
 }
 
-struct ZoomMeeting {
-    let title: String
-    let startDate: Date
-    let duration: Int
-    let timezone: String
-    let joinURL: URL
+struct ZoomMeeting: Codable {
+    let title: String?
+    let startDate: Date?
+    let duration: Int?
+    let timezone: String?
+    let joinUrl: URL?
 
-    var endDate: Date {
+    var endDate: Date? {
         get {
-            return startDate.addingTimeInterval(TimeInterval(duration * 60))
+            if let duration = duration {
+                return startDate?.addingTimeInterval(TimeInterval(duration * 60))
+            }
+            return nil
         }
     }
 }
-
 class ZoomAPI: ObservableObject {
     @Published var authState: ZoomAuthState = .notConnected
 
@@ -99,7 +101,13 @@ class ZoomAPI: ObservableObject {
         return String((0..<10).map{ _ in letters.randomElement()! })
     }
 
-    public func createMeeting(title: String, startDate: Date, duration: Int, timezone: String, completion: @escaping (ZoomMeeting?) -> Void) {
+    public func createQuickMeeting(completion: @escaping (ZoomMeeting?) -> Void) {
+        let meeting = Meeting(type: .quick)
+        meeting.duration = .none
+        createMeeting(meeting: meeting, completion: completion)
+    }
+
+    public func createMeeting(meeting: Meeting, completion: @escaping (ZoomMeeting?) -> Void) {
         guard let url = URL(string: "https://api.zoom.us/v2/users/me/meetings"),
               let token = self.accessToken else {
             completion(nil)
@@ -116,14 +124,18 @@ class ZoomAPI: ObservableObject {
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        let payload: [String: Any] = [
-            "topic": title,
-            "type": 2,
-            "start_time": dateFormatter.string(from: startDate),
-            "duration": duration,
-            "timezone": timezone,
-            "password": self.generateRandomPassword(),
-        ]
+        var payload: [String: Any] = [:]
+        payload["type"] = meeting.type.rawValue
+        payload["start_time"] = dateFormatter.string(from: meeting.date)
+        payload["timezone"] = meeting.timeZone
+        payload["password"] = generateRandomPassword()
+
+        if !meeting.name.isEmpty {
+            payload["topic"] = meeting.name
+        }
+        if meeting.duration != .none {
+            payload["duration"] = meeting.duration.rawValue
+        }
 
         guard let payloadData = try? JSONSerialization.data(withJSONObject: payload) else {
             completion(nil)
@@ -148,41 +160,18 @@ class ZoomAPI: ObservableObject {
                 }
 
                 do {
-                    if let json = try JSONSerialization.jsonObject(
-                        with: data,
-                        options: .mutableContainers) as? [String: Any] {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let zoomMeeting = try decoder.decode(ZoomMeeting.self, from: data)
 
-                        guard let title = json["topic"] as? String,
-                              let startDateString = json["start_time"] as? String,
-                              let startDate = dateFormatter.date(from: startDateString),
-                              let timezone = json["timezone"] as? String,
-                              let duration = json["duration"] as? Int,
-                              let joinURLString = json["join_url"] as? String,
-                              let joinURL = URL(string: joinURLString) else {
-
-                            completion(nil)
-                            return
-                        }
-
-                        print(json)
-
-                        DispatchQueue.main.async {
-                            self.lastCreatedMeeting = ZoomMeeting(
-                                title: title,
-                                startDate: startDate,
-                                duration: duration,
-                                timezone: timezone,
-                                joinURL: joinURL
-                            )
-
-                            completion(self.lastCreatedMeeting)
-                        }
+                    DispatchQueue.main.async {
+                        completion(zoomMeeting)
                     }
                 } catch let error {
                     DispatchQueue.main.async {
                         completion(nil)
                     }
-
                     print(error.localizedDescription)
                 }
             }
