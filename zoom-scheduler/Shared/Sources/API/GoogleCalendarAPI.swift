@@ -16,9 +16,9 @@ public enum GoogleAuthState {
     case connected
 }
 
-struct GCalendar {
+struct GCalendar: Identifiable, Hashable {
+    let id: String
     let name: String
-    let identifier: String
 }
 
 class GoogleCalendarAPI: NSObject, ObservableObject, OIDExternalUserAgent {
@@ -142,12 +142,12 @@ class GoogleCalendarAPI: NSObject, ObservableObject, OIDExternalUserAgent {
                         self.calendars.removeAll()
 
                         for item in items {
-                            guard let identifier = item["id"] as? String,
+                            guard let id = item["id"] as? String,
                                   let name = item["summary"] as? String else {
                                 continue
                             }
 
-                            self.calendars.append(GCalendar(name: name, identifier: identifier))
+                            self.calendars.append(GCalendar(id: id, name: name))
                         }
 
                         print("Load complete \(self.calendars)")
@@ -166,7 +166,7 @@ class GoogleCalendarAPI: NSObject, ObservableObject, OIDExternalUserAgent {
 
         fetcherService.authorizer = auth
 
-        guard let url = URL(string: "https://www.googleapis.com/calendar/v3/calendars/\(calendar.identifier)/events") else {
+        guard let url = URL(string: "https://www.googleapis.com/calendar/v3/calendars/\(calendar.id)/events") else {
             return
         }
 
@@ -194,12 +194,12 @@ class GoogleCalendarAPI: NSObject, ObservableObject, OIDExternalUserAgent {
             payload["description"] = joinUrl.absoluteString
             payload["location"] = joinUrl.absoluteString
         }
-        if let startDate = meeting.startDate {
+        if let startDate = meeting.startTime {
             payload["start"] = [
                 "dateTime": dateFormatter.string(from: startDate)
             ]
         }
-        if let endDate = meeting.endDate {
+        if let endDate = meeting.endTime {
             payload["end"] = [
                 "dateTime": dateFormatter.string(from: endDate)
             ]
@@ -218,6 +218,7 @@ class GoogleCalendarAPI: NSObject, ObservableObject, OIDExternalUserAgent {
         let fetcher = fetcherService.fetcher(with: request)
 
         fetcher.beginFetch { (response: Data?, error: Error?) in
+            print(response.map { String(decoding: $0, as: UTF8.self) })
             guard error == nil, let response = response else {
                 return
             }

@@ -11,6 +11,7 @@ final class Meeting: ObservableObject {
     @Published var name = "Zoom Meeting"
     @Published var date = Date()
     @Published var duration: Duration = .thirtyMins
+    @Published var calendar: GCalendar?
     @Published var invitees: [Invitee] = []
 
     let type: Type

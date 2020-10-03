@@ -101,7 +101,7 @@ struct MeetingInviteeView: View {
             Spacer()
 
             Button(action: onRemove) {
-                Image("Screens/Icons/remove")
+                Image("Screens/Accessories/remove")
             }
             .buttonStyle(PlainButtonStyle())
             .frame(width: 32, height: 32)
