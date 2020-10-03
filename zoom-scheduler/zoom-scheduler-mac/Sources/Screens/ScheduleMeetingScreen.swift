@@ -36,6 +36,11 @@ struct ScheduleMeetingScreen: View {
 
                 EnterMeetingDurationView(meeting: meeting)
 
+                SelectCalendarView(
+                    meeting: meeting,
+                    googleCalendarAPI: googleCalendarAPI
+                )
+
                 EnterMeetingInviteesView(meeting: meeting)
 
                 VStack(spacing: 16) {
@@ -54,6 +59,9 @@ struct ScheduleMeetingScreen: View {
                         }
                     }
                     .buttonStyle(PlainButtonStyle())
+                    .frame(height: 44)
+                    .frame(maxWidth: .infinity)
+                    .background(Color("Views/Button/Background/primary"))
                     .cornerRadius(8)
 
                     Button(action: onCancel) {
@@ -91,6 +99,7 @@ extension ScheduleMeetingScreen {
             isCreatingMeeting = false
 
             guard let zoomMeeting = zoomMeeting else {
+                onSave()
                 return
             }
 
@@ -99,11 +108,15 @@ extension ScheduleMeetingScreen {
                 NSPasteboard.general.setString(joinURL.absoluteString, forType: .string)
             }
 
-//            if googleCalendarAPI.authState == .connected {
-//                googleCalendarAPI.createEvent(
-//                    meeting: zoomMeeting,
-//                    attendeeEmails: <#T##[String]#>, inCalendar: <#T##GCalendar#>)
-//            }
+            if googleCalendarAPI.authState == .connected,
+               let calendar = meeting.calendar {
+                googleCalendarAPI.createEvent(
+                    meeting: zoomMeeting,
+                    attendeeEmails: meeting.invitees.map(\.email),
+                    inCalendar: calendar
+                )
+            }
+            onSave()
         }
     }
 }

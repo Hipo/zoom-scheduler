@@ -54,6 +54,7 @@
 		CDFA709D2526F8790055DE9B /* MenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA709C2526F8790055DE9B /* MenuScreen.swift */; };
 		CDFA70BA2527166B0055DE9B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70B92527166A0055DE9B /* Extensions.swift */; };
 		CDFA70C025271DCC0055DE9B /* EnterMeetingDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70BF25271DCC0055DE9B /* EnterMeetingDurationView.swift */; };
+		CDFA70C6252733430055DE9B /* SelectCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70C5252733430055DE9B /* SelectCalendarView.swift */; };
 		EF6352A59ED858991F4038C8 /* Pods_zoom_scheduler_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 869C48CA33C1DF79C3E24D4C /* Pods_zoom_scheduler_mac.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,7 @@
 		CDFA709C2526F8790055DE9B /* MenuScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreen.swift; sourceTree = "<group>"; };
 		CDFA70B92527166A0055DE9B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CDFA70BF25271DCC0055DE9B /* EnterMeetingDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMeetingDurationView.swift; sourceTree = "<group>"; };
+		CDFA70C5252733430055DE9B /* SelectCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCalendarView.swift; sourceTree = "<group>"; };
 		CFB0AA63643C83B263ED0D02 /* Pods-zoom-scheduler-mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler-mac.debug.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +178,7 @@
 				CD6E9F822525D463007B28E4 /* EnterMeetingDateView.swift */,
 				CDFA70BF25271DCC0055DE9B /* EnterMeetingDurationView.swift */,
 				CD6E9F8A2525DD64007B28E4 /* EnterMeetingInviteesView.swift */,
+				CDFA70C5252733430055DE9B /* SelectCalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				CDCC1E632523111F004BFC55 /* WelcomeScreen.swift in Sources */,
 				CD65C52A25260AD300911834 /* EmailValidator.swift in Sources */,
 				CDBCD51625226D1500B6B644 /* Meeting.swift in Sources */,
+				CDFA70C6252733430055DE9B /* SelectCalendarView.swift in Sources */,
 				CD8E626E252692EE002824CF /* HomeScreen.swift in Sources */,
 				CD121C44252661E900CD7572 /* ActivityIndicator.swift in Sources */,
 				CDFA70BA2527166B0055DE9B /* Extensions.swift in Sources */,

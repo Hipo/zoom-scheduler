@@ -17,15 +17,15 @@ public enum ZoomAuthState {
 
 struct ZoomMeeting: Codable {
     let title: String?
-    let startDate: Date?
+    let startTime: Date?
     let duration: Int?
     let timezone: String?
     let joinUrl: URL?
 
-    var endDate: Date? {
+    var endTime: Date? {
         get {
             if let duration = duration {
-                return startDate?.addingTimeInterval(TimeInterval(duration * 60))
+                return startTime?.addingTimeInterval(TimeInterval(duration * 60))
             }
             return nil
         }
