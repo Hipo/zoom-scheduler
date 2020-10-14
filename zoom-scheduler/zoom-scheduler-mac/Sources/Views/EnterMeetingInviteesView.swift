@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct EnterMeetingInviteesView: View {
-    @ObservedObject
-    var meeting: Meeting
+    @Binding
+    var draft: CreateMeetingDraft
 
     @State
     private var emailInput = ""
@@ -57,13 +57,13 @@ struct EnterMeetingInviteesView: View {
             .padding(.top, 8)
 
             VStack(alignment: .leading, spacing: 0) {
-                ForEach(meeting.invitees, id: \.email) { invitee in
-                    MeetingInviteeView(invitee: invitee) {
-                        if let idx = meeting.invitees.firstIndex(of: invitee) {
-                            meeting.invitees.remove(at: idx)
-                        }
-                    }
-                }
+//                ForEach([meeting.invitees], id: \.email) { invitee in
+//                    MeetingInviteeView(invitee: invitee) {
+//                        if let idx = meeting.invitees.firstIndex(of: invitee) {
+//                            meeting.invitees.remove(at: idx)
+//                        }
+//                    }
+//                }
             }
             .padding(.leading, 16)
             .background(Color("Views/Attributes/Background/primary"))
@@ -77,10 +77,10 @@ extension EnterMeetingInviteesView {
     private func extractValidEmails() {
         let validator = EmailValidator()
 
-        meeting.invitees += emailInput.components(separatedBy: ",").compactMap { input in
-            let trimmedInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
-            return validator.validate(trimmedInput) ? Meeting.Invitee(email: trimmedInput) : nil
-        }
+//        meeting.invitees += emailInput.components(separatedBy: ",").compactMap { input in
+//            let trimmedInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
+//            return validator.validate(trimmedInput) ? Meeting.Invitee(email: trimmedInput) : nil
+//        }
 
         emailInput = ""
     }
@@ -112,7 +112,7 @@ struct MeetingInviteeView: View {
 
 struct EnterMeetingInviteesView_Previews: PreviewProvider {
     static var previews: some View {
-        EnterMeetingInviteesView(meeting: Meeting())
+        EnterMeetingInviteesView(draft: .constant(CreateMeetingDraft(reason: .scheduled)))
             .background(Color("Screens/Attributes/Background/primary"))
     }
 }

@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ScheduleMeetingScreen: View {
-    @ObservedObject
-    var zoomAPI: ZoomAPI
+    @EnvironmentObject
+    var zoomAPI: ZoomAPIV2
+
     @ObservedObject
     var googleCalendarAPI: GoogleCalendarAPI
-    @ObservedObject
-    private var meeting = Meeting(type: .scheduled)
+
+    @State
+    private var draft = CreateMeetingDraft(reason: .scheduled)
 
     @State
     private var isCreatingMeeting = false
@@ -29,19 +31,19 @@ struct ScheduleMeetingScreen: View {
                     .kerning(0.37)
                     .foregroundColor(Color("Views/Text/Title/primary"))
 
-                EnterMeetingNameView(meeting: meeting)
+                EnterMeetingNameView(draft: $draft)
                     .padding(.top, 10)
 
-                EnterMeetingDateView(meeting: meeting)
+                EnterMeetingDateView(draft: $draft)
 
-                EnterMeetingDurationView(meeting: meeting)
+                EnterMeetingDurationView(draft: $draft)
 
                 SelectCalendarView(
-                    meeting: meeting,
-                    googleCalendarAPI: googleCalendarAPI
+                    googleCalendarAPI: googleCalendarAPI,
+                    draft: $draft
                 )
 
-                EnterMeetingInviteesView(meeting: meeting)
+                EnterMeetingInviteesView(draft: $draft)
 
                 VStack(spacing: 16) {
                     Button(action: createMeeting) {
@@ -95,28 +97,28 @@ extension ScheduleMeetingScreen {
     private func createMeeting() {
         isCreatingMeeting = true
 
-        zoomAPI.createMeeting(meeting: meeting) { zoomMeeting in
+        zoomAPI.createMeeting(draft) { result in
             isCreatingMeeting = false
 
-            guard let zoomMeeting = zoomMeeting else {
-                onSave()
-                return
-            }
+            switch result {
+                case .success(let zoomMeeting):
+                    if let joinURL = zoomMeeting.joinUrl {
+                        NSPasteboard.general.clearContents()
+                        NSPasteboard.general.setString(joinURL.absoluteString, forType: .string)
+                    }
 
-            if let joinURL = zoomMeeting.joinUrl {
-                NSPasteboard.general.clearContents()
-                NSPasteboard.general.setString(joinURL.absoluteString, forType: .string)
+//                    if googleCalendarAPI.authState == .connected,
+//                       let calendar = meeting.calendar {
+//                        googleCalendarAPI.createEvent(
+//                            meeting: zoomMeeting,
+//                            attendeeEmails: meeting.invitees.map(\.email),
+//                            inCalendar: calendar
+//                        )
+//                    }
+                    onSave()
+                case .failure(let apiError, let apiErrorDetail):
+                    break
             }
-
-            if googleCalendarAPI.authState == .connected,
-               let calendar = meeting.calendar {
-                googleCalendarAPI.createEvent(
-                    meeting: zoomMeeting,
-                    attendeeEmails: meeting.invitees.map(\.email),
-                    inCalendar: calendar
-                )
-            }
-            onSave()
         }
     }
 }
@@ -124,7 +126,6 @@ extension ScheduleMeetingScreen {
 struct ScheduleMeetingScreen_Previews: PreviewProvider {
     static var previews: some View {
         ScheduleMeetingScreen(
-            zoomAPI: ZoomAPI(),
             googleCalendarAPI: GoogleCalendarAPI(),
             onSave: { },
             onCancel: { }

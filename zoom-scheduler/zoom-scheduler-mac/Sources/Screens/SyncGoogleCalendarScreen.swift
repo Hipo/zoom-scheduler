@@ -22,8 +22,11 @@ struct SyncGoogleCalendarScreen: View {
                 Image("Screens/Accessories/arrow-right")
                     .padding(.horizontal, 30)
 
-                LogoView(icon: "Screens/Icons/logo")
-                    .frame(width: 80, height: 80)
+                LogoView(
+                    icon: "Screens/Icons/logo",
+                    offset: CGPoint(x: 3.0, y: 2.0)
+                )
+                .frame(width: 80, height: 80)
             }
             .padding(.bottom, 40)
 
@@ -107,7 +110,7 @@ struct SyncGoogleCalendarScreen_Previews: PreviewProvider {
     static var previews: some View {
         SyncGoogleCalendarScreen(
             googleCalendarAPI: GoogleCalendarAPI(),
-            preferences: Preferences()
+            preferences: Preferences(userCache: nil)
         )
         .frame(
             width: windowSize.width,

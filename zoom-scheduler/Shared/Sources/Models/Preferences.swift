@@ -6,27 +6,33 @@
 //
 
 import Foundation
+import Magpie
 
 final class Preferences: ObservableObject {
     @Published var skipsSyncingGoogleCalendar: Bool {
         didSet {
-            UserDefaults.standard.set(skipsSyncingGoogleCalendar, forKey: Key.skipsSyncingGoogleCalendar)
+            userCache?.set(object: skipsSyncingGoogleCalendar, for: Key.skipsSyncingGoogleCalendar)
         }
     }
 
-    init() {
-        skipsSyncingGoogleCalendar = UserDefaults.standard.bool(forKey: Key.skipsSyncingGoogleCalendar)
+    let userCache: HIPCacheConvertible?
+
+    init(userCache: HIPCacheConvertible?) {
+        self.userCache = userCache
+        self.skipsSyncingGoogleCalendar =
+            userCache?.getObject(for: Key.skipsSyncingGoogleCalendar) ?? false
     }
 }
 
 extension Preferences {
-    func reset() {
+    func revoke() {
+        userCache?.remove(for: Key.skipsSyncingGoogleCalendar)
         skipsSyncingGoogleCalendar = false
     }
 }
 
 extension Preferences {
-    private enum Key {
-        static let skipsSyncingGoogleCalendar = "com.hipo.preferences.skips_syncing_google_calendar"
+    private enum Key: String, HIPCacheKeyConvertible {
+        case skipsSyncingGoogleCalendar = "preferences.skipsSyncingGoogleCalendar"
     }
 }

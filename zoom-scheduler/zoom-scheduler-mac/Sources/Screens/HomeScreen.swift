@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    @ObservedObject
-    var zoomAPI: ZoomAPI
+    @EnvironmentObject
+    var zoomAPI: ZoomAPIV2
 
     var googleCalendarAPI: GoogleCalendarAPI
 
@@ -18,16 +18,15 @@ struct HomeScreen: View {
 
     var body: some View {
         Group {
-            switch zoomAPI.authState {
-                case .success:
+            switch zoomAPI.session.status {
+                case .authorized:
                     switch mode {
                         case .menu:
-                            MenuScreen(zoomAPI: zoomAPI) {
+                            MenuScreen() {
                                 mode = .newEvent
                             }
                         case .newEvent:
                             ScheduleMeetingScreen(
-                                zoomAPI: zoomAPI,
                                 googleCalendarAPI: googleCalendarAPI,
                                 onSave: {
                                     mode = .menu
@@ -61,13 +60,10 @@ extension HomeScreen {
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreen(
-            zoomAPI: ZoomAPI(),
-            googleCalendarAPI: GoogleCalendarAPI()
-        )
-        .frame(
-            width: windowSize.width,
-            height: windowSize.height
-        )
+        HomeScreen(googleCalendarAPI: GoogleCalendarAPI())
+            .frame(
+                width: windowSize.width,
+                height: windowSize.height
+            )
     }
 }

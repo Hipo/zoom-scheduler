@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct RootScreen: View {
-    @ObservedObject
-    var zoomAPI: ZoomAPI
+    @EnvironmentObject
+    var zoomAPI: ZoomAPIV2
+
     @ObservedObject
     var googleCalendarAPI: GoogleCalendarAPI
     @ObservedObject
@@ -17,29 +18,22 @@ struct RootScreen: View {
 
     var body: some View {
         Group {
-            switch zoomAPI.authState {
-                case .success:
-                    if preferences.skipsSyncingGoogleCalendar {
-                        HomeScreen(
-                            zoomAPI: zoomAPI,
-                            googleCalendarAPI: googleCalendarAPI
-                        )
-                    } else {
-                        switch googleCalendarAPI.authState {
-                            case .connected:
-                                HomeScreen(
-                                    zoomAPI: zoomAPI,
-                                    googleCalendarAPI: googleCalendarAPI
-                                )
-                            default:
-                                SyncGoogleCalendarScreen(
-                                    googleCalendarAPI: googleCalendarAPI,
-                                    preferences: preferences
-                                )
-                        }
+            if zoomAPI.session.isAuthorized {
+                if preferences.skipsSyncingGoogleCalendar {
+                    HomeScreen(googleCalendarAPI: googleCalendarAPI)
+                } else {
+                    switch googleCalendarAPI.authState {
+                        case .connected:
+                            HomeScreen(googleCalendarAPI: googleCalendarAPI)
+                        default:
+                            SyncGoogleCalendarScreen(
+                                googleCalendarAPI: googleCalendarAPI,
+                                preferences: preferences
+                            )
                     }
-                default:
-                    WelcomeScreen(zoomAPI: zoomAPI)
+                }
+            } else {
+                WelcomeScreen()
             }
         }
         .background(Color("Screens/Attributes/Background/primary"))
@@ -52,15 +46,17 @@ struct RootScreen: View {
             maxHeight: .infinity,
             alignment: .center
         )
+        .onAppear {
+            print("Root is on appear.")
+        }
     }
 }
 
 struct RootScreen_Previews: PreviewProvider {
     static var previews: some View {
         RootScreen(
-            zoomAPI: ZoomAPI(),
             googleCalendarAPI: GoogleCalendarAPI(),
-            preferences: Preferences()
+            preferences: Preferences(userCache: nil)
         )
     }
 }

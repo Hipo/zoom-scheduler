@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct EnterMeetingNameView: View {
-    @ObservedObject
-    var meeting: Meeting
+    @Binding
+    var draft: CreateMeetingDraft
 
     @State
     private var name = ""
@@ -27,7 +27,7 @@ struct EnterMeetingNameView: View {
             Group {
                 TextField(
                     "Name",
-                    text: $meeting.name,
+                    text: $draft.name,
                     onEditingChanged: { editing in
                         isEditing = editing
                     }
@@ -59,7 +59,7 @@ struct EnterMeetingNameView: View {
 
 struct EnterMeetingNameView_Previews: PreviewProvider {
     static var previews: some View {
-        EnterMeetingNameView(meeting: Meeting())
+        EnterMeetingNameView(draft: .constant(CreateMeetingDraft(reason: .scheduled)))
             .background(Color("Screens/Attributes/Background/primary"))
     }
 }

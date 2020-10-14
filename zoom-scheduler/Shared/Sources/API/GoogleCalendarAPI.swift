@@ -187,7 +187,7 @@ class GoogleCalendarAPI: NSObject, ObservableObject, OIDExternalUserAgent {
 
         var payload: [String: Any] = [:]
 
-        if let title = meeting.title {
+        if let title = meeting.topic {
             payload["summary"] = title
         }
         if let joinUrl = meeting.joinUrl {

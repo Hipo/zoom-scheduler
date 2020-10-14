@@ -9,9 +9,10 @@ import SwiftUI
 
 struct SelectCalendarView: View {
     @ObservedObject
-    var meeting: Meeting
-    @ObservedObject
     var googleCalendarAPI: GoogleCalendarAPI
+
+    @Binding
+    var draft: CreateMeetingDraft
 
     @State
     private var isEditing = false
@@ -25,7 +26,8 @@ struct SelectCalendarView: View {
                 .foregroundColor(Color("Views/TextField/Placeholder/primary"))
 
             HStack {
-                Text(meeting.calendar?.name ?? "")
+//                Text(meeting.calendar?.name ?? "")
+                Text("")
                     .font(.custom("SFProText-Regular", size: 15))
                     .foregroundColor(Color("Views/TextField/Input/primary"))
 
@@ -57,16 +59,16 @@ struct SelectCalendarView: View {
 
             if isEditing {
                 VStack(alignment: .leading, spacing: 0) {
-                    ForEach(googleCalendarAPI.calendars) { calendar in
-                        CalendarView(calendar: calendar, isSelected: meeting.calendar == calendar)
-                            .padding(.vertical, 8)
-                            .frame(maxWidth: .infinity)
-                            .background(Color("Views/Attributes/Background/primary"))
-                            .onTapGesture {
-                                meeting.calendar = calendar
-                                isEditing = false
-                            }
-                    }
+//                    ForEach(googleCalendarAPI.calendars) { calendar in
+//                        CalendarView(calendar: calendar, isSelected: meeting.calendar == calendar)
+//                            .padding(.vertical, 8)
+//                            .frame(maxWidth: .infinity)
+//                            .background(Color("Views/Attributes/Background/primary"))
+//                            .onTapGesture {
+//                                meeting.calendar = calendar
+//                                isEditing = false
+//                            }
+//                    }
                 }
                 .padding(.leading, 16)
                 .background(Color("Views/Attributes/Background/primary"))
@@ -103,8 +105,8 @@ struct CalendarView: View {
 struct SelectCalendarView_Previews: PreviewProvider {
     static var previews: some View {
         SelectCalendarView(
-            meeting: Meeting(),
-            googleCalendarAPI: GoogleCalendarAPI()
+            googleCalendarAPI: GoogleCalendarAPI(),
+            draft: .constant(CreateMeetingDraft(reason: .scheduled))
         )
         .background(Color("Screens/Attributes/Background/primary"))
     }

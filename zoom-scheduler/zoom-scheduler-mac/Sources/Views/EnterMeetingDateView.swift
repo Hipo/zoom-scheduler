@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct EnterMeetingDateView: View {
-    @ObservedObject
-    var meeting: Meeting
+    @Binding
+    var draft: CreateMeetingDraft
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,7 +21,7 @@ struct EnterMeetingDateView: View {
 
             DatePicker(
                 "",
-                selection: $meeting.date,
+                selection: $draft.date,
                 in: Date()...,
                 displayedComponents: [.date, .hourAndMinute]
             )
@@ -32,7 +32,7 @@ struct EnterMeetingDateView: View {
 
 struct EnterMeetingDateView_Previews: PreviewProvider {
     static var previews: some View {
-        EnterMeetingDateView(meeting: Meeting())
+        EnterMeetingDateView(draft: .constant(CreateMeetingDraft(reason: .scheduled)))
             .background(Color("Screens/Attributes/Background/primary"))
     }
 }

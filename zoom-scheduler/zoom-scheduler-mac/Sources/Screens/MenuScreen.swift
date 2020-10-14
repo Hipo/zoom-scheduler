@@ -9,8 +9,8 @@ import AppKit
 import SwiftUI
 
 struct MenuScreen: View {
-    @ObservedObject
-    var zoomAPI: ZoomAPI
+    @EnvironmentObject
+    var zoomAPI: ZoomAPIV2
 
     @State
     private var quickCallMenuIcon = "Screens/Icons/quick_call"
@@ -56,28 +56,32 @@ struct MenuScreen: View {
 
 extension MenuScreen {
     func createQuickMeeting() {
-        isCreatingNewQuickMeeting = true
-
-        zoomAPI.createQuickMeeting { zoomMeeting in
-            isCreatingNewQuickMeeting = false
-
-            if let joinURL = zoomMeeting?.joinUrl {
-                NSPasteboard.general.clearContents()
-                NSPasteboard.general.setString(joinURL.absoluteString, forType: .string)
-            }
-        }
+        zoomAPI.revokeAccessToken()
+//        isCreatingNewQuickMeeting = true
+//
+//        let draft = CreateMeetingDraft(reason: .instant)
+//        zoomAPI.createMeeting(draft) { result in
+//            isCreatingNewQuickMeeting = false
+//
+//            switch result {
+//                case .success(let zoomMeeting):
+//                    if let joinURL = zoomMeeting.joinUrl {
+//                        NSPasteboard.general.clearContents()
+//                        NSPasteboard.general.setString(joinURL.absoluteString, forType: .string)
+//                    }
+//                case .failure(let apiError, let apiErrorDetail):
+//                    break
+//            }
+//        }
     }
 }
 
 struct MenuScreen_Previews: PreviewProvider {
     static var previews: some View {
-        MenuScreen(
-            zoomAPI: ZoomAPI()
-        ) {
-        }
-        .frame(
-            width: windowSize.width,
-            height: windowSize.height
-        )
+        MenuScreen() { }
+            .frame(
+                width: windowSize.width,
+                height: windowSize.height
+            )
     }
 }

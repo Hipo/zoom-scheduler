@@ -10,11 +10,14 @@ import SwiftUI
 struct LogoView: View {
     @State
     var icon: String?
+    @State
+    var offset: CGPoint = .zero
 
     var body: some View {
         Group {
             if let icon = icon {
                 Image(icon)
+                    .offset(x: offset.x, y: offset.y)
                     .shadow(
                         color: Color("Views/Attributes/Shadow/primary"),
                         radius: 12,
@@ -64,7 +67,7 @@ struct LogoView: View {
 
 struct LogoView_Previews: PreviewProvider {
     static var previews: some View {
-        LogoView(icon: "Screens/Icons/logo")
+        LogoView(icon: "Screens/Icons/logo", offset: CGPoint(x: 3.0, y: 2.0))
             .frame(width: 100, height: 100)
     }
 }
