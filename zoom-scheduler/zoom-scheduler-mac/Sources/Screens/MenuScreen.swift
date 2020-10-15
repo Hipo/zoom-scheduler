@@ -6,11 +6,15 @@
 //
 
 import AppKit
+import Magpie
 import SwiftUI
 
 struct MenuScreen: View {
     @EnvironmentObject
-    var zoomAPI: ZoomAPIV2
+    var session: Session
+
+    let zoomAPI: ZoomAPI
+    let onClickNewEvent: () -> Void
 
     @State
     private var quickCallMenuIcon = "Screens/Icons/quick_call"
@@ -25,8 +29,6 @@ struct MenuScreen: View {
 
     @State
     private var isCreatingNewQuickMeeting = false
-
-    var onClickNewEvent: () -> Void
 
     var body: some View {
         HStack(alignment: .top, spacing: 72) {
@@ -78,10 +80,15 @@ extension MenuScreen {
 
 struct MenuScreen_Previews: PreviewProvider {
     static var previews: some View {
-        MenuScreen() { }
-            .frame(
-                width: windowSize.width,
-                height: windowSize.height
+        MenuScreen(
+            zoomAPI: ZoomAPI(
+                config: ZoomConfig(),
+                session: Session(keychain: HIPKeychain(identifier: "preview"))
             )
+        ) { }
+        .frame(
+            width: windowSize.width,
+            height: windowSize.height
+        )
     }
 }

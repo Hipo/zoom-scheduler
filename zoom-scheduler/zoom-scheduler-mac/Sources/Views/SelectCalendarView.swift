@@ -5,14 +5,17 @@
 //  Created by Karasuluoglu on 2.10.2020.
 //
 
+import Magpie
 import SwiftUI
 
 struct SelectCalendarView: View {
-    @ObservedObject
-    var googleCalendarAPI: GoogleCalendarAPI
+    @EnvironmentObject
+    var session: Session
 
     @Binding
-    var draft: CreateMeetingDraft
+    var draft: CreateEventDraft
+
+    let googleAPI: GoogleAPI
 
     @State
     private var isEditing = false
@@ -26,8 +29,7 @@ struct SelectCalendarView: View {
                 .foregroundColor(Color("Views/TextField/Placeholder/primary"))
 
             HStack {
-//                Text(meeting.calendar?.name ?? "")
-                Text("")
+                Text(draft.calendar?.title ?? "")
                     .font(.custom("SFProText-Regular", size: 15))
                     .foregroundColor(Color("Views/TextField/Input/primary"))
 
@@ -59,16 +61,16 @@ struct SelectCalendarView: View {
 
             if isEditing {
                 VStack(alignment: .leading, spacing: 0) {
-//                    ForEach(googleCalendarAPI.calendars) { calendar in
-//                        CalendarView(calendar: calendar, isSelected: meeting.calendar == calendar)
-//                            .padding(.vertical, 8)
-//                            .frame(maxWidth: .infinity)
-//                            .background(Color("Views/Attributes/Background/primary"))
-//                            .onTapGesture {
-//                                meeting.calendar = calendar
-//                                isEditing = false
-//                            }
-//                    }
+                    ForEach(session.googleCalendars) { calendar in
+                        CalendarView(calendar: calendar, isSelected: draft.calendar == calendar)
+                            .padding(.vertical, 8)
+                            .frame(maxWidth: .infinity)
+                            .background(Color("Views/Attributes/Background/primary"))
+                            .onTapGesture {
+                                draft.calendar = calendar
+                                isEditing = false
+                            }
+                    }
                 }
                 .padding(.leading, 16)
                 .background(Color("Views/Attributes/Background/primary"))
@@ -80,12 +82,12 @@ struct SelectCalendarView: View {
 }
 
 struct CalendarView: View {
-    let calendar: GCalendar
+    let calendar: GoogleCalendar
     let isSelected: Bool
 
     var body: some View {
         HStack {
-            Text(calendar.name)
+            Text(calendar.title ?? "No Title")
                 .font(.custom("SFProText-Regular", size: 13))
                 .kerning(-0.24)
                 .lineSpacing(7.5)
@@ -105,8 +107,11 @@ struct CalendarView: View {
 struct SelectCalendarView_Previews: PreviewProvider {
     static var previews: some View {
         SelectCalendarView(
-            googleCalendarAPI: GoogleCalendarAPI(),
-            draft: .constant(CreateMeetingDraft(reason: .scheduled))
+            draft: .constant(CreateEventDraft()),
+            googleAPI: GoogleAPI(
+                config: GoogleConfig(),
+                session: Session(keychain: HIPKeychain(identifier: "preview"))
+            )
         )
         .background(Color("Screens/Attributes/Background/primary"))
     }

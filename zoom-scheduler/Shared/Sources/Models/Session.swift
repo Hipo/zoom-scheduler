@@ -6,16 +6,24 @@
 //
 
 import Foundation
+import GTMAppAuth
 import Magpie
 import SwiftDate
 
 final class Session: ObservableObject {
     @Published
     var status: Status = .none {
-        didSet { saveStatusToVault() }
+        didSet { statusDidChange() }
     }
+    @Published
+    var googleAuthorizationStatus: GoogleAuthorizationStatus = .none {
+        didSet { googleAuthorizationStatusDidChange() }
+    }
+    @Published
+    var googleCalendars: [GoogleCalendar] = []
 
     private(set) var credentials: Credentials?
+    private(set) var googleAuthorizationCredentials: GTMAppAuthFetcherAuthorization?
 
     var isAuthorized: Bool {
         switch status {
@@ -43,21 +51,45 @@ final class Session: ObservableObject {
         }
     }
 
+    var isGoogleAuthorized: Bool {
+        switch googleAuthorizationStatus {
+            case .authorized:
+                return true
+            default:
+                return false
+        }
+    }
+    var isGoogleUnauthorized: Bool {
+        switch googleAuthorizationStatus {
+            case .unauthorized:
+                return true
+            default:
+                return false
+        }
+    }
+
     let keychain: HIPKeychainConvertible
 
     init(keychain: HIPKeychainConvertible) {
         self.keychain = keychain
+
         readStatusFromVault()
+        readGoogleAuthorizationStatusFromVault()
     }
 }
 
 extension Session {
     func revoke() {
+        googleAuthorizationStatus = .none
         status = .none
     }
 }
 
 extension Session {
+    private func statusDidChange() {
+        saveStatusToVault()
+    }
+
     private func readStatusFromVault() {
         if let credentials: Credentials = try? keychain.getModel(for: Key.credentials) {
             self.credentials = credentials
@@ -75,6 +107,40 @@ extension Session {
             case .authorized(let credentials):
                 self.credentials = credentials
                 try? keychain.set(credentials, for: Key.credentials)
+            default:
+                break
+        }
+    }
+}
+
+extension Session {
+    private func googleAuthorizationStatusDidChange() {
+        saveGoogleAuthorizationStatusToVault()
+    }
+
+    private func readGoogleAuthorizationStatusFromVault() {
+        if let googleAuthorizationCredentials = GTMAppAuthFetcherAuthorization(
+            fromKeychainForName: Key.googleAuthorizationCredentials.rawValue
+        ), googleAuthorizationCredentials.canAuthorize() {
+            googleAuthorizationStatus = .authorized(googleAuthorizationCredentials)
+        } else {
+            googleAuthorizationStatus = .none
+        }
+    }
+
+    private func saveGoogleAuthorizationStatusToVault() {
+        switch googleAuthorizationStatus {
+            case .none:
+                self.googleAuthorizationCredentials = nil
+                GTMAppAuthFetcherAuthorization.removeFromKeychain(
+                    forName: Key.googleAuthorizationCredentials.rawValue
+                )
+            case .authorized(let googleAuthorizationCredentials):
+                self.googleAuthorizationCredentials = googleAuthorizationCredentials
+                GTMAppAuthFetcherAuthorization.save(
+                    googleAuthorizationCredentials,
+                    toKeychainForName: Key.googleAuthorizationCredentials.rawValue
+                )
             default:
                 break
         }
@@ -113,14 +179,21 @@ extension Session {
 extension Session {
     enum Status {
         case none /// <note> Not having a connection to API
-        case unknown /// <note> Waiting for API response to determine the status
+        case connecting /// <note> Waiting for API response to determine the status
         case authorized(Credentials)
         case unauthorized(ZoomAPIError) /// <note> Attempt to authorize API is failed
+    }
+
+    enum GoogleAuthorizationStatus {
+        case none /// <note> Not having a connection to API
+        case authorized(GTMAppAuthFetcherAuthorization)
+        case unauthorized(NSError?)
     }
 }
 
 extension Session {
-    private enum Key: String, HIPKeychainKeyConvertible, HIPCacheKeyConvertible {
+    enum Key: String, HIPKeychainKeyConvertible, HIPCacheKeyConvertible {
         case credentials = "session.credentials"
+        case googleAuthorizationCredentials = "session.google.authorization.credentials"
     }
 }

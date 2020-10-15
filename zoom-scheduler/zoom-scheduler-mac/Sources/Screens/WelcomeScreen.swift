@@ -5,11 +5,14 @@
 //  Created by Karasuluoglu on 29.09.2020.
 //
 
+import Magpie
 import SwiftUI
 
 struct WelcomeScreen: View {
     @EnvironmentObject
-    var zoomAPI: ZoomAPIV2
+    var session: Session
+
+    let zoomAPI: ZoomAPI
 
     var body: some View {
         VStack {
@@ -39,8 +42,8 @@ struct WelcomeScreen: View {
                 zoomAPI.requestAuthorization()
             }) {
                 HStack {
-                    switch zoomAPI.session.status {
-                        case .unknown:
+                    switch session.status {
+                        case .connecting:
                             ActivityIndicator()
                                 .frame(
                                     width: 30,
@@ -49,7 +52,7 @@ struct WelcomeScreen: View {
                         default:
                             Image("Screens/Icons/zoom")
 
-                            Text(zoomAPI.session.isAuthorized ? "Connected" : "Sign in Zoom Account")
+                            Text(session.isAuthorized ? "Connected" : "Sign in Zoom Account")
                                 .font(.custom("SFProText-Medium", size: 15))
                                 .kerning(-0.24)
                                 .lineSpacing(6.5)
@@ -61,9 +64,9 @@ struct WelcomeScreen: View {
             }
             .buttonStyle(PlainButtonStyle())
             .cornerRadius(8)
-            .allowsHitTesting(zoomAPI.session.isUnauthorized)
+            .allowsHitTesting(session.isUnauthorized)
 
-            if let error = zoomAPI.session.error {
+            if let error = session.error {
                 Text("We couldn't sign in. Please try again.")
                     .font(.custom("SFProText-Regular", size: 16))
                     .foregroundColor(Color("Views/Text/Error/primary"))
@@ -79,10 +82,15 @@ struct WelcomeScreen: View {
 
 struct WelcomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeScreen()
-            .frame(
-                width: windowSize.width,
-                height: windowSize.height
+        WelcomeScreen(
+            zoomAPI: ZoomAPI(
+                config: ZoomConfig(),
+                session: Session(keychain: HIPKeychain(identifier: "preview"))
             )
+        )
+        .frame(
+            width: windowSize.width,
+            height: windowSize.height
+        )
     }
 }

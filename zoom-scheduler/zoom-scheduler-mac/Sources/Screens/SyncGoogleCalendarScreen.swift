@@ -5,13 +5,15 @@
 //  Created by Karasuluoglu on 1.10.2020.
 //
 
+import Magpie
 import SwiftUI
 
 struct SyncGoogleCalendarScreen: View {
-    @ObservedObject
-    var googleCalendarAPI: GoogleCalendarAPI
+    @EnvironmentObject
+    var session: Session
 
     let preferences: Preferences
+    let googleAPI: GoogleAPI
 
     var body: some View {
         VStack {
@@ -46,45 +48,37 @@ struct SyncGoogleCalendarScreen: View {
                 .padding(.bottom, 40)
 
             Button(action: {
-                googleCalendarAPI.authenticateGoogleSession()
+                googleAPI.requestAuthorization()
             }) {
                 HStack {
-                    if googleCalendarAPI.authState == .connecting {
-                        ActivityIndicator()
-                            .frame(
-                                width: 30,
-                                height: 30
-                            )
-                    } else {
-                        Image("Screens/Icons/google")
+                    Image("Screens/Icons/google")
 
-                        Spacer()
+                    Spacer()
 
-                        Text(googleCalendarAPI.authState == .connected ? "Connected" : "Sign in with Google")
-                            .font(.custom("SFProText-Medium", size: 15))
-                            .kerning(-0.24)
-                            .lineSpacing(6.5)
-                            .foregroundColor(Color("Views/Button/Title/primary"))
-                            .padding()
+                    Text(session.isGoogleAuthorized ? "Connected" : "Sign in with Google")
+                        .font(.custom("SFProText-Medium", size: 15))
+                        .kerning(-0.24)
+                        .lineSpacing(6.5)
+                        .foregroundColor(Color("Views/Button/Title/primary"))
+                        .padding()
 
-                        Spacer()
-                    }
+                    Spacer()
                 }
                 .frame(width: 240, height: 52)
                 .background(Color("Views/Button/Background/primary"))
             }
             .buttonStyle(PlainButtonStyle())
             .cornerRadius(8)
-            .allowsHitTesting(googleCalendarAPI.authState != .connecting && googleCalendarAPI.authState != .connected)
+            .allowsHitTesting(!session.isGoogleAuthorized)
 
-            if googleCalendarAPI.authState == .failed {
+            if session.isGoogleUnauthorized {
                 Text("We couldn't sign in. Please try again.")
                     .font(.custom("SFProText-Regular", size: 16))
                     .foregroundColor(Color("Views/Text/Error/primary"))
                     .padding(.top, 10)
             }
 
-            if googleCalendarAPI.authState == .notConnected || googleCalendarAPI.authState == .failed {
+            if !session.isGoogleAuthorized {
                 Button(action: {
                     preferences.skipsSyncingGoogleCalendar = true
                 }) {
@@ -109,8 +103,11 @@ struct SyncGoogleCalendarScreen: View {
 struct SyncGoogleCalendarScreen_Previews: PreviewProvider {
     static var previews: some View {
         SyncGoogleCalendarScreen(
-            googleCalendarAPI: GoogleCalendarAPI(),
-            preferences: Preferences(userCache: nil)
+            preferences: Preferences(userCache: nil),
+            googleAPI: GoogleAPI(
+                config: GoogleConfig(),
+                session: Session(keychain: HIPKeychain(identifier: "preview"))
+            )
         )
         .frame(
             width: windowSize.width,

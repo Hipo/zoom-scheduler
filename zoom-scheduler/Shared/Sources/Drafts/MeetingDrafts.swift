@@ -10,11 +10,16 @@ import Magpie
 import SwiftDate
 
 struct CreateMeetingDraft: JSONObjectBody {
+    var name = "Zoom Meeting"
+    var date = Date()
+    var duration: Duration
+
     var timeZone: String {
         return TimeZone.current.identifier
     }
-    var bodyParams: [ZoomAPIV2.BodyParam] {
-        var params: [ZoomAPIV2.BodyParam] = []
+
+    var bodyParams: [ZoomAPI.BodyParam] {
+        var params: [ZoomAPI.BodyParam] = []
         params.append(.init(.type, reason.rawValue))
         params.append(.init(.topic, name))
         params.append(.init(.startTime, date.toFormat("yyyy-MM-dd'T'HH:mm:ss")))
@@ -23,10 +28,6 @@ struct CreateMeetingDraft: JSONObjectBody {
         params.append(.init(.password, generatePassword()))
         return params
     }
-
-    var name = "Zoom Meeting"
-    var date = Date()
-    var duration: Duration
 
     let reason: Reason
 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EnterMeetingInviteesView: View {
     @Binding
-    var draft: CreateMeetingDraft
+    var draft: CreateEventDraft
 
     @State
     private var emailInput = ""
@@ -57,13 +57,13 @@ struct EnterMeetingInviteesView: View {
             .padding(.top, 8)
 
             VStack(alignment: .leading, spacing: 0) {
-//                ForEach([meeting.invitees], id: \.email) { invitee in
-//                    MeetingInviteeView(invitee: invitee) {
-//                        if let idx = meeting.invitees.firstIndex(of: invitee) {
-//                            meeting.invitees.remove(at: idx)
-//                        }
-//                    }
-//                }
+                ForEach(draft.invitees, id: \.id) { invitee in
+                    MeetingInviteeView(invitee: invitee) {
+                        if let idx = draft.invitees.firstIndex(of: invitee) {
+                            draft.invitees.remove(at: idx)
+                        }
+                    }
+                }
             }
             .padding(.leading, 16)
             .background(Color("Views/Attributes/Background/primary"))
@@ -77,17 +77,19 @@ extension EnterMeetingInviteesView {
     private func extractValidEmails() {
         let validator = EmailValidator()
 
-//        meeting.invitees += emailInput.components(separatedBy: ",").compactMap { input in
-//            let trimmedInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
-//            return validator.validate(trimmedInput) ? Meeting.Invitee(email: trimmedInput) : nil
-//        }
+        draft.invitees += emailInput.components(separatedBy: ",").compactMap { input in
+            let trimmedInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
+            return validator.validate(trimmedInput)
+                ? CreateEventDraft.Invitee(email: trimmedInput)
+                : nil
+        }
 
         emailInput = ""
     }
 }
 
 struct MeetingInviteeView: View {
-    var invitee: Meeting.Invitee
+    var invitee: CreateEventDraft.Invitee
     var onRemove: () -> Void
 
     var body: some View {
@@ -112,7 +114,7 @@ struct MeetingInviteeView: View {
 
 struct EnterMeetingInviteesView_Previews: PreviewProvider {
     static var previews: some View {
-        EnterMeetingInviteesView(draft: .constant(CreateMeetingDraft(reason: .scheduled)))
+        EnterMeetingInviteesView(draft: .constant(CreateEventDraft()))
             .background(Color("Screens/Attributes/Background/primary"))
     }
 }

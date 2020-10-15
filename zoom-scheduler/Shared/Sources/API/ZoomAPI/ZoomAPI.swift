@@ -9,19 +9,15 @@ import Combine
 import Foundation
 import Magpie
 
-class ZoomAPIV2: API, ObservableObject {
+final class ZoomAPI: API {
     typealias QueryParam = ObjectQueryKeyedParam<ZoomAPIRequestParameter>
     typealias BodyParam = JSONBodyKeyedParam<ZoomAPIRequestParameter>
 
     typealias AccessTokenCompletionHandler =
         (Response.Result<Session.Credentials, ZoomAPIError.Detail>) -> Void
 
-    @Published
-    var session: Session
-
     let config: ZoomConfig
-
-    private var sessionSubscriber: AnyCancellable?
+    let session: Session
 
     init(
         config: ZoomConfig,
@@ -46,10 +42,6 @@ class ZoomAPIV2: API, ObservableObject {
         #else
         disableLogsInConsole()
         #endif
-
-        sessionSubscriber = session.objectWillChange.sink { [weak self] _ in
-            self?.objectWillChange.send()
-        }
     }
 
     required init(
@@ -62,12 +54,11 @@ class ZoomAPIV2: API, ObservableObject {
     }
 
     deinit {
-        sessionSubscriber?.cancel()
         removeListener(self)
     }
 }
 
-extension ZoomAPIV2 {
+extension ZoomAPI {
     func requestAuthorization() {
         var components = URLComponents(string: config.oauthAuthorizeUrl)
         components?.queryItems = [
@@ -88,13 +79,13 @@ extension ZoomAPIV2 {
     }
 }
 
-extension ZoomAPIV2 {
+extension ZoomAPI {
     @discardableResult
     func requestAccessToken(
         _ draft: RequestAccessTokenDraft,
         onCompleted completionHandler: AccessTokenCompletionHandler? = nil
     ) -> EndpointOperatable {
-        session.status = .unknown
+        session.status = .connecting
 
         var aDraft = draft
         aDraft.config = config
@@ -128,7 +119,7 @@ extension ZoomAPIV2 {
         _ draft: RefreshAccessTokenDraft = RefreshAccessTokenDraft(),
         onCompleted completionHandler: AccessTokenCompletionHandler? = nil
     ) -> EndpointOperatable {
-        session.status = .unknown
+        session.status = .connecting
 
         var aDraft = draft
         aDraft.token = session.credentials?.refreshToken
@@ -197,7 +188,7 @@ extension ZoomAPIV2 {
     }
 }
 
-extension ZoomAPIV2 {
+extension ZoomAPI {
     @discardableResult
     func createMeeting(
         _ draft: CreateMeetingDraft,
@@ -213,7 +204,7 @@ extension ZoomAPIV2 {
     }
 }
 
-extension ZoomAPIV2: APIListener {
+extension ZoomAPI: APIListener {
     func api(_ api: API, endpointDidFailFromUnauthorizedRequest endpoint: EndpointOperatable) {
         session.status = .unauthorized(.sessionExpired)
         refreshAccessToken()

@@ -5,29 +5,32 @@
 //  Created by Karasuluoglu on 2.10.2020.
 //
 
+import Magpie
 import SwiftUI
 
 struct HomeScreen: View {
     @EnvironmentObject
-    var zoomAPI: ZoomAPIV2
+    var session: Session
 
-    var googleCalendarAPI: GoogleCalendarAPI
+    let zoomAPI: ZoomAPI
+    let googleAPI: GoogleAPI
 
     @State
     private var mode: Mode = .menu
 
     var body: some View {
         Group {
-            switch zoomAPI.session.status {
+            switch session.status {
                 case .authorized:
                     switch mode {
                         case .menu:
-                            MenuScreen() {
+                            MenuScreen(zoomAPI: zoomAPI) {
                                 mode = .newEvent
                             }
                         case .newEvent:
                             ScheduleMeetingScreen(
-                                googleCalendarAPI: googleCalendarAPI,
+                                zoomAPI: zoomAPI,
+                                googleAPI: googleAPI,
                                 onSave: {
                                     mode = .menu
                                 },
@@ -60,10 +63,19 @@ extension HomeScreen {
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreen(googleCalendarAPI: GoogleCalendarAPI())
-            .frame(
-                width: windowSize.width,
-                height: windowSize.height
+        HomeScreen(
+            zoomAPI: ZoomAPI(
+                config: ZoomConfig(),
+                session: Session(keychain: HIPKeychain(identifier: "preview"))
+            ),
+            googleAPI: GoogleAPI(
+                config: GoogleConfig(),
+                session: Session(keychain: HIPKeychain(identifier: "preview"))
             )
+        )
+        .frame(
+            width: windowSize.width,
+            height: windowSize.height
+        )
     }
 }

@@ -22,8 +22,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             identifier: "\(Bundle.main.bundleIdentifier ?? "com.hipo.zoomscheduler").keychain"
         )
     )
-    private lazy var zoomAPI = ZoomAPIV2(config: target.zoomConfig, session: session)
-    private lazy var googleCalendarAPI = GoogleCalendarAPI()
+    private lazy var zoomAPI = ZoomAPI(config: target.zoomConfig, session: session)
+    private lazy var googleAPI = GoogleAPI(config: target.googleConfig, session: session)
 
     private lazy var preferences = Preferences(userCache: userCache)
 
@@ -39,11 +39,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.isReleasedWhenClosed = false
         window.contentView = NSHostingView(
             rootView: RootScreen(
-                googleCalendarAPI: googleCalendarAPI,
-                preferences: preferences
+                preferences: preferences,
+                zoomAPI: zoomAPI,
+                googleAPI: googleAPI
             )
             .environmentObject(target)
-            .environmentObject(zoomAPI)
+            .environmentObject(session)
         )
         window.makeKeyAndOrderFront(nil)
 
@@ -69,11 +70,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         if url.scheme == "zoomscheduler" {
             var draft = RequestAccessTokenDraft()
-            draft.config = target.zoomConfig
             draft.authorizationCode = url.host
             zoomAPI.requestAccessToken(draft)
         } else {
-            googleCalendarAPI.authFlow?.resumeExternalUserAgentFlow(with: url)
+            googleAPI.completeAuthorization(redirectUrl: url)
         }
         window.makeKeyAndOrderFront(nil)
     }

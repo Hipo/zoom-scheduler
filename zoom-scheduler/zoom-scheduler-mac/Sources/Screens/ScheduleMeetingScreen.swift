@@ -5,23 +5,26 @@
 //  Created by Karasuluoglu on 29.09.2020.
 //
 
+import Magpie
 import SwiftUI
 
 struct ScheduleMeetingScreen: View {
     @EnvironmentObject
-    var zoomAPI: ZoomAPIV2
+    var session: Session
 
-    @ObservedObject
-    var googleCalendarAPI: GoogleCalendarAPI
+    let zoomAPI: ZoomAPI
+    let googleAPI: GoogleAPI
+
+    let onSave: () -> Void
+    let onCancel: () -> Void
 
     @State
-    private var draft = CreateMeetingDraft(reason: .scheduled)
+    private var meetingDraft = CreateMeetingDraft(reason: .scheduled)
+    @State
+    private var eventDraft = CreateEventDraft()
 
     @State
     private var isCreatingMeeting = false
-
-    var onSave: () -> Void
-    var onCancel: () -> Void
 
     var body: some View {
         ScrollView {
@@ -31,19 +34,19 @@ struct ScheduleMeetingScreen: View {
                     .kerning(0.37)
                     .foregroundColor(Color("Views/Text/Title/primary"))
 
-                EnterMeetingNameView(draft: $draft)
+                EnterMeetingNameView(draft: $meetingDraft)
                     .padding(.top, 10)
 
-                EnterMeetingDateView(draft: $draft)
+                EnterMeetingDateView(draft: $meetingDraft)
 
-                EnterMeetingDurationView(draft: $draft)
+                EnterMeetingDurationView(draft: $meetingDraft)
 
                 SelectCalendarView(
-                    googleCalendarAPI: googleCalendarAPI,
-                    draft: $draft
+                    draft: $eventDraft,
+                    googleAPI: googleAPI
                 )
 
-                EnterMeetingInviteesView(draft: $draft)
+                EnterMeetingInviteesView(draft: $eventDraft)
 
                 VStack(spacing: 16) {
                     Button(action: createMeeting) {
@@ -97,7 +100,7 @@ extension ScheduleMeetingScreen {
     private func createMeeting() {
         isCreatingMeeting = true
 
-        zoomAPI.createMeeting(draft) { result in
+        zoomAPI.createMeeting(meetingDraft) { result in
             isCreatingMeeting = false
 
             switch result {
@@ -107,14 +110,15 @@ extension ScheduleMeetingScreen {
                         NSPasteboard.general.setString(joinURL.absoluteString, forType: .string)
                     }
 
-//                    if googleCalendarAPI.authState == .connected,
-//                       let calendar = meeting.calendar {
-//                        googleCalendarAPI.createEvent(
-//                            meeting: zoomMeeting,
-//                            attendeeEmails: meeting.invitees.map(\.email),
-//                            inCalendar: calendar
-//                        )
-//                    }
+                    if session.isGoogleAuthorized, eventDraft.calendar != nil {
+                        eventDraft.title = zoomMeeting.topic
+                        eventDraft.startDateTime = zoomMeeting.startTime
+                        eventDraft.endDateTime = zoomMeeting.endTime
+                        eventDraft.zoomJoinUrl = zoomMeeting.joinUrl
+
+                        googleAPI.createEvent(eventDraft) { _ in
+                        }
+                    }
                     onSave()
                 case .failure(let apiError, let apiErrorDetail):
                     break
@@ -126,7 +130,14 @@ extension ScheduleMeetingScreen {
 struct ScheduleMeetingScreen_Previews: PreviewProvider {
     static var previews: some View {
         ScheduleMeetingScreen(
-            googleCalendarAPI: GoogleCalendarAPI(),
+            zoomAPI: ZoomAPI(
+                config: ZoomConfig(),
+                session: Session(keychain: HIPKeychain(identifier: "preview"))
+            ),
+            googleAPI: GoogleAPI(
+                config: GoogleConfig(),
+                session: Session(keychain: HIPKeychain(identifier: "preview"))
+            ),
             onSave: { },
             onCancel: { }
         )
