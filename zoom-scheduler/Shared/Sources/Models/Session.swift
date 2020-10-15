@@ -20,6 +20,10 @@ final class Session: ObservableObject {
         didSet { googleAuthorizationStatusDidChange() }
     }
     @Published
+    var requiresGoogleAuthorization = true {
+        didSet { requiresGoogleAuthorizationFlagDidChange() }
+    }
+    @Published
     var googleCalendars: [GoogleCalendar] = []
 
     private(set) var credentials: Credentials?
@@ -51,12 +55,21 @@ final class Session: ObservableObject {
         }
     }
 
-    var isGoogleAuthorized: Bool {
+    var isGoogleAccountAuthorized: Bool {
         switch googleAuthorizationStatus {
             case .authorized:
                 return true
             default:
                 return false
+        }
+    }
+    var isGoogleAccountConnected: Bool {
+        switch googleAuthorizationStatus {
+            case .none:
+                return false
+            case .authorized,
+                 .unauthorized:
+                return true
         }
     }
     var isGoogleUnauthorized: Bool {
@@ -69,19 +82,20 @@ final class Session: ObservableObject {
     }
 
     let keychain: HIPKeychainConvertible
+    let userCache: HIPCacheConvertible
 
-    init(keychain: HIPKeychainConvertible) {
+    init(
+        keychain: HIPKeychainConvertible,
+        userCache: HIPCacheConvertible
+    ) {
         self.keychain = keychain
+        self.userCache = userCache
 
         readStatusFromVault()
-        readGoogleAuthorizationStatusFromVault()
-    }
-}
 
-extension Session {
-    func revoke() {
-        googleAuthorizationStatus = .none
-        status = .none
+        readRequiresGoogleAuthorizationFlagFromVault()
+        readGoogleAuthorizationStatusFromVault()
+
     }
 }
 
@@ -103,6 +117,8 @@ extension Session {
         switch status {
             case .none:
                 self.credentials = nil
+                self.requiresGoogleAuthorization = true
+
                 try? keychain.remove(for: Key.credentials)
             case .authorized(let credentials):
                 self.credentials = credentials
@@ -137,6 +153,8 @@ extension Session {
                 )
             case .authorized(let googleAuthorizationCredentials):
                 self.googleAuthorizationCredentials = googleAuthorizationCredentials
+                self.requiresGoogleAuthorization = false
+
                 GTMAppAuthFetcherAuthorization.save(
                     googleAuthorizationCredentials,
                     toKeychainForName: Key.googleAuthorizationCredentials.rawValue
@@ -144,6 +162,21 @@ extension Session {
             default:
                 break
         }
+    }
+}
+
+extension Session {
+    private func requiresGoogleAuthorizationFlagDidChange() {
+        saveRequiresGoogleAuthorizationFlagToVault()
+    }
+
+    private func readRequiresGoogleAuthorizationFlagFromVault() {
+        requiresGoogleAuthorization =
+            userCache.getObject(for: Key.requiresGoogleAuthorization) ?? true
+    }
+
+    private func saveRequiresGoogleAuthorizationFlagToVault() {
+        userCache.set(object: requiresGoogleAuthorization, for: Key.requiresGoogleAuthorization)
     }
 }
 
@@ -195,5 +228,6 @@ extension Session {
     enum Key: String, HIPKeychainKeyConvertible, HIPCacheKeyConvertible {
         case credentials = "session.credentials"
         case googleAuthorizationCredentials = "session.google.authorization.credentials"
+        case requiresGoogleAuthorization = "session.requiresGoogleAuthorization"
     }
 }

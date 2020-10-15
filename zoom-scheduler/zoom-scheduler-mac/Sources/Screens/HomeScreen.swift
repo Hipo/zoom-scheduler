@@ -12,11 +12,11 @@ struct HomeScreen: View {
     @EnvironmentObject
     var session: Session
 
-    let zoomAPI: ZoomAPI
-    let googleAPI: GoogleAPI
-
     @State
     private var mode: Mode = .menu
+
+    let zoomAPI: ZoomAPI
+    let googleAPI: GoogleAPI
 
     var body: some View {
         Group {
@@ -66,11 +66,17 @@ struct HomeScreen_Previews: PreviewProvider {
         HomeScreen(
             zoomAPI: ZoomAPI(
                 config: ZoomConfig(),
-                session: Session(keychain: HIPKeychain(identifier: "preview"))
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
             ),
             googleAPI: GoogleAPI(
                 config: GoogleConfig(),
-                session: Session(keychain: HIPKeychain(identifier: "preview"))
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
             )
         )
         .frame(

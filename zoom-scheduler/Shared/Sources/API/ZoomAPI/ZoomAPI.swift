@@ -137,7 +137,7 @@ extension ZoomAPI {
                         self.refreshAccessToken(aDraft, onCompleted: completionHandler)
                         return
                     }
-                    self.session.revoke()
+                    self.session.status = .none
                     completionHandler?(result)
             }
         }
@@ -168,7 +168,7 @@ extension ZoomAPI {
 
                 switch result {
                     case .success:
-                        self.session.revoke()
+                        self.session.status = .none
                     case .failure(let apiError, let apiErrorDetail):
                         let error = ZoomAPIError(apiError: apiError, apiErrorDetail: apiErrorDetail)
                         self.session.status = .unauthorized(error)

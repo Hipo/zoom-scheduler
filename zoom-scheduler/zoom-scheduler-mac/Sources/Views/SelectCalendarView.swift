@@ -110,7 +110,10 @@ struct SelectCalendarView_Previews: PreviewProvider {
             draft: .constant(CreateEventDraft()),
             googleAPI: GoogleAPI(
                 config: GoogleConfig(),
-                session: Session(keychain: HIPKeychain(identifier: "preview"))
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
             )
         )
         .background(Color("Screens/Attributes/Background/primary"))

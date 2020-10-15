@@ -32,7 +32,7 @@ final class GoogleAPI: NSObject {
 
         super.init()
 
-        if session.isGoogleAuthorized {
+        if session.isGoogleAccountAuthorized {
             loadCalendars()
         }
     }
@@ -80,7 +80,7 @@ extension GoogleAPI {
 
     func revokeAuthorization() {
         service.stopAllFetchers()
-        session.status = .none
+        session.googleAuthorizationStatus = .none
     }
 }
 

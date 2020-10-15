@@ -12,36 +12,28 @@ struct RootScreen: View {
     @EnvironmentObject
     var session: Session
 
-    @ObservedObject
-    var preferences: Preferences
-
     let zoomAPI: ZoomAPI
     let googleAPI: GoogleAPI
 
     var body: some View {
-        Group {
+        ZStack(alignment: .topTrailing) {
             if session.isAuthorized {
-                if preferences.skipsSyncingGoogleCalendar {
+                if session.isGoogleAccountAuthorized || !session.requiresGoogleAuthorization {
                     HomeScreen(
                         zoomAPI: zoomAPI,
                         googleAPI: googleAPI
                     )
+
+                    SettingsScreen(
+                        zoomAPI: zoomAPI,
+                        googleAPI: googleAPI
+                    )
+                    .alignmentGuide(.trailing) { $0[.trailing] + 20 }
                 } else {
-                    switch session.googleAuthorizationStatus {
-                        case .authorized:
-                            HomeScreen(
-                                zoomAPI: zoomAPI,
-                                googleAPI: googleAPI
-                            )
-                        default:
-                            SyncGoogleCalendarScreen(
-                                preferences: preferences,
-                                googleAPI: googleAPI
-                            )
-                    }
+                    SignInGoogleScreen(googleAPI: googleAPI)
                 }
             } else {
-                WelcomeScreen(zoomAPI: zoomAPI)
+                SignInZoomScreen(zoomAPI: zoomAPI)
             }
         }
         .background(Color("Screens/Attributes/Background/primary"))
@@ -54,23 +46,25 @@ struct RootScreen: View {
             maxHeight: .infinity,
             alignment: .center
         )
-        .onAppear {
-            print("Root is on appear.")
-        }
     }
 }
 
 struct RootScreen_Previews: PreviewProvider {
     static var previews: some View {
         RootScreen(
-            preferences: Preferences(userCache: nil),
             zoomAPI: ZoomAPI(
                 config: ZoomConfig(),
-                session: Session(keychain: HIPKeychain(identifier: "preview"))
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
             ),
             googleAPI: GoogleAPI(
                 config: GoogleConfig(),
-                session: Session(keychain: HIPKeychain(identifier: "preview"))
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
             )
         )
     }

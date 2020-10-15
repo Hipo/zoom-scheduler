@@ -1,5 +1,5 @@
 //
-//  HomeScreen.swift
+//  SignInZoomScreen.swift
 //  zoom-scheduler-mac
 //
 //  Created by Karasuluoglu on 29.09.2020.
@@ -8,7 +8,7 @@
 import Magpie
 import SwiftUI
 
-struct WelcomeScreen: View {
+struct SignInZoomScreen: View {
     @EnvironmentObject
     var session: Session
 
@@ -80,12 +80,15 @@ struct WelcomeScreen: View {
     }
 }
 
-struct WelcomeScreen_Previews: PreviewProvider {
+struct SignInZoomScreen_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeScreen(
+        SignInZoomScreen(
             zoomAPI: ZoomAPI(
                 config: ZoomConfig(),
-                session: Session(keychain: HIPKeychain(identifier: "preview"))
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
             )
         )
         .frame(

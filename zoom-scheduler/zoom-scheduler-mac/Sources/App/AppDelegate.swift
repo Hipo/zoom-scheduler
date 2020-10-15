@@ -20,17 +20,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var session = Session(
         keychain: HIPKeychain(
             identifier: "\(Bundle.main.bundleIdentifier ?? "com.hipo.zoomscheduler").keychain"
-        )
+        ),
+        userCache: userCache
     )
     private lazy var zoomAPI = ZoomAPI(config: target.zoomConfig, session: session)
     private lazy var googleAPI = GoogleAPI(config: target.googleConfig, session: session)
 
-    private lazy var preferences = Preferences(userCache: userCache)
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: windowSize.width, height: windowSize.height),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            styleMask: [
+                .titled,
+                .closable,
+                .miniaturizable,
+                .resizable,
+                .fullSizeContentView
+            ],
             backing: .buffered,
             defer: false
         )
@@ -39,7 +44,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.isReleasedWhenClosed = false
         window.contentView = NSHostingView(
             rootView: RootScreen(
-                preferences: preferences,
                 zoomAPI: zoomAPI,
                 googleAPI: googleAPI
             )
@@ -53,13 +57,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ notification: Notification) {
-        switch zoomAPI.session.status {
+        switch session.status {
             case .authorized(let credentials):
                 if credentials.isExpired {
                     zoomAPI.refreshAccessToken()
                 }
             case .unauthorized:
-                zoomAPI.refreshAccessToken()
+                if session.credentials != nil {
+                    zoomAPI.refreshAccessToken()
+                }
             default:
                 break
         }

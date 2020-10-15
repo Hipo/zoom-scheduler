@@ -13,9 +13,6 @@ struct MenuScreen: View {
     @EnvironmentObject
     var session: Session
 
-    let zoomAPI: ZoomAPI
-    let onClickNewEvent: () -> Void
-
     @State
     private var quickCallMenuIcon = "Screens/Icons/quick_call"
     @State
@@ -30,6 +27,9 @@ struct MenuScreen: View {
     @State
     private var isCreatingNewQuickMeeting = false
 
+    let zoomAPI: ZoomAPI
+    let onClickNewEvent: () -> Void
+
     var body: some View {
         HStack(alignment: .top, spacing: 72) {
             MenuItemView(
@@ -37,7 +37,7 @@ struct MenuScreen: View {
                 iconSize: $menuItemSize,
                 title: $quickCallMenuTitle,
                 isLoading: $isCreatingNewQuickMeeting,
-                onClick: createQuickMeeting
+                action: createQuickMeeting
             )
 
             MenuItemView(
@@ -45,7 +45,7 @@ struct MenuScreen: View {
                 iconSize: $menuItemSize,
                 title: $newEventMenuTitle,
                 isLoading: .constant(false),
-                onClick: onClickNewEvent
+                action: onClickNewEvent
             )
             .disabled(isCreatingNewQuickMeeting)
         }
@@ -83,7 +83,10 @@ struct MenuScreen_Previews: PreviewProvider {
         MenuScreen(
             zoomAPI: ZoomAPI(
                 config: ZoomConfig(),
-                session: Session(keychain: HIPKeychain(identifier: "preview"))
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
             )
         ) { }
         .frame(

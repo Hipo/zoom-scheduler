@@ -17,12 +17,10 @@ struct MenuItemView: View {
     @Binding
     var isLoading: Bool
 
-    var onClick: () -> Void
+    var action: () -> Void
 
     var body: some View {
-        Button(action: {
-            onClick()
-        }) {
+        Button(action: action) {
             VStack {
                 Group {
                     if isLoading {

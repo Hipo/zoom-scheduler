@@ -1,5 +1,5 @@
 //
-//  SyncGoogleCalendarScreen.swift
+//  SignInGoogleScreen.swift
 //  zoom-scheduler
 //
 //  Created by Karasuluoglu on 1.10.2020.
@@ -8,11 +8,10 @@
 import Magpie
 import SwiftUI
 
-struct SyncGoogleCalendarScreen: View {
+struct SignInGoogleScreen: View {
     @EnvironmentObject
     var session: Session
 
-    let preferences: Preferences
     let googleAPI: GoogleAPI
 
     var body: some View {
@@ -55,7 +54,7 @@ struct SyncGoogleCalendarScreen: View {
 
                     Spacer()
 
-                    Text(session.isGoogleAuthorized ? "Connected" : "Sign in with Google")
+                    Text(session.isGoogleAccountAuthorized ? "Connected" : "Sign in with Google")
                         .font(.custom("SFProText-Medium", size: 15))
                         .kerning(-0.24)
                         .lineSpacing(6.5)
@@ -69,7 +68,7 @@ struct SyncGoogleCalendarScreen: View {
             }
             .buttonStyle(PlainButtonStyle())
             .cornerRadius(8)
-            .allowsHitTesting(!session.isGoogleAuthorized)
+            .allowsHitTesting(!session.isGoogleAccountAuthorized)
 
             if session.isGoogleUnauthorized {
                 Text("We couldn't sign in. Please try again.")
@@ -78,9 +77,9 @@ struct SyncGoogleCalendarScreen: View {
                     .padding(.top, 10)
             }
 
-            if !session.isGoogleAuthorized {
+            if !session.isGoogleAccountAuthorized {
                 Button(action: {
-                    preferences.skipsSyncingGoogleCalendar = true
+                    session.requiresGoogleAuthorization = false
                 }) {
                     Text("Skip for now")
                         .font(.custom("SFProText-Regular", size: 13))
@@ -100,13 +99,15 @@ struct SyncGoogleCalendarScreen: View {
     }
 }
 
-struct SyncGoogleCalendarScreen_Previews: PreviewProvider {
+struct SignInGoogleScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SyncGoogleCalendarScreen(
-            preferences: Preferences(userCache: nil),
+        SignInGoogleScreen(
             googleAPI: GoogleAPI(
                 config: GoogleConfig(),
-                session: Session(keychain: HIPKeychain(identifier: "preview"))
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
             )
         )
         .frame(

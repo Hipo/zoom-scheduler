@@ -12,12 +12,6 @@ struct ScheduleMeetingScreen: View {
     @EnvironmentObject
     var session: Session
 
-    let zoomAPI: ZoomAPI
-    let googleAPI: GoogleAPI
-
-    let onSave: () -> Void
-    let onCancel: () -> Void
-
     @State
     private var meetingDraft = CreateMeetingDraft(reason: .scheduled)
     @State
@@ -25,6 +19,12 @@ struct ScheduleMeetingScreen: View {
 
     @State
     private var isCreatingMeeting = false
+
+    let zoomAPI: ZoomAPI
+    let googleAPI: GoogleAPI
+
+    let onSave: () -> Void
+    let onCancel: () -> Void
 
     var body: some View {
         ScrollView {
@@ -110,7 +110,7 @@ extension ScheduleMeetingScreen {
                         NSPasteboard.general.setString(joinURL.absoluteString, forType: .string)
                     }
 
-                    if session.isGoogleAuthorized, eventDraft.calendar != nil {
+                    if session.isGoogleAccountAuthorized, eventDraft.calendar != nil {
                         eventDraft.title = zoomMeeting.topic
                         eventDraft.startDateTime = zoomMeeting.startTime
                         eventDraft.endDateTime = zoomMeeting.endTime
@@ -132,11 +132,17 @@ struct ScheduleMeetingScreen_Previews: PreviewProvider {
         ScheduleMeetingScreen(
             zoomAPI: ZoomAPI(
                 config: ZoomConfig(),
-                session: Session(keychain: HIPKeychain(identifier: "preview"))
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
             ),
             googleAPI: GoogleAPI(
                 config: GoogleConfig(),
-                session: Session(keychain: HIPKeychain(identifier: "preview"))
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
             ),
             onSave: { },
             onCancel: { }
