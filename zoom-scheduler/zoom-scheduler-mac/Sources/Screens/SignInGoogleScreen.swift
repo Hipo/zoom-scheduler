@@ -15,87 +15,106 @@ struct SignInGoogleScreen: View {
     let googleAPI: GoogleAPI
 
     var body: some View {
-        VStack {
-            HStack {
-                LogoView(icon: "Screens/Icons/calendar")
-                    .frame(width: 80, height: 80)
+        GeometryReader { geometry in
+            ZStack(alignment: .bottom) {
+                VStack {
+                    HStack {
+                        LogoView(icon: "Screens/Icons/calendar")
+                            .frame(width: 80, height: 80)
 
-                Image("Screens/Accessories/arrow-right")
-                    .padding(.horizontal, 30)
+                        Image("Screens/Accessories/arrow-right")
+                            .padding(.horizontal, 30)
 
-                LogoView(
-                    icon: "Screens/Icons/logo",
-                    offset: CGPoint(x: 3.0, y: 2.0)
-                )
-                .frame(width: 80, height: 80)
-            }
-            .padding(.bottom, 40)
+                        LogoView(
+                            icon: "Screens/Icons/logo",
+                            offset: CGPoint(x: 3.0, y: 2.0)
+                        )
+                        .frame(width: 80, height: 80)
+                    }
+                    .padding(.bottom, 40)
 
-            Text("Sync Google Calendar")
-                .font(.custom("SFProDisplay-Medium", size: 34))
-                .kerning(0.37)
-                .foregroundColor(Color("Views/Text/Title/primary"))
-                .padding(.bottom, 20)
+                    Text("Sync Google Calendar")
+                        .font(.custom("SFProDisplay-Medium", size: 34))
+                        .kerning(0.37)
+                        .foregroundColor(Color("Views/Text/Title/primary"))
+                        .padding(.bottom, 20)
 
-            Text("Scheduler is a Mac app for quickly creating calendar\nevents with attached Zoom calls.")
-                .font(.custom("SFProText-Regular", size: 15))
-                .kerning(-0.24)
-                .lineSpacing(6.5)
-                .foregroundColor(Color("Views/Text/Body/primary"))
-                .multilineTextAlignment(.center)
-                .lineLimit(nil)
-                .padding(.bottom, 40)
-
-            Button(action: {
-                googleAPI.requestAuthorization()
-            }) {
-                HStack {
-                    Image("Screens/Icons/google")
-
-                    Spacer()
-
-                    Text(session.isGoogleAccountAuthorized ? "Connected" : "Sign in with Google")
-                        .font(.custom("SFProText-Medium", size: 15))
+                    Text("Scheduler is a Mac app for quickly creating calendar\nevents with attached Zoom calls.")
+                        .font(.custom("SFProText-Regular", size: 15))
                         .kerning(-0.24)
                         .lineSpacing(6.5)
-                        .foregroundColor(Color("Views/Button/Title/primary"))
-                        .padding()
+                        .foregroundColor(Color("Views/Text/Body/primary"))
+                        .multilineTextAlignment(.center)
+                        .lineLimit(nil)
+                        .padding(.bottom, 40)
 
-                    Spacer()
+                    Button(action: requestAuthorization) {
+                        HStack {
+                            Image("Screens/Icons/google")
+
+                            Spacer()
+
+                            Text("Sign in with Google")
+                                .font(.custom("SFProText-Medium", size: 15))
+                                .kerning(-0.24)
+                                .lineSpacing(6.5)
+                                .foregroundColor(Color("Views/Button/Title/primary"))
+                                .padding()
+
+                            Spacer()
+                        }
+                        .frame(width: 240, height: 52)
+                        .background(Color("Views/Button/Background/primary"))
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .cornerRadius(8)
+
+                    Button(action: skipAuthorization) {
+                        Text("Skip for now")
+                            .font(.custom("SFProText-Regular", size: 13))
+                            .kerning(-0.08)
+                            .foregroundColor(Color("Views/Button/Title/secondary"))
+                            .padding()
+                            .background(Color.clear)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .padding(.top, 6)
                 }
-                .frame(width: 240, height: 52)
-                .background(Color("Views/Button/Background/primary"))
-            }
-            .buttonStyle(PlainButtonStyle())
-            .cornerRadius(8)
-            .allowsHitTesting(!session.isGoogleAccountAuthorized)
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity
+                )
 
-            if session.isGoogleUnauthorized {
-                Text("We couldn't sign in. Please try again.")
-                    .font(.custom("SFProText-Regular", size: 16))
-                    .foregroundColor(Color("Views/Text/Error/primary"))
-                    .padding(.top, 10)
-            }
-
-            if !session.isGoogleAccountAuthorized {
-                Button(action: {
-                    session.requiresGoogleAuthorization = false
-                }) {
-                    Text("Skip for now")
-                        .font(.custom("SFProText-Regular", size: 13))
-                        .kerning(-0.08)
-                        .foregroundColor(Color("Views/Button/Title/secondary"))
-                        .padding()
-                        .background(Color.clear)
+                if let statusError = session.googleAuthorizationStatusError {
+                    ToastView(
+                        feedback: InAppFeedback(
+                            reason: .error,
+                            message: statusError.localizedDescription,
+                            actionName: "OK",
+                            action: {
+                                session.googleAuthorizationStatusError = nil
+                            }
+                        )
+                    )
+                    .frame(maxWidth: geometry.size.width * 0.8)
+                    .alignmentGuide(.bottom) { $0[.bottom] + 10 }
                 }
-                .buttonStyle(PlainButtonStyle())
-                .padding(.top, 6)
             }
         }
         .frame(
             maxWidth: .infinity,
             maxHeight: .infinity
         )
+    }
+}
+
+extension SignInGoogleScreen {
+    private func requestAuthorization() {
+        googleAPI.requestAuthorization()
+    }
+
+    private func skipAuthorization() {
+        session.requiresGoogleAuthorization = false
     }
 }
 
@@ -113,6 +132,13 @@ struct SignInGoogleScreen_Previews: PreviewProvider {
         .frame(
             width: windowSize.width,
             height: windowSize.height
+        )
+        .background(Color("Screens/Attributes/Background/primary"))
+        .environmentObject(
+            Session(
+                keychain: HIPKeychain(identifier: "preview"),
+                userCache: HIPCache()
+            )
         )
     }
 }

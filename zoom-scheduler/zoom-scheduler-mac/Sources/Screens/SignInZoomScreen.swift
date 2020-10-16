@@ -78,6 +78,7 @@ struct SignInZoomScreen: View {
                             }
                         )
                     )
+                    .frame(maxWidth: geometry.size.width * 0.8)
                     .alignmentGuide(.bottom) { $0[.bottom] + 10 }
                 }
             }

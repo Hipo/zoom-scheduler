@@ -110,7 +110,7 @@ extension ScheduleMeetingScreen {
                         NSPasteboard.general.setString(joinURL.absoluteString, forType: .string)
                     }
 
-                    if session.isGoogleAccountAuthorized, eventDraft.calendar != nil {
+                    if session.isGoogleAccountConnected, eventDraft.calendar != nil {
                         eventDraft.title = zoomMeeting.topic
                         eventDraft.startDateTime = zoomMeeting.startTime
                         eventDraft.endDateTime = zoomMeeting.endTime

@@ -23,6 +23,8 @@ final class Session: ObservableObject {
         didSet { googleAuthorizationStatusDidChange() }
     }
     @Published
+    var googleAuthorizationStatusError: NSError?
+    @Published
     var requiresGoogleAuthorization = true {
         didSet { requiresGoogleAuthorizationFlagDidChange() }
     }
@@ -59,27 +61,11 @@ final class Session: ObservableObject {
         }
     }
 
-    var isGoogleAccountAuthorized: Bool {
-        switch googleAuthorizationStatus {
-            case .authorized:
-                return true
-            default:
-                return false
-        }
-    }
     var isGoogleAccountConnected: Bool {
         switch googleAuthorizationStatus {
             case .authorized:
                 return true
-            case .unauthorized(let error):
-                return error != nil
-        }
-    }
-    var isGoogleUnauthorized: Bool {
-        switch googleAuthorizationStatus {
             case .unauthorized:
-                return true
-            default:
                 return false
         }
     }
@@ -142,6 +128,12 @@ extension Session {
 
 extension Session {
     private func googleAuthorizationStatusDidChange() {
+        switch googleAuthorizationStatus {
+            case .authorized:
+                googleAuthorizationStatusError = nil
+            case .unauthorized(let error):
+                googleAuthorizationStatusError = error
+        }
         saveGoogleAuthorizationStatusToVault()
     }
 

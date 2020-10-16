@@ -32,7 +32,7 @@ final class GoogleAPI: NSObject {
 
         super.init()
 
-        if session.isGoogleAccountAuthorized {
+        if session.isGoogleAccountConnected {
             loadCalendars()
         }
     }
