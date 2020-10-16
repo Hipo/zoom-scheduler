@@ -58,23 +58,22 @@ struct MenuScreen: View {
 
 extension MenuScreen {
     func createQuickMeeting() {
-        zoomAPI.revokeAccessToken()
-//        isCreatingNewQuickMeeting = true
-//
-//        let draft = CreateMeetingDraft(reason: .instant)
-//        zoomAPI.createMeeting(draft) { result in
-//            isCreatingNewQuickMeeting = false
-//
-//            switch result {
-//                case .success(let zoomMeeting):
-//                    if let joinURL = zoomMeeting.joinUrl {
-//                        NSPasteboard.general.clearContents()
-//                        NSPasteboard.general.setString(joinURL.absoluteString, forType: .string)
-//                    }
-//                case .failure(let apiError, let apiErrorDetail):
-//                    break
-//            }
-//        }
+        isCreatingNewQuickMeeting = true
+
+        let draft = CreateMeetingDraft(reason: .instant)
+        zoomAPI.createMeeting(draft) { result in
+            isCreatingNewQuickMeeting = false
+
+            switch result {
+                case .success(let zoomMeeting):
+                    if let joinURL = zoomMeeting.joinUrl {
+                        NSPasteboard.general.clearContents()
+                        NSPasteboard.general.setString(joinURL.absoluteString, forType: .string)
+                    }
+                case .failure(let apiError, let apiErrorDetail):
+                    break
+            }
+        }
     }
 }
 

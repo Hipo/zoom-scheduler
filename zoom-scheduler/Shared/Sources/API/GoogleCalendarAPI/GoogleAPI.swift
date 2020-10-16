@@ -41,7 +41,7 @@ final class GoogleAPI: NSObject {
 extension GoogleAPI {
     func requestAuthorization() {
         guard let redirectUrl = config.redirectUrl else {
-            session.googleAuthorizationStatus = .none
+            session.googleAuthorizationStatus = .unauthorized()
             return
         }
 
@@ -80,7 +80,7 @@ extension GoogleAPI {
 
     func revokeAuthorization() {
         service.stopAllFetchers()
-        session.googleAuthorizationStatus = .none
+        session.googleAuthorizationStatus = .unauthorized()
     }
 }
 

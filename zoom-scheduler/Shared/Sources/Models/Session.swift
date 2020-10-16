@@ -16,7 +16,7 @@ final class Session: ObservableObject {
         didSet { statusDidChange() }
     }
     @Published
-    var googleAuthorizationStatus: GoogleAuthorizationStatus = .none {
+    var googleAuthorizationStatus: GoogleAuthorizationStatus = .unauthorized() {
         didSet { googleAuthorizationStatusDidChange() }
     }
     @Published
@@ -29,6 +29,14 @@ final class Session: ObservableObject {
     private(set) var credentials: Credentials?
     private(set) var googleAuthorizationCredentials: GTMAppAuthFetcherAuthorization?
 
+    var isConnected: Bool {
+        switch status {
+            case .none:
+                return false
+            default:
+                return true
+        }
+    }
     var isAuthorized: Bool {
         switch status {
             case .authorized:
@@ -65,11 +73,10 @@ final class Session: ObservableObject {
     }
     var isGoogleAccountConnected: Bool {
         switch googleAuthorizationStatus {
-            case .none:
-                return false
-            case .authorized,
-                 .unauthorized:
+            case .authorized:
                 return true
+            case .unauthorized(let error):
+                return error != nil
         }
     }
     var isGoogleUnauthorized: Bool {
@@ -140,17 +147,12 @@ extension Session {
         ), googleAuthorizationCredentials.canAuthorize() {
             googleAuthorizationStatus = .authorized(googleAuthorizationCredentials)
         } else {
-            googleAuthorizationStatus = .none
+            googleAuthorizationStatus = .unauthorized()
         }
     }
 
     private func saveGoogleAuthorizationStatusToVault() {
         switch googleAuthorizationStatus {
-            case .none:
-                self.googleAuthorizationCredentials = nil
-                GTMAppAuthFetcherAuthorization.removeFromKeychain(
-                    forName: Key.googleAuthorizationCredentials.rawValue
-                )
             case .authorized(let googleAuthorizationCredentials):
                 self.googleAuthorizationCredentials = googleAuthorizationCredentials
                 self.requiresGoogleAuthorization = false
@@ -159,6 +161,13 @@ extension Session {
                     googleAuthorizationCredentials,
                     toKeychainForName: Key.googleAuthorizationCredentials.rawValue
                 )
+            case .unauthorized(let error):
+                if error == nil {
+                    self.googleAuthorizationCredentials = nil
+                    GTMAppAuthFetcherAuthorization.removeFromKeychain(
+                        forName: Key.googleAuthorizationCredentials.rawValue
+                    )
+                }
             default:
                 break
         }
@@ -218,9 +227,8 @@ extension Session {
     }
 
     enum GoogleAuthorizationStatus {
-        case none /// <note> Not having a connection to API
         case authorized(GTMAppAuthFetcherAuthorization)
-        case unauthorized(NSError?)
+        case unauthorized(NSError? = nil) /// <warning> Not having a connection to API if there is no error
     }
 }
 

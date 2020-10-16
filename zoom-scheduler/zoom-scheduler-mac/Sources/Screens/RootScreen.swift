@@ -17,7 +17,7 @@ struct RootScreen: View {
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            if session.isAuthorized {
+            if session.isConnected {
                 if session.isGoogleAccountAuthorized || !session.requiresGoogleAuthorization {
                     HomeScreen(
                         zoomAPI: zoomAPI,
