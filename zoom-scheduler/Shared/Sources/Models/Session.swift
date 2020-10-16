@@ -12,9 +12,12 @@ import SwiftDate
 
 final class Session: ObservableObject {
     @Published
-    var status: Status = .none {
+    var status: Status = .none() {
         didSet { statusDidChange() }
     }
+    @Published
+    var statusError: ZoomAPIError?
+
     @Published
     var googleAuthorizationStatus: GoogleAuthorizationStatus = .unauthorized() {
         didSet { googleAuthorizationStatusDidChange() }
@@ -23,6 +26,7 @@ final class Session: ObservableObject {
     var requiresGoogleAuthorization = true {
         didSet { requiresGoogleAuthorizationFlagDidChange() }
     }
+
     @Published
     var googleCalendars: [GoogleCalendar] = []
 
@@ -31,35 +35,27 @@ final class Session: ObservableObject {
 
     var isConnected: Bool {
         switch status {
-            case .none:
-                return false
-            default:
-                return true
-        }
-    }
-    var isAuthorized: Bool {
-        switch status {
-            case .authorized:
-                return true
-            default:
-                return false
-        }
-    }
-    var isUnauthorized: Bool {
-        switch status {
             case .none,
-                 .unauthorized:
+                 .connecting:
+                return false
+            default:
+                return true
+        }
+    }
+    var isConnecting: Bool {
+        switch status {
+            case .connecting:
                 return true
             default:
                 return false
         }
     }
-    var error: ZoomAPIError? {
+    var isRefreshing: Bool {
         switch status {
-            case .unauthorized(let apiError):
-                return apiError
+            case .refreshing:
+                return true
             default:
-                return nil
+                return false
         }
     }
 
@@ -108,6 +104,14 @@ final class Session: ObservableObject {
 
 extension Session {
     private func statusDidChange() {
+        switch status {
+            case .none(let error):
+                statusError = error
+            case .unauthorized(let error):
+                statusError = error
+            default:
+                statusError = nil
+        }
         saveStatusToVault()
     }
 
@@ -116,7 +120,7 @@ extension Session {
             self.credentials = credentials
             status = .unauthorized(.sessionExpired)
         } else {
-            status = .none
+            status = .none()
         }
     }
 
@@ -161,15 +165,11 @@ extension Session {
                     googleAuthorizationCredentials,
                     toKeychainForName: Key.googleAuthorizationCredentials.rawValue
                 )
-            case .unauthorized(let error):
-                if error == nil {
-                    self.googleAuthorizationCredentials = nil
-                    GTMAppAuthFetcherAuthorization.removeFromKeychain(
-                        forName: Key.googleAuthorizationCredentials.rawValue
-                    )
-                }
-            default:
-                break
+            case .unauthorized:
+                self.googleAuthorizationCredentials = nil
+                GTMAppAuthFetcherAuthorization.removeFromKeychain(
+                    forName: Key.googleAuthorizationCredentials.rawValue
+                )
         }
     }
 }
@@ -220,10 +220,11 @@ extension Session {
 
 extension Session {
     enum Status {
-        case none /// <note> Not having a connection to API
-        case connecting /// <note> Waiting for API response to determine the status
+        case none(ZoomAPIError? = nil) /// <note> Not having a connection to API
+        case connecting /// <note> Waiting for API response to connect to API
+        case refreshing /// <note> Waiting for API response to resume API
         case authorized(Credentials)
-        case unauthorized(ZoomAPIError) /// <note> Attempt to authorize API is failed
+        case unauthorized(ZoomAPIError) /// <note> Attempt to authorize API(by refreshing) is failed
     }
 
     enum GoogleAuthorizationStatus {

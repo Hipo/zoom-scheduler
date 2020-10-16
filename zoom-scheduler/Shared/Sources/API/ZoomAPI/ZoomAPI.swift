@@ -98,7 +98,7 @@ extension ZoomAPI {
                     self.session.status = .authorized(credentials)
                 case .failure(let apiError, let apiErrorDetail):
                     let error = ZoomAPIError(apiError: apiError, apiErrorDetail: apiErrorDetail)
-                    self.session.status = .unauthorized(error)
+                    self.session.status = .none(error)
             }
 
             completionHandler?(result)
@@ -119,7 +119,7 @@ extension ZoomAPI {
         _ draft: RefreshAccessTokenDraft = RefreshAccessTokenDraft(),
         onCompleted completionHandler: AccessTokenCompletionHandler? = nil
     ) -> EndpointOperatable {
-        session.status = .connecting
+        session.status = .refreshing
 
         var aDraft = draft
         aDraft.token = session.credentials?.refreshToken
@@ -137,7 +137,7 @@ extension ZoomAPI {
                         self.refreshAccessToken(aDraft, onCompleted: completionHandler)
                         return
                     }
-                    self.session.status = .none
+                    self.session.status = .none(.sessionCancelled)
                     completionHandler?(result)
             }
         }
@@ -168,7 +168,7 @@ extension ZoomAPI {
 
                 switch result {
                     case .success:
-                        self.session.status = .none
+                        self.session.status = .none()
                     case .failure(let apiError, let apiErrorDetail):
                         let error = ZoomAPIError(apiError: apiError, apiErrorDetail: apiErrorDetail)
                         self.session.status = .unauthorized(error)

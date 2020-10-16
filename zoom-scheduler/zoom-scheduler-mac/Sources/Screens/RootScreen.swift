@@ -18,7 +18,9 @@ struct RootScreen: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             if session.isConnected {
-                if session.isGoogleAccountAuthorized || !session.requiresGoogleAuthorization {
+                if session.requiresGoogleAuthorization {
+                    SignInGoogleScreen(googleAPI: googleAPI)
+                } else {
                     HomeScreen(
                         zoomAPI: zoomAPI,
                         googleAPI: googleAPI
@@ -29,8 +31,6 @@ struct RootScreen: View {
                         googleAPI: googleAPI
                     )
                     .alignmentGuide(.trailing) { $0[.trailing] + 20 }
-                } else {
-                    SignInGoogleScreen(googleAPI: googleAPI)
                 }
             } else {
                 SignInZoomScreen(zoomAPI: zoomAPI)
@@ -65,6 +65,12 @@ struct RootScreen_Previews: PreviewProvider {
                     keychain: HIPKeychain(identifier: "preview"),
                     userCache: HIPCache()
                 )
+            )
+        )
+        .environmentObject(
+            Session(
+                keychain: HIPKeychain(identifier: "preview"),
+                userCache: HIPCache()
             )
         )
     }

@@ -10,6 +10,7 @@ import Magpie
 
 enum ZoomAPIError {
     case sessionExpired
+    case sessionCancelled
     case client(HTTPError, Detail?)
     case server(HTTPError)
     case network(NetworkError)
@@ -39,12 +40,29 @@ enum ZoomAPIError {
         }
         self = .unexpected(apiError)
     }
+
+    var displayMessage: String {
+        switch self {
+            case .sessionExpired:
+                return "Your session is expired. Wait a moment while we are refreshing it."
+            case .sessionCancelled:
+                return "We cancelled your session because we couldn't refresh your session multiple times."
+            case .client(_, let detail):
+                return detail?.displayMessage ?? "Sorry, we couldn't fullfill your request."
+            case .server:
+                return "Sorry, we are having problems reaching to the server."
+            case .network:
+                return "There is a problem with your internet connection."
+            case .unexpected:
+                return "Sorry, we couldn't figure out your problem."
+        }
+    }
 }
 
 extension ZoomAPIError {
     struct Detail: Model {
         var displayMessage: String {
-            return message ?? "Sorry, we couldn't fulfill your request!"
+            return message ?? "Sorry, we couldn't fulfill your request."
         }
 
         let code: Int
