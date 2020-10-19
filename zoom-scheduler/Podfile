@@ -3,16 +3,34 @@ inhibit_all_warnings!
 
 def shared_pods
   pod 'GTMAppAuth'
+  pod 'Magpie/HIPAPI'
+  pod 'SwiftDate', '~> 5.0'
 end
 
-target 'zoom-scheduler' do
+def ios_pods
   platform :ios, '14.0'
 
   shared_pods
 end
 
-target 'zoom-scheduler-mac' do
+def mac_pods
   platform :macos, '10.15'
 
   shared_pods
+end
+
+target 'zoom-scheduler' do
+  ios_pods
+end
+
+target 'zoom-scheduler-dev' do
+  ios_pods
+end
+
+target 'zoom-scheduler-mac' do
+  mac_pods
+end
+
+target 'zoom-scheduler-mac-dev' do
+  mac_pods
 end

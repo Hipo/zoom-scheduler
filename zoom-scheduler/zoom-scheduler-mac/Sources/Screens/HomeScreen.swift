@@ -5,55 +5,39 @@
 //  Created by Karasuluoglu on 2.10.2020.
 //
 
+import Magpie
 import SwiftUI
 
 struct HomeScreen: View {
-    @ObservedObject
-    var zoomAPI: ZoomAPI
-
-    var googleCalendarAPI: GoogleCalendarAPI
-
     @State
     private var mode: Mode = .menu
 
+    let zoomAPI: ZoomAPI
+    let googleAPI: GoogleAPI
+
     var body: some View {
         Group {
-            switch zoomAPI.authState {
-                case .success:
-                    switch mode {
-                        case .menu:
-                            MenuScreen(zoomAPI: zoomAPI) {
-                                mode = .newEvent
-                            }
-                        case .newEvent:
-                            ScheduleMeetingScreen(
-                                zoomAPI: zoomAPI,
-                                googleCalendarAPI: googleCalendarAPI,
-                                onSave: {
-                                    mode = .menu
-                                },
-                                onCancel: {
-                                    mode = .menu
-                                }
-                            )
-                    }
-                default:
-                    ActivityIndicator()
-                        .frame(
-                            width: 50,
-                            height: 50
-                        )
+            switch mode {
+                case .menu:
+                    MenuScreen(
+                        mode: $mode,
+                        zoomAPI: zoomAPI,
+                        googleAPI: googleAPI
+                    )
+                case .newEvent:
+                    ScheduleMeetingScreen(
+                        mode: $mode,
+                        zoomAPI: zoomAPI,
+                        googleAPI: googleAPI
+                    )
             }
         }
-        .frame(
-            maxWidth: .infinity,
-            maxHeight: .infinity
-        )
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
 extension HomeScreen {
-    private enum Mode {
+    enum Mode {
         case menu
         case newEvent
     }
@@ -62,12 +46,21 @@ extension HomeScreen {
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreen(
-            zoomAPI: ZoomAPI(),
-            googleCalendarAPI: GoogleCalendarAPI()
+            zoomAPI: ZoomAPI(
+                config: ZoomConfig(),
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
+            ),
+            googleAPI: GoogleAPI(
+                config: GoogleConfig(),
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
+            )
         )
-        .frame(
-            width: windowSize.width,
-            height: windowSize.height
-        )
+        .frame(width: windowSize.width, height: windowSize.height)
     }
 }

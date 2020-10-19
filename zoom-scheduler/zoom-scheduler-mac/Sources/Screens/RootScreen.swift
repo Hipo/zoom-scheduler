@@ -5,41 +5,35 @@
 //  Created by Karasuluoglu on 29.09.2020.
 //
 
+import Magpie
 import SwiftUI
 
 struct RootScreen: View {
-    @ObservedObject
-    var zoomAPI: ZoomAPI
-    @ObservedObject
-    var googleCalendarAPI: GoogleCalendarAPI
-    @ObservedObject
-    var preferences: Preferences
+    @EnvironmentObject
+    var session: Session
+
+    let zoomAPI: ZoomAPI
+    let googleAPI: GoogleAPI
 
     var body: some View {
-        Group {
-            switch zoomAPI.authState {
-                case .success:
-                    if preferences.skipsSyncingGoogleCalendar {
-                        HomeScreen(
-                            zoomAPI: zoomAPI,
-                            googleCalendarAPI: googleCalendarAPI
-                        )
-                    } else {
-                        switch googleCalendarAPI.authState {
-                            case .connected:
-                                HomeScreen(
-                                    zoomAPI: zoomAPI,
-                                    googleCalendarAPI: googleCalendarAPI
-                                )
-                            default:
-                                SyncGoogleCalendarScreen(
-                                    googleCalendarAPI: googleCalendarAPI,
-                                    preferences: preferences
-                                )
-                        }
-                    }
-                default:
-                    WelcomeScreen(zoomAPI: zoomAPI)
+        ZStack(alignment: .topTrailing) {
+            if session.isConnected {
+                if session.requiresGoogleAuthorization {
+                    SignInGoogleScreen(googleAPI: googleAPI)
+                } else {
+                    HomeScreen(
+                        zoomAPI: zoomAPI,
+                        googleAPI: googleAPI
+                    )
+
+                    SettingsScreen(
+                        zoomAPI: zoomAPI,
+                        googleAPI: googleAPI
+                    )
+                    .alignmentGuide(.trailing) { $0[.trailing] + 20 }
+                }
+            } else {
+                SignInZoomScreen(zoomAPI: zoomAPI)
             }
         }
         .background(Color("Screens/Attributes/Background/primary"))
@@ -58,9 +52,26 @@ struct RootScreen: View {
 struct RootScreen_Previews: PreviewProvider {
     static var previews: some View {
         RootScreen(
-            zoomAPI: ZoomAPI(),
-            googleCalendarAPI: GoogleCalendarAPI(),
-            preferences: Preferences()
+            zoomAPI: ZoomAPI(
+                config: ZoomConfig(),
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
+            ),
+            googleAPI: GoogleAPI(
+                config: GoogleConfig(),
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
+            )
+        )
+        .environmentObject(
+            Session(
+                keychain: HIPKeychain(identifier: "preview"),
+                userCache: HIPCache()
+            )
         )
     }
 }

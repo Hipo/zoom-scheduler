@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import Magpie
 import SwiftUI
 
 let windowSize = CGSize(width: 720.0, height: 562.0)
@@ -14,15 +15,27 @@ let windowSize = CGSize(width: 720.0, height: 562.0)
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
 
-    private lazy var zoomAPI = ZoomAPI()
-    private lazy var googleCalendarAPI = GoogleCalendarAPI()
-
-    private lazy var preferences = Preferences()
+    private lazy var target = Target()
+    private lazy var userCache = HIPCache()
+    private lazy var session = Session(
+        keychain: HIPKeychain(
+            identifier: "\(Bundle.main.bundleIdentifier ?? "com.hipo.zoomscheduler").keychain"
+        ),
+        userCache: userCache
+    )
+    private lazy var zoomAPI = ZoomAPI(config: target.zoomConfig, session: session)
+    private lazy var googleAPI = GoogleAPI(config: target.googleConfig, session: session)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: windowSize.width, height: windowSize.height),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            styleMask: [
+                .titled,
+                .closable,
+                .miniaturizable,
+                .resizable,
+                .fullSizeContentView
+            ],
             backing: .buffered,
             defer: false
         )
@@ -32,9 +45,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.contentView = NSHostingView(
             rootView: RootScreen(
                 zoomAPI: zoomAPI,
-                googleCalendarAPI: googleCalendarAPI,
-                preferences: preferences
+                googleAPI: googleAPI
             )
+            .environmentObject(target)
+            .environmentObject(session)
         )
         window.makeKeyAndOrderFront(nil)
 
@@ -42,17 +56,60 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.center()
     }
 
-    func application(_ application: NSApplication, open urls: [URL]) {
-        guard let url = urls.first else {
-            return
+    func applicationDidBecomeActive(_ notification: Notification) {
+        switch session.status {
+            case .authorized(let credentials):
+                if credentials.isExpired {
+                    zoomAPI.refreshAccessToken()
+                }
+            case .unauthorized:
+                if session.credentials != nil {
+                    zoomAPI.refreshAccessToken()
+                }
+            default:
+                break
         }
+    }
+
+    func application(_ application: NSApplication, open urls: [URL]) {
+        guard let url = urls.first else { return }
 
         if url.scheme == "zoomscheduler" {
-            zoomAPI.authCode = url.host
+            var draft = RequestAccessTokenDraft()
+            draft.authorizationCode = url.host
+            zoomAPI.requestAccessToken(draft)
         } else {
-            googleCalendarAPI.authFlow?.resumeExternalUserAgentFlow(with: url)
+            googleAPI.completeAuthorization(redirectUrl: url)
         }
-
         window.makeKeyAndOrderFront(nil)
     }
+}
+
+extension AppDelegate {
+    @IBAction
+    func newQuickCall(_ sender: Any) {
+        NotificationCenter.default.post(Notification(name: .newQuickCall))
+    }
+
+    @IBAction
+    func newEvent(_ sender: Any) {
+        NotificationCenter.default.post(Notification(name: .newEvent))
+    }
+
+    @IBAction
+    func save(_ sender: Any) {
+        NotificationCenter.default.post(Notification(name: .save))
+    }
+
+    @IBAction
+    func cancel(_ sender: Any) {
+        NotificationCenter.default.post(Notification(name: .cancel))
+    }
+}
+
+extension Notification.Name {
+    static let newQuickCall = Notification.Name("new.quick.call")
+    static let newEvent = Notification.Name("new.event")
+    static let save = Notification.Name("save")
+    static let cancel = Notification.Name("cancel")
 }

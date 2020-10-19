@@ -9,40 +9,29 @@ import SwiftUI
 
 struct MenuItemView: View {
     @Binding
-    var icon: String
-    @Binding
-    var iconSize: CGSize
-    @Binding
-    var title: String
-    @Binding
     var isLoading: Bool
 
-    var onClick: () -> Void
+    let icon: String
+    let iconSize: CGSize
+    let title: String
+    let action: () -> Void
 
     var body: some View {
-        Button(action: {
-            onClick()
-        }) {
+        Button(action: action) {
             VStack {
                 Group {
                     if isLoading {
                         ActivityIndicator()
-                            .frame(
-                                width: 30,
-                                height: 30
-                            )
+                            .frame(width: 30, height: 30)
                     } else {
                         Image(icon)
                     }
                 }
-                .frame(
-                    width: iconSize.width,
-                    height: iconSize.height
-                )
+                .frame(width: iconSize.width, height: iconSize.height)
                 .background(Color("Views/Custom/MenuItemView/background"))
                 .cornerRadius(24)
                 .shadow(
-                    color: Color("Views/Attributes/Shadow/primary"),
+                    color: Color("Views/Attributes/Shadow/tertiary"),
                     radius: 100,
                     x: 0,
                     y: 20
@@ -79,11 +68,12 @@ struct MenuItemView: View {
 struct MenuItemView_Previews: PreviewProvider {
     static var previews: some View {
         MenuItemView(
-            icon: .constant("Screens/Icons/quick_call"),
-            iconSize: .constant(CGSize(width: 96, height: 96)),
-            title: .constant("Quick Call"),
-            isLoading: .constant(true)
-        ) {
-        }
+            isLoading: .constant(false),
+            icon: "Screens/Icons/quick_call",
+            iconSize: CGSize(width: 96, height: 96),
+            title: "Quick Call",
+            action: { }
+        )
+        .background(Color("Views/Attributes/Background/primary"))
     }
 }

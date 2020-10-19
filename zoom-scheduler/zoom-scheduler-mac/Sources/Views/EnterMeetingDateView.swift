@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct EnterMeetingDateView: View {
-    @ObservedObject
-    var meeting: Meeting
+    @Binding
+    var draft: CreateMeetingDraft
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Event Name")
+            Text("Event Date")
                 .font(.custom("SFProText-Regular", size: 13))
                 .kerning(-0.08)
                 .lineSpacing(3.5)
@@ -21,18 +21,24 @@ struct EnterMeetingDateView: View {
 
             DatePicker(
                 "",
-                selection: $meeting.date,
+                selection: $draft.date,
                 in: Date()...,
                 displayedComponents: [.date, .hourAndMinute]
             )
-            .datePickerStyle(StepperFieldDatePickerStyle())
+            .datePickerStyle(FieldDatePickerStyle())
+            .labelsHidden()
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color("Views/TextField/Border/primary"), lineWidth: 2)
+            )
         }
     }
 }
 
 struct EnterMeetingDateView_Previews: PreviewProvider {
     static var previews: some View {
-        EnterMeetingDateView(meeting: Meeting())
+        EnterMeetingDateView(draft: .constant(CreateMeetingDraft(reason: .scheduled)))
             .background(Color("Screens/Attributes/Background/primary"))
     }
 }

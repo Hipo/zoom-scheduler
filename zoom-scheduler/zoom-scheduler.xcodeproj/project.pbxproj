@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1DA83F12B5FC68D6206123CE /* Pods_zoom_scheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 322F7A2C683A7979D684AFDB /* Pods_zoom_scheduler.framework */; };
+		745EBD4E01597B632E44FCB2 /* Pods_zoom_scheduler_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 869C48CA33C1DF79C3E24D4C /* Pods_zoom_scheduler_mac.framework */; };
 		CD121BE9252636B700CD7572 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121BE8252636B700CD7572 /* LogoView.swift */; };
 		CD121BEA252636B700CD7572 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121BE8252636B700CD7572 /* LogoView.swift */; };
 		CD121C302526499000CD7572 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD121C2D2526499000CD7572 /* SF-Pro-Text-Medium.otf */; };
@@ -16,17 +16,108 @@
 		CD121C332526499000CD7572 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD121C2E2526499000CD7572 /* SF-Pro-Display-Medium.otf */; };
 		CD121C342526499000CD7572 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD121C2F2526499000CD7572 /* SF-Pro-Text-Regular.otf */; };
 		CD121C352526499000CD7572 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD121C2F2526499000CD7572 /* SF-Pro-Text-Regular.otf */; };
-		CD121C3C25265ACF00CD7572 /* ZoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C3B25265ACF00CD7572 /* ZoomAPI.swift */; };
-		CD121C3D25265ACF00CD7572 /* ZoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C3B25265ACF00CD7572 /* ZoomAPI.swift */; };
 		CD121C43252661E900CD7572 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C42252661E900CD7572 /* ActivityIndicator.swift */; };
 		CD121C44252661E900CD7572 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C42252661E900CD7572 /* ActivityIndicator.swift */; };
-		CD121C5225266EDC00CD7572 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C5125266EDC00CD7572 /* Preferences.swift */; };
-		CD121C5325266EDC00CD7572 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C5125266EDC00CD7572 /* Preferences.swift */; };
-		CD121C5B252670C100CD7572 /* SyncGoogleCalendarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C5A252670C100CD7572 /* SyncGoogleCalendarScreen.swift */; };
-		CD121C5C252670C100CD7572 /* SyncGoogleCalendarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C5A252670C100CD7572 /* SyncGoogleCalendarScreen.swift */; };
-		CD121C7025267A2600CD7572 /* GoogleCalendarAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C6F25267A2600CD7572 /* GoogleCalendarAPI.swift */; };
-		CD121C7125267A2600CD7572 /* GoogleCalendarAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C6F25267A2600CD7572 /* GoogleCalendarAPI.swift */; };
+		CD121C5C252670C100CD7572 /* SignInGoogleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C5A252670C100CD7572 /* SignInGoogleScreen.swift */; };
+		CD1434F92536DB3E00F6311D /* MeetingDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1434F82536DB3E00F6311D /* MeetingDrafts.swift */; };
+		CD1434FA2536DB3E00F6311D /* MeetingDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1434F82536DB3E00F6311D /* MeetingDrafts.swift */; };
+		CD1434FB2536DB3E00F6311D /* MeetingDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1434F82536DB3E00F6311D /* MeetingDrafts.swift */; };
+		CD1434FC2536DB3E00F6311D /* MeetingDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1434F82536DB3E00F6311D /* MeetingDrafts.swift */; };
+		CD1435022536DB5400F6311D /* AccessTokenDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435012536DB5400F6311D /* AccessTokenDrafts.swift */; };
+		CD1435032536DB5400F6311D /* AccessTokenDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435012536DB5400F6311D /* AccessTokenDrafts.swift */; };
+		CD1435042536DB5400F6311D /* AccessTokenDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435012536DB5400F6311D /* AccessTokenDrafts.swift */; };
+		CD1435052536DB5400F6311D /* AccessTokenDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435012536DB5400F6311D /* AccessTokenDrafts.swift */; };
+		CD1435172536DBBD00F6311D /* ZoomMeeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435162536DBBD00F6311D /* ZoomMeeting.swift */; };
+		CD1435182536DBBD00F6311D /* ZoomMeeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435162536DBBD00F6311D /* ZoomMeeting.swift */; };
+		CD1435192536DBBD00F6311D /* ZoomMeeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435162536DBBD00F6311D /* ZoomMeeting.swift */; };
+		CD14351A2536DBBD00F6311D /* ZoomMeeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435162536DBBD00F6311D /* ZoomMeeting.swift */; };
+		CD1435862537927200F6311D /* GoogleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435852537927200F6311D /* GoogleAPI.swift */; };
+		CD1435872537927200F6311D /* GoogleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435852537927200F6311D /* GoogleAPI.swift */; };
+		CD1435882537927200F6311D /* GoogleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435852537927200F6311D /* GoogleAPI.swift */; };
+		CD1435892537927200F6311D /* GoogleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435852537927200F6311D /* GoogleAPI.swift */; };
+		CD1435972538355F00F6311D /* GoogleCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435962538355F00F6311D /* GoogleCalendar.swift */; };
+		CD1435982538355F00F6311D /* GoogleCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435962538355F00F6311D /* GoogleCalendar.swift */; };
+		CD1435992538355F00F6311D /* GoogleCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435962538355F00F6311D /* GoogleCalendar.swift */; };
+		CD14359A2538355F00F6311D /* GoogleCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435962538355F00F6311D /* GoogleCalendar.swift */; };
+		CD1435A4253844CE00F6311D /* EventDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435A3253844CE00F6311D /* EventDrafts.swift */; };
+		CD1435A5253844CE00F6311D /* EventDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435A3253844CE00F6311D /* EventDrafts.swift */; };
+		CD1435A6253844CE00F6311D /* EventDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435A3253844CE00F6311D /* EventDrafts.swift */; };
+		CD1435A7253844CE00F6311D /* EventDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435A3253844CE00F6311D /* EventDrafts.swift */; };
+		CD1435B725389B7C00F6311D /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435B425389B7C00F6311D /* SettingsScreen.swift */; };
+		CD1435B825389B7D00F6311D /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435B425389B7C00F6311D /* SettingsScreen.swift */; };
+		CD1435C42538D1A600F6311D /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435C12538D1A600F6311D /* SettingItemView.swift */; };
+		CD1435C52538D1A600F6311D /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435C12538D1A600F6311D /* SettingItemView.swift */; };
 		CD16ACA625269B9000F40F65 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E62712526933D002824CF /* MenuItemView.swift */; };
+		CD32356E2528990500B74EC3 /* ZoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32356D2528990500B74EC3 /* ZoomAPI.swift */; };
+		CD32356F2528990500B74EC3 /* ZoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32356D2528990500B74EC3 /* ZoomAPI.swift */; };
+		CD3A4A692536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A4A682536C80C00E70CD0 /* ZoomAPIInterceptor.swift */; };
+		CD3A4A6A2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A4A682536C80C00E70CD0 /* ZoomAPIInterceptor.swift */; };
+		CD3A4A6B2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A4A682536C80C00E70CD0 /* ZoomAPIInterceptor.swift */; };
+		CD3A4A6C2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A4A682536C80C00E70CD0 /* ZoomAPIInterceptor.swift */; };
+		CD3A4A772536C9CE00E70CD0 /* ZoomAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A4A762536C9CE00E70CD0 /* ZoomAPIError.swift */; };
+		CD3A4A782536C9CE00E70CD0 /* ZoomAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A4A762536C9CE00E70CD0 /* ZoomAPIError.swift */; };
+		CD3A4A792536C9CE00E70CD0 /* ZoomAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A4A762536C9CE00E70CD0 /* ZoomAPIError.swift */; };
+		CD3A4A7A2536C9CE00E70CD0 /* ZoomAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A4A762536C9CE00E70CD0 /* ZoomAPIError.swift */; };
+		CD4495B6253453F200F3CCD8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4495B5253453F200F3CCD8 /* Session.swift */; };
+		CD4495B7253453F200F3CCD8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4495B5253453F200F3CCD8 /* Session.swift */; };
+		CD4495CE2534637C00F3CCD8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4495CD2534637C00F3CCD8 /* Model.swift */; };
+		CD4495CF2534637C00F3CCD8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4495CD2534637C00F3CCD8 /* Model.swift */; };
+		CD4495DB2535A7B000F3CCD8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4495CD2534637C00F3CCD8 /* Model.swift */; };
+		CD4495DC2535A7B000F3CCD8 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121BE8252636B700CD7572 /* LogoView.swift */; };
+		CD4495DD2535A7B000F3CCD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4DE2521EB0100B6B644 /* ContentView.swift */; };
+		CD4495DE2535A7B000F3CCD8 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E62712526933D002824CF /* MenuItemView.swift */; };
+		CD4495DF2535A7B000F3CCD8 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD65C52825260AD300911834 /* EmailValidator.swift */; };
+		CD4495E12535A7B000F3CCD8 /* ZoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32356D2528990500B74EC3 /* ZoomAPI.swift */; };
+		CD4495E32535A7B000F3CCD8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C42252661E900CD7572 /* ActivityIndicator.swift */; };
+		CD4495E42535A7B000F3CCD8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4495B5253453F200F3CCD8 /* Session.swift */; };
+		CD4495E92535A7B000F3CCD8 /* zoom_schedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4DC2521EB0100B6B644 /* zoom_schedulerApp.swift */; };
+		CD4495EB2535A7B000F3CCD8 /* Pods_zoom_scheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 322F7A2C683A7979D684AFDB /* Pods_zoom_scheduler.framework */; };
+		CD4495ED2535A7B000F3CCD8 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD121C2E2526499000CD7572 /* SF-Pro-Display-Medium.otf */; };
+		CD4495EE2535A7B000F3CCD8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD4E32521EB0100B6B644 /* Preview Assets.xcassets */; };
+		CD4495EF2535A7B000F3CCD8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD65C54F25261BBA00911834 /* Colors.xcassets */; };
+		CD4495F02535A7B000F3CCD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD560252282E100B6B644 /* Assets.xcassets */; };
+		CD4495F12535A7B000F3CCD8 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD121C2D2526499000CD7572 /* SF-Pro-Text-Medium.otf */; };
+		CD4495F22535A7B000F3CCD8 /* PhoneAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD4E02521EB0100B6B644 /* PhoneAssets.xcassets */; };
+		CD4495F32535A7B000F3CCD8 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD121C2F2526499000CD7572 /* SF-Pro-Text-Regular.otf */; };
+		CD4496032535A7BF00F3CCD8 /* MenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA709C2526F8790055DE9B /* MenuScreen.swift */; };
+		CD4496042535A7BF00F3CCD8 /* EnterMeetingNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E9F7C2525D3D0007B28E4 /* EnterMeetingNameView.swift */; };
+		CD4496052535A7BF00F3CCD8 /* SignInZoomScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCC1E622523111F004BFC55 /* SignInZoomScreen.swift */; };
+		CD4496062535A7BF00F3CCD8 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD65C52825260AD300911834 /* EmailValidator.swift */; };
+		CD4496082535A7BF00F3CCD8 /* SelectCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70C5252733430055DE9B /* SelectCalendarView.swift */; };
+		CD4496092535A7BF00F3CCD8 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E626D252692EE002824CF /* HomeScreen.swift */; };
+		CD44960A2535A7BF00F3CCD8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C42252661E900CD7572 /* ActivityIndicator.swift */; };
+		CD44960B2535A7BF00F3CCD8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70B92527166A0055DE9B /* Extensions.swift */; };
+		CD44960C2535A7BF00F3CCD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD50125226C4000B6B644 /* AppDelegate.swift */; };
+		CD44960D2535A7BF00F3CCD8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4495CD2534637C00F3CCD8 /* Model.swift */; };
+		CD44960E2535A7BF00F3CCD8 /* EnterMeetingDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70BF25271DCC0055DE9B /* EnterMeetingDurationView.swift */; };
+		CD44960F2535A7BF00F3CCD8 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E62712526933D002824CF /* MenuItemView.swift */; };
+		CD4496102535A7BF00F3CCD8 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121BE8252636B700CD7572 /* LogoView.swift */; };
+		CD4496122535A7BF00F3CCD8 /* EnterMeetingDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E9F822525D463007B28E4 /* EnterMeetingDateView.swift */; };
+		CD4496132535A7BF00F3CCD8 /* ZoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32356D2528990500B74EC3 /* ZoomAPI.swift */; };
+		CD4496142535A7BF00F3CCD8 /* SignInGoogleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121C5A252670C100CD7572 /* SignInGoogleScreen.swift */; };
+		CD4496172535A7BF00F3CCD8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4495B5253453F200F3CCD8 /* Session.swift */; };
+		CD4496192535A7BF00F3CCD8 /* EnterMeetingInviteesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6E9F8A2525DD64007B28E4 /* EnterMeetingInviteesView.swift */; };
+		CD44961A2535A7BF00F3CCD8 /* ScheduleMeetingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8057AD2523D670008527FF /* ScheduleMeetingScreen.swift */; };
+		CD44961B2535A7BF00F3CCD8 /* RootScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8057A52523CC37008527FF /* RootScreen.swift */; };
+		CD44961D2535A7BF00F3CCD8 /* Pods_zoom_scheduler_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 869C48CA33C1DF79C3E24D4C /* Pods_zoom_scheduler_mac.framework */; };
+		CD44961F2535A7BF00F3CCD8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD65C54F25261BBA00911834 /* Colors.xcassets */; };
+		CD4496202535A7BF00F3CCD8 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD5532522764900B6B644 /* Menu.storyboard */; };
+		CD4496212535A7BF00F3CCD8 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD121C2D2526499000CD7572 /* SF-Pro-Text-Medium.otf */; };
+		CD4496222535A7BF00F3CCD8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD50825226C4300B6B644 /* Preview Assets.xcassets */; };
+		CD4496232535A7BF00F3CCD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD560252282E100B6B644 /* Assets.xcassets */; };
+		CD4496242535A7BF00F3CCD8 /* MacAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD50525226C4300B6B644 /* MacAssets.xcassets */; };
+		CD4496252535A7BF00F3CCD8 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD121C2F2526499000CD7572 /* SF-Pro-Text-Regular.otf */; };
+		CD4496262535A7BF00F3CCD8 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD121C2E2526499000CD7572 /* SF-Pro-Display-Medium.otf */; };
+		CD4496602535AEA700F3CCD8 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44965F2535AEA700F3CCD8 /* Target.swift */; };
+		CD4496612535AEA700F3CCD8 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44965F2535AEA700F3CCD8 /* Target.swift */; };
+		CD4496622535AEA700F3CCD8 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44965F2535AEA700F3CCD8 /* Target.swift */; };
+		CD4496632535AEA700F3CCD8 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44965F2535AEA700F3CCD8 /* Target.swift */; };
+		CD5F8C8925396E3E00BFD18E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F8C8825396E3E00BFD18E /* ToastView.swift */; };
+		CD5F8C8A25396E3E00BFD18E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F8C8825396E3E00BFD18E /* ToastView.swift */; };
+		CD5F8C902539828000BFD18E /* InAppFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F8C8F2539828000BFD18E /* InAppFeedback.swift */; };
+		CD5F8C912539828000BFD18E /* InAppFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F8C8F2539828000BFD18E /* InAppFeedback.swift */; };
+		CD5F8C922539828000BFD18E /* InAppFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F8C8F2539828000BFD18E /* InAppFeedback.swift */; };
+		CD5F8C932539828000BFD18E /* InAppFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F8C8F2539828000BFD18E /* InAppFeedback.swift */; };
 		CD65C52925260AD300911834 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD65C52825260AD300911834 /* EmailValidator.swift */; };
 		CD65C52A25260AD300911834 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD65C52825260AD300911834 /* EmailValidator.swift */; };
 		CD65C55025261BBA00911834 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD65C54F25261BBA00911834 /* Colors.xcassets */; };
@@ -42,37 +133,63 @@
 		CDBCD4DF2521EB0100B6B644 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4DE2521EB0100B6B644 /* ContentView.swift */; };
 		CDBCD4E12521EB0100B6B644 /* PhoneAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD4E02521EB0100B6B644 /* PhoneAssets.xcassets */; };
 		CDBCD4E42521EB0100B6B644 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD4E32521EB0100B6B644 /* Preview Assets.xcassets */; };
-		CDBCD4F925221B2900B6B644 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4F825221B2900B6B644 /* Meeting.swift */; };
 		CDBCD50225226C4000B6B644 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD50125226C4000B6B644 /* AppDelegate.swift */; };
 		CDBCD50625226C4300B6B644 /* MacAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD50525226C4300B6B644 /* MacAssets.xcassets */; };
 		CDBCD50925226C4300B6B644 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD50825226C4300B6B644 /* Preview Assets.xcassets */; };
-		CDBCD51625226D1500B6B644 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCD4F825221B2900B6B644 /* Meeting.swift */; };
 		CDBCD5542522764900B6B644 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD5532522764900B6B644 /* Menu.storyboard */; };
 		CDBCD561252282E100B6B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD560252282E100B6B644 /* Assets.xcassets */; };
 		CDBCD562252282E100B6B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD560252282E100B6B644 /* Assets.xcassets */; };
-		CDCC1E632523111F004BFC55 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCC1E622523111F004BFC55 /* WelcomeScreen.swift */; };
+		CDCC1E632523111F004BFC55 /* SignInZoomScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCC1E622523111F004BFC55 /* SignInZoomScreen.swift */; };
 		CDFA709D2526F8790055DE9B /* MenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA709C2526F8790055DE9B /* MenuScreen.swift */; };
 		CDFA70BA2527166B0055DE9B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70B92527166A0055DE9B /* Extensions.swift */; };
 		CDFA70C025271DCC0055DE9B /* EnterMeetingDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70BF25271DCC0055DE9B /* EnterMeetingDurationView.swift */; };
 		CDFA70C6252733430055DE9B /* SelectCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70C5252733430055DE9B /* SelectCalendarView.swift */; };
-		EF6352A59ED858991F4038C8 /* Pods_zoom_scheduler_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 869C48CA33C1DF79C3E24D4C /* Pods_zoom_scheduler_mac.framework */; };
+		CDFC7BAD253D545000BF5EB5 /* SharedExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC7BAC253D545000BF5EB5 /* SharedExtensions.swift */; };
+		CDFC7BAE253D545000BF5EB5 /* SharedExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC7BAC253D545000BF5EB5 /* SharedExtensions.swift */; };
+		CDFC7BAF253D545000BF5EB5 /* SharedExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC7BAC253D545000BF5EB5 /* SharedExtensions.swift */; };
+		CDFC7BB0253D545000BF5EB5 /* SharedExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC7BAC253D545000BF5EB5 /* SharedExtensions.swift */; };
+		F5D13EBB69D5314229FDE89A /* Pods_zoom_scheduler_mac_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 772EEF4B33CFA1156D36AD21 /* Pods_zoom_scheduler_mac_dev.framework */; };
+		F89BD593A0672051C9A916A8 /* Pods_zoom_scheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 322F7A2C683A7979D684AFDB /* Pods_zoom_scheduler.framework */; };
+		FC397B7B29EA1C2BFF485715 /* Pods_zoom_scheduler_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE7FC55DCB8EEF021CAD17E /* Pods_zoom_scheduler_dev.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		214893AC1E0FD6C3E24DC6E8 /* Pods-zoom-scheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler.debug.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler/Pods-zoom-scheduler.debug.xcconfig"; sourceTree = "<group>"; };
+		1EE7FC55DCB8EEF021CAD17E /* Pods_zoom_scheduler_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zoom_scheduler_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		322F7A2C683A7979D684AFDB /* Pods_zoom_scheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zoom_scheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45A0BC80AD0E408F0FF7ADF0 /* Pods-zoom-scheduler-mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler-mac.debug.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac.debug.xcconfig"; sourceTree = "<group>"; };
+		772EEF4B33CFA1156D36AD21 /* Pods_zoom_scheduler_mac_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zoom_scheduler_mac_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		869C48CA33C1DF79C3E24D4C /* Pods_zoom_scheduler_mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zoom_scheduler_mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8C664F68CF12E2CC6005B31 /* Pods-zoom-scheduler-mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler-mac.release.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac.release.xcconfig"; sourceTree = "<group>"; };
-		BBA562BDE4334A2123DA94C4 /* Pods-zoom-scheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler.release.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler/Pods-zoom-scheduler.release.xcconfig"; sourceTree = "<group>"; };
+		C194A9A35AB653E2E32D8323 /* Pods-zoom-scheduler-mac-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler-mac-dev.release.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler-mac-dev/Pods-zoom-scheduler-mac-dev.release.xcconfig"; sourceTree = "<group>"; };
+		C2917D3FDF016358E9617B8F /* Pods-zoom-scheduler-mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler-mac.release.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac.release.xcconfig"; sourceTree = "<group>"; };
+		C623569C9EC17F6058B1C262 /* Pods-zoom-scheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler.release.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler/Pods-zoom-scheduler.release.xcconfig"; sourceTree = "<group>"; };
 		CD121BE8252636B700CD7572 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		CD121C2D2526499000CD7572 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		CD121C2E2526499000CD7572 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		CD121C2F2526499000CD7572 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
-		CD121C3B25265ACF00CD7572 /* ZoomAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAPI.swift; sourceTree = "<group>"; };
 		CD121C42252661E900CD7572 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		CD121C5125266EDC00CD7572 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
-		CD121C5A252670C100CD7572 /* SyncGoogleCalendarScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncGoogleCalendarScreen.swift; sourceTree = "<group>"; };
-		CD121C6F25267A2600CD7572 /* GoogleCalendarAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCalendarAPI.swift; sourceTree = "<group>"; };
+		CD121C5A252670C100CD7572 /* SignInGoogleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInGoogleScreen.swift; sourceTree = "<group>"; };
+		CD1434F82536DB3E00F6311D /* MeetingDrafts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingDrafts.swift; sourceTree = "<group>"; };
+		CD1435012536DB5400F6311D /* AccessTokenDrafts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenDrafts.swift; sourceTree = "<group>"; };
+		CD1435162536DBBD00F6311D /* ZoomMeeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomMeeting.swift; sourceTree = "<group>"; };
+		CD14357B253790DB00F6311D /* zoom_scheduler_mac_dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = zoom_scheduler_mac_dev.entitlements; sourceTree = "<group>"; };
+		CD1435852537927200F6311D /* GoogleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPI.swift; sourceTree = "<group>"; };
+		CD1435962538355F00F6311D /* GoogleCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCalendar.swift; sourceTree = "<group>"; };
+		CD1435A3253844CE00F6311D /* EventDrafts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDrafts.swift; sourceTree = "<group>"; };
+		CD1435B425389B7C00F6311D /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		CD1435C12538D1A600F6311D /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
+		CD32356D2528990500B74EC3 /* ZoomAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAPI.swift; sourceTree = "<group>"; };
+		CD3A4A682536C80C00E70CD0 /* ZoomAPIInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAPIInterceptor.swift; sourceTree = "<group>"; };
+		CD3A4A762536C9CE00E70CD0 /* ZoomAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAPIError.swift; sourceTree = "<group>"; };
+		CD4495B5253453F200F3CCD8 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		CD4495CD2534637C00F3CCD8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		CD4495F82535A7B000F3CCD8 /* zoom-scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD44962B2535A7BF00F3CCD8 /* zoom-scheduler-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD4496452535AAA800F3CCD8 /* zoom-scheduler-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zoom-scheduler-Info.plist"; sourceTree = "<group>"; };
+		CD4496462535AAF500F3CCD8 /* zoom-scheduler-mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zoom-scheduler-mac-Info.plist"; sourceTree = "<group>"; };
+		CD4496472535AAF500F3CCD8 /* zoom-scheduler-mac-dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zoom-scheduler-mac-dev-Info.plist"; sourceTree = "<group>"; };
+		CD44965F2535AEA700F3CCD8 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
+		CD5F8C8825396E3E00BFD18E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		CD5F8C8F2539828000BFD18E /* InAppFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppFeedback.swift; sourceTree = "<group>"; };
 		CD65C52825260AD300911834 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		CD65C54F25261BBA00911834 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CD6E9F7C2525D3D0007B28E4 /* EnterMeetingNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMeetingNameView.swift; sourceTree = "<group>"; };
@@ -82,35 +199,55 @@
 		CD8057AD2523D670008527FF /* ScheduleMeetingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMeetingScreen.swift; sourceTree = "<group>"; };
 		CD8E626D252692EE002824CF /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		CD8E62712526933D002824CF /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
-		CDBCD4D92521EB0100B6B644 /* zoom-scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDBCD4D92521EB0100B6B644 /* zoom-scheduler-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBCD4DC2521EB0100B6B644 /* zoom_schedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zoom_schedulerApp.swift; sourceTree = "<group>"; };
 		CDBCD4DE2521EB0100B6B644 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CDBCD4E02521EB0100B6B644 /* PhoneAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PhoneAssets.xcassets; sourceTree = "<group>"; };
 		CDBCD4E32521EB0100B6B644 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CDBCD4E52521EB0100B6B644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CDBCD4F825221B2900B6B644 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
-		CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDBCD4E52521EB0100B6B644 /* zoom-scheduler-dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zoom-scheduler-dev-Info.plist"; sourceTree = "<group>"; };
+		CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler-mac-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBCD50125226C4000B6B644 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDBCD50525226C4300B6B644 /* MacAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MacAssets.xcassets; sourceTree = "<group>"; };
 		CDBCD50825226C4300B6B644 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CDBCD50D25226C4300B6B644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDBCD50E25226C4300B6B644 /* zoom_scheduler_mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = zoom_scheduler_mac.entitlements; sourceTree = "<group>"; };
 		CDBCD5532522764900B6B644 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		CDBCD560252282E100B6B644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CDCC1E622523111F004BFC55 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		CDCC1E622523111F004BFC55 /* SignInZoomScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInZoomScreen.swift; sourceTree = "<group>"; };
 		CDFA709C2526F8790055DE9B /* MenuScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreen.swift; sourceTree = "<group>"; };
 		CDFA70B92527166A0055DE9B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CDFA70BF25271DCC0055DE9B /* EnterMeetingDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMeetingDurationView.swift; sourceTree = "<group>"; };
 		CDFA70C5252733430055DE9B /* SelectCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCalendarView.swift; sourceTree = "<group>"; };
-		CFB0AA63643C83B263ED0D02 /* Pods-zoom-scheduler-mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler-mac.debug.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac.debug.xcconfig"; sourceTree = "<group>"; };
+		CDFC7BAC253D545000BF5EB5 /* SharedExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedExtensions.swift; sourceTree = "<group>"; };
+		D0527531F0AC96C7D13F7337 /* Pods-zoom-scheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler.debug.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler/Pods-zoom-scheduler.debug.xcconfig"; sourceTree = "<group>"; };
+		E7BD8395B5CD5E47AEE2253F /* Pods-zoom-scheduler-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler-dev.debug.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler-dev/Pods-zoom-scheduler-dev.debug.xcconfig"; sourceTree = "<group>"; };
+		F266833B277B97FDF7371530 /* Pods-zoom-scheduler-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler-dev.release.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler-dev/Pods-zoom-scheduler-dev.release.xcconfig"; sourceTree = "<group>"; };
+		F373D0B6F324CD54F885F4BA /* Pods-zoom-scheduler-mac-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler-mac-dev.debug.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler-mac-dev/Pods-zoom-scheduler-mac-dev.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CD4495EA2535A7B000F3CCD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD4495EB2535A7B000F3CCD8 /* Pods_zoom_scheduler.framework in Frameworks */,
+				F89BD593A0672051C9A916A8 /* Pods_zoom_scheduler.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD44961C2535A7BF00F3CCD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD44961D2535A7BF00F3CCD8 /* Pods_zoom_scheduler_mac.framework in Frameworks */,
+				745EBD4E01597B632E44FCB2 /* Pods_zoom_scheduler_mac.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CDBCD4D62521EB0100B6B644 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DA83F12B5FC68D6206123CE /* Pods_zoom_scheduler.framework in Frameworks */,
+				FC397B7B29EA1C2BFF485715 /* Pods_zoom_scheduler_dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,7 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF6352A59ED858991F4038C8 /* Pods_zoom_scheduler_mac.framework in Frameworks */,
+				F5D13EBB69D5314229FDE89A /* Pods_zoom_scheduler_mac_dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +267,8 @@
 			children = (
 				322F7A2C683A7979D684AFDB /* Pods_zoom_scheduler.framework */,
 				869C48CA33C1DF79C3E24D4C /* Pods_zoom_scheduler_mac.framework */,
+				1EE7FC55DCB8EEF021CAD17E /* Pods_zoom_scheduler_dev.framework */,
+				772EEF4B33CFA1156D36AD21 /* Pods_zoom_scheduler_mac_dev.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -157,16 +296,54 @@
 		CD121C3A25265AB700CD7572 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				CD121C6F25267A2600CD7572 /* GoogleCalendarAPI.swift */,
-				CD121C3B25265ACF00CD7572 /* ZoomAPI.swift */,
+				CD1435842537925500F6311D /* GoogleCalendarAPI */,
+				CD3A4A712536C81000E70CD0 /* ZoomAPI */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		CD1435842537925500F6311D /* GoogleCalendarAPI */ = {
+			isa = PBXGroup;
+			children = (
+				CD1435852537927200F6311D /* GoogleAPI.swift */,
+			);
+			path = GoogleCalendarAPI;
+			sourceTree = "<group>";
+		};
+		CD3A4A512535B75B00E70CD0 /* Drafts */ = {
+			isa = PBXGroup;
+			children = (
+				CD1435012536DB5400F6311D /* AccessTokenDrafts.swift */,
+				CD1434F82536DB3E00F6311D /* MeetingDrafts.swift */,
+				CD1435A3253844CE00F6311D /* EventDrafts.swift */,
+			);
+			path = Drafts;
+			sourceTree = "<group>";
+		};
+		CD3A4A712536C81000E70CD0 /* ZoomAPI */ = {
+			isa = PBXGroup;
+			children = (
+				CD32356D2528990500B74EC3 /* ZoomAPI.swift */,
+				CD3A4A682536C80C00E70CD0 /* ZoomAPIInterceptor.swift */,
+				CD3A4A762536C9CE00E70CD0 /* ZoomAPIError.swift */,
+			);
+			path = ZoomAPI;
+			sourceTree = "<group>";
+		};
+		CD44965E2535AE9800F3CCD8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CD44965F2535AEA700F3CCD8 /* Target.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		CD65C52725260AA600911834 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				CD65C52825260AD300911834 /* EmailValidator.swift */,
+				CD5F8C8F2539828000BFD18E /* InAppFeedback.swift */,
+				CDFC7BAC253D545000BF5EB5 /* SharedExtensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -179,6 +356,8 @@
 				CDFA70BF25271DCC0055DE9B /* EnterMeetingDurationView.swift */,
 				CD6E9F8A2525DD64007B28E4 /* EnterMeetingInviteesView.swift */,
 				CDFA70C5252733430055DE9B /* SelectCalendarView.swift */,
+				CD1435C12538D1A600F6311D /* SettingItemView.swift */,
+				CD5F8C8825396E3E00BFD18E /* ToastView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,8 +377,10 @@
 		CDBCD4DA2521EB0100B6B644 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CDBCD4D92521EB0100B6B644 /* zoom-scheduler.app */,
-				CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac.app */,
+				CDBCD4D92521EB0100B6B644 /* zoom-scheduler-dev.app */,
+				CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac-dev.app */,
+				CD4495F82535A7B000F3CCD8 /* zoom-scheduler.app */,
+				CD44962B2535A7BF00F3CCD8 /* zoom-scheduler-mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,8 +397,10 @@
 		CDBCD4F525221AE200B6B644 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CDBCD4F825221B2900B6B644 /* Meeting.swift */,
-				CD121C5125266EDC00CD7572 /* Preferences.swift */,
+				CD1435962538355F00F6311D /* GoogleCalendar.swift */,
+				CD4495CD2534637C00F3CCD8 /* Model.swift */,
+				CD4495B5253453F200F3CCD8 /* Session.swift */,
+				CD1435162536DBBD00F6311D /* ZoomMeeting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -243,7 +426,9 @@
 		CDBCD55E252282A200B6B644 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CD44965E2535AE9800F3CCD8 /* App */,
 				CD121C3A25265AB700CD7572 /* API */,
+				CD3A4A512535B75B00E70CD0 /* Drafts */,
 				CDBCD4F525221AE200B6B644 /* Models */,
 				CD121BE72526360400CD7572 /* Views */,
 				CD65C52725260AA600911834 /* Utils */,
@@ -333,8 +518,9 @@
 				CDFA709C2526F8790055DE9B /* MenuScreen.swift */,
 				CD8057A52523CC37008527FF /* RootScreen.swift */,
 				CD8057AD2523D670008527FF /* ScheduleMeetingScreen.swift */,
-				CD121C5A252670C100CD7572 /* SyncGoogleCalendarScreen.swift */,
-				CDCC1E622523111F004BFC55 /* WelcomeScreen.swift */,
+				CD1435B425389B7C00F6311D /* SettingsScreen.swift */,
+				CD121C5A252670C100CD7572 /* SignInGoogleScreen.swift */,
+				CDCC1E622523111F004BFC55 /* SignInZoomScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -358,7 +544,8 @@
 		CDCC1E5325230B34004BFC55 /* Target Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				CDBCD4E52521EB0100B6B644 /* Info.plist */,
+				CD4496452535AAA800F3CCD8 /* zoom-scheduler-Info.plist */,
+				CDBCD4E52521EB0100B6B644 /* zoom-scheduler-dev-Info.plist */,
 			);
 			path = "Target Support Files";
 			sourceTree = "<group>";
@@ -366,8 +553,10 @@
 		CDCC1E5425230BA7004BFC55 /* Target Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				CDBCD50D25226C4300B6B644 /* Info.plist */,
+				CD4496462535AAF500F3CCD8 /* zoom-scheduler-mac-Info.plist */,
+				CD4496472535AAF500F3CCD8 /* zoom-scheduler-mac-dev-Info.plist */,
 				CDBCD50E25226C4300B6B644 /* zoom_scheduler_mac.entitlements */,
+				CD14357B253790DB00F6311D /* zoom_scheduler_mac_dev.entitlements */,
 			);
 			path = "Target Support Files";
 			sourceTree = "<group>";
@@ -391,10 +580,14 @@
 		DF57F86380EAC19EA8E61240 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				214893AC1E0FD6C3E24DC6E8 /* Pods-zoom-scheduler.debug.xcconfig */,
-				BBA562BDE4334A2123DA94C4 /* Pods-zoom-scheduler.release.xcconfig */,
-				CFB0AA63643C83B263ED0D02 /* Pods-zoom-scheduler-mac.debug.xcconfig */,
-				A8C664F68CF12E2CC6005B31 /* Pods-zoom-scheduler-mac.release.xcconfig */,
+				D0527531F0AC96C7D13F7337 /* Pods-zoom-scheduler.debug.xcconfig */,
+				C623569C9EC17F6058B1C262 /* Pods-zoom-scheduler.release.xcconfig */,
+				45A0BC80AD0E408F0FF7ADF0 /* Pods-zoom-scheduler-mac.debug.xcconfig */,
+				C2917D3FDF016358E9617B8F /* Pods-zoom-scheduler-mac.release.xcconfig */,
+				E7BD8395B5CD5E47AEE2253F /* Pods-zoom-scheduler-dev.debug.xcconfig */,
+				F266833B277B97FDF7371530 /* Pods-zoom-scheduler-dev.release.xcconfig */,
+				F373D0B6F324CD54F885F4BA /* Pods-zoom-scheduler-mac-dev.debug.xcconfig */,
+				C194A9A35AB653E2E32D8323 /* Pods-zoom-scheduler-mac-dev.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -402,15 +595,15 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CDBCD4D82521EB0100B6B644 /* zoom-scheduler */ = {
+		CD4495D82535A7B000F3CCD8 /* zoom-scheduler */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CDBCD4E82521EB0100B6B644 /* Build configuration list for PBXNativeTarget "zoom-scheduler" */;
+			buildConfigurationList = CD4495F52535A7B000F3CCD8 /* Build configuration list for PBXNativeTarget "zoom-scheduler" */;
 			buildPhases = (
-				E175A5995373F58F7B2CF6FE /* [CP] Check Pods Manifest.lock */,
-				CDBCD4D52521EB0100B6B644 /* Sources */,
-				CDBCD4D62521EB0100B6B644 /* Frameworks */,
-				CDBCD4D72521EB0100B6B644 /* Resources */,
-				17F874637F26674100071492 /* [CP] Embed Pods Frameworks */,
+				CD4495D92535A7B000F3CCD8 /* [CP] Check Pods Manifest.lock */,
+				CD4495DA2535A7B000F3CCD8 /* Sources */,
+				CD4495EA2535A7B000F3CCD8 /* Frameworks */,
+				CD4495EC2535A7B000F3CCD8 /* Resources */,
+				CD4495F42535A7B000F3CCD8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -418,18 +611,18 @@
 			);
 			name = "zoom-scheduler";
 			productName = "zoom-scheduler";
-			productReference = CDBCD4D92521EB0100B6B644 /* zoom-scheduler.app */;
+			productReference = CD4495F82535A7B000F3CCD8 /* zoom-scheduler.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CDBCD4FE25226C4000B6B644 /* zoom-scheduler-mac */ = {
+		CD4496002535A7BF00F3CCD8 /* zoom-scheduler-mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CDBCD50F25226C4300B6B644 /* Build configuration list for PBXNativeTarget "zoom-scheduler-mac" */;
+			buildConfigurationList = CD4496282535A7BF00F3CCD8 /* Build configuration list for PBXNativeTarget "zoom-scheduler-mac" */;
 			buildPhases = (
-				CDB69C0D0832EC91E6D157E0 /* [CP] Check Pods Manifest.lock */,
-				CDBCD4FB25226C4000B6B644 /* Sources */,
-				CDBCD4FC25226C4000B6B644 /* Frameworks */,
-				CDBCD4FD25226C4000B6B644 /* Resources */,
-				DE1CCF0525D356ACE53383E2 /* [CP] Embed Pods Frameworks */,
+				CD4496012535A7BF00F3CCD8 /* [CP] Check Pods Manifest.lock */,
+				CD4496022535A7BF00F3CCD8 /* Sources */,
+				CD44961C2535A7BF00F3CCD8 /* Frameworks */,
+				CD44961E2535A7BF00F3CCD8 /* Resources */,
+				CD4496272535A7BF00F3CCD8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -437,7 +630,45 @@
 			);
 			name = "zoom-scheduler-mac";
 			productName = "zoom-scheduler-mac";
-			productReference = CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac.app */;
+			productReference = CD44962B2535A7BF00F3CCD8 /* zoom-scheduler-mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CDBCD4D82521EB0100B6B644 /* zoom-scheduler-dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDBCD4E82521EB0100B6B644 /* Build configuration list for PBXNativeTarget "zoom-scheduler-dev" */;
+			buildPhases = (
+				AC9B73DC80E597CEE7152A3A /* [CP] Check Pods Manifest.lock */,
+				CDBCD4D52521EB0100B6B644 /* Sources */,
+				CDBCD4D62521EB0100B6B644 /* Frameworks */,
+				CDBCD4D72521EB0100B6B644 /* Resources */,
+				E686B62D5B05086133550C3C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "zoom-scheduler-dev";
+			productName = "zoom-scheduler";
+			productReference = CDBCD4D92521EB0100B6B644 /* zoom-scheduler-dev.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CDBCD4FE25226C4000B6B644 /* zoom-scheduler-mac-dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDBCD50F25226C4300B6B644 /* Build configuration list for PBXNativeTarget "zoom-scheduler-mac-dev" */;
+			buildPhases = (
+				74C60B26CA3F470DB659EC8D /* [CP] Check Pods Manifest.lock */,
+				CDBCD4FB25226C4000B6B644 /* Sources */,
+				CDBCD4FC25226C4000B6B644 /* Frameworks */,
+				CDBCD4FD25226C4000B6B644 /* Resources */,
+				52486E2D040AD6CEE7E18C13 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "zoom-scheduler-mac-dev";
+			productName = "zoom-scheduler-mac";
+			productReference = CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac-dev.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -470,13 +701,44 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CDBCD4D82521EB0100B6B644 /* zoom-scheduler */,
-				CDBCD4FE25226C4000B6B644 /* zoom-scheduler-mac */,
+				CD4495D82535A7B000F3CCD8 /* zoom-scheduler */,
+				CDBCD4D82521EB0100B6B644 /* zoom-scheduler-dev */,
+				CD4496002535A7BF00F3CCD8 /* zoom-scheduler-mac */,
+				CDBCD4FE25226C4000B6B644 /* zoom-scheduler-mac-dev */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CD4495EC2535A7B000F3CCD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD4495ED2535A7B000F3CCD8 /* SF-Pro-Display-Medium.otf in Resources */,
+				CD4495EE2535A7B000F3CCD8 /* Preview Assets.xcassets in Resources */,
+				CD4495EF2535A7B000F3CCD8 /* Colors.xcassets in Resources */,
+				CD4495F02535A7B000F3CCD8 /* Assets.xcassets in Resources */,
+				CD4495F12535A7B000F3CCD8 /* SF-Pro-Text-Medium.otf in Resources */,
+				CD4495F22535A7B000F3CCD8 /* PhoneAssets.xcassets in Resources */,
+				CD4495F32535A7B000F3CCD8 /* SF-Pro-Text-Regular.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD44961E2535A7BF00F3CCD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD44961F2535A7BF00F3CCD8 /* Colors.xcassets in Resources */,
+				CD4496202535A7BF00F3CCD8 /* Menu.storyboard in Resources */,
+				CD4496212535A7BF00F3CCD8 /* SF-Pro-Text-Medium.otf in Resources */,
+				CD4496222535A7BF00F3CCD8 /* Preview Assets.xcassets in Resources */,
+				CD4496232535A7BF00F3CCD8 /* Assets.xcassets in Resources */,
+				CD4496242535A7BF00F3CCD8 /* MacAssets.xcassets in Resources */,
+				CD4496252535A7BF00F3CCD8 /* SF-Pro-Text-Regular.otf in Resources */,
+				CD4496262535A7BF00F3CCD8 /* SF-Pro-Display-Medium.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CDBCD4D72521EB0100B6B644 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -509,24 +771,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		17F874637F26674100071492 /* [CP] Embed Pods Frameworks */ = {
+		52486E2D040AD6CEE7E18C13 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler/Pods-zoom-scheduler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-mac-dev/Pods-zoom-scheduler-mac-dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler/Pods-zoom-scheduler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-mac-dev/Pods-zoom-scheduler-mac-dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler/Pods-zoom-scheduler-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-mac-dev/Pods-zoom-scheduler-mac-dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CDB69C0D0832EC91E6D157E0 /* [CP] Check Pods Manifest.lock */ = {
+		74C60B26CA3F470DB659EC8D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -541,31 +803,36 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-zoom-scheduler-mac-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-zoom-scheduler-mac-dev-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DE1CCF0525D356ACE53383E2 /* [CP] Embed Pods Frameworks */ = {
+		AC9B73DC80E597CEE7152A3A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-zoom-scheduler-dev-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E175A5995373F58F7B2CF6FE /* [CP] Check Pods Manifest.lock */ = {
+		CD4495D92535A7B000F3CCD8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -587,23 +854,173 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CD4495F42535A7B000F3CCD8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler/Pods-zoom-scheduler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler/Pods-zoom-scheduler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler/Pods-zoom-scheduler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD4496012535A7BF00F3CCD8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-zoom-scheduler-mac-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD4496272535A7BF00F3CCD8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E686B62D5B05086133550C3C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-dev/Pods-zoom-scheduler-dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-dev/Pods-zoom-scheduler-dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-dev/Pods-zoom-scheduler-dev-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CD4495DA2535A7B000F3CCD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD4495DB2535A7B000F3CCD8 /* Model.swift in Sources */,
+				CD4495DC2535A7B000F3CCD8 /* LogoView.swift in Sources */,
+				CD4495DD2535A7B000F3CCD8 /* ContentView.swift in Sources */,
+				CD1435172536DBBD00F6311D /* ZoomMeeting.swift in Sources */,
+				CD1435022536DB5400F6311D /* AccessTokenDrafts.swift in Sources */,
+				CD1435862537927200F6311D /* GoogleAPI.swift in Sources */,
+				CD4495DE2535A7B000F3CCD8 /* MenuItemView.swift in Sources */,
+				CD4495DF2535A7B000F3CCD8 /* EmailValidator.swift in Sources */,
+				CD1435A4253844CE00F6311D /* EventDrafts.swift in Sources */,
+				CD3A4A692536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */,
+				CD5F8C902539828000BFD18E /* InAppFeedback.swift in Sources */,
+				CD4495E12535A7B000F3CCD8 /* ZoomAPI.swift in Sources */,
+				CD4495E32535A7B000F3CCD8 /* ActivityIndicator.swift in Sources */,
+				CD4495E42535A7B000F3CCD8 /* Session.swift in Sources */,
+				CD3A4A772536C9CE00E70CD0 /* ZoomAPIError.swift in Sources */,
+				CDFC7BAD253D545000BF5EB5 /* SharedExtensions.swift in Sources */,
+				CD1434F92536DB3E00F6311D /* MeetingDrafts.swift in Sources */,
+				CD4496602535AEA700F3CCD8 /* Target.swift in Sources */,
+				CD1435972538355F00F6311D /* GoogleCalendar.swift in Sources */,
+				CD4495E92535A7B000F3CCD8 /* zoom_schedulerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD4496022535A7BF00F3CCD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD4496032535A7BF00F3CCD8 /* MenuScreen.swift in Sources */,
+				CD1434FB2536DB3E00F6311D /* MeetingDrafts.swift in Sources */,
+				CD4496042535A7BF00F3CCD8 /* EnterMeetingNameView.swift in Sources */,
+				CD4496052535A7BF00F3CCD8 /* SignInZoomScreen.swift in Sources */,
+				CD4496062535A7BF00F3CCD8 /* EmailValidator.swift in Sources */,
+				CD1435B725389B7C00F6311D /* SettingsScreen.swift in Sources */,
+				CD4496082535A7BF00F3CCD8 /* SelectCalendarView.swift in Sources */,
+				CD4496092535A7BF00F3CCD8 /* HomeScreen.swift in Sources */,
+				CD44960A2535A7BF00F3CCD8 /* ActivityIndicator.swift in Sources */,
+				CD1435C42538D1A600F6311D /* SettingItemView.swift in Sources */,
+				CD4496622535AEA700F3CCD8 /* Target.swift in Sources */,
+				CD44960B2535A7BF00F3CCD8 /* Extensions.swift in Sources */,
+				CD44960C2535A7BF00F3CCD8 /* AppDelegate.swift in Sources */,
+				CD1435992538355F00F6311D /* GoogleCalendar.swift in Sources */,
+				CD44960D2535A7BF00F3CCD8 /* Model.swift in Sources */,
+				CD3A4A792536C9CE00E70CD0 /* ZoomAPIError.swift in Sources */,
+				CD5F8C8925396E3E00BFD18E /* ToastView.swift in Sources */,
+				CD44960E2535A7BF00F3CCD8 /* EnterMeetingDurationView.swift in Sources */,
+				CD44960F2535A7BF00F3CCD8 /* MenuItemView.swift in Sources */,
+				CD4496102535A7BF00F3CCD8 /* LogoView.swift in Sources */,
+				CD1435A6253844CE00F6311D /* EventDrafts.swift in Sources */,
+				CD1435192536DBBD00F6311D /* ZoomMeeting.swift in Sources */,
+				CD4496122535A7BF00F3CCD8 /* EnterMeetingDateView.swift in Sources */,
+				CD1435042536DB5400F6311D /* AccessTokenDrafts.swift in Sources */,
+				CD4496132535A7BF00F3CCD8 /* ZoomAPI.swift in Sources */,
+				CD4496142535A7BF00F3CCD8 /* SignInGoogleScreen.swift in Sources */,
+				CD4496172535A7BF00F3CCD8 /* Session.swift in Sources */,
+				CD1435882537927200F6311D /* GoogleAPI.swift in Sources */,
+				CD4496192535A7BF00F3CCD8 /* EnterMeetingInviteesView.swift in Sources */,
+				CD5F8C922539828000BFD18E /* InAppFeedback.swift in Sources */,
+				CD44961A2535A7BF00F3CCD8 /* ScheduleMeetingScreen.swift in Sources */,
+				CDFC7BAF253D545000BF5EB5 /* SharedExtensions.swift in Sources */,
+				CD3A4A6B2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */,
+				CD44961B2535A7BF00F3CCD8 /* RootScreen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CDBCD4D52521EB0100B6B644 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD4495CE2534637C00F3CCD8 /* Model.swift in Sources */,
 				CD121BE9252636B700CD7572 /* LogoView.swift in Sources */,
 				CDBCD4DF2521EB0100B6B644 /* ContentView.swift in Sources */,
+				CD1435182536DBBD00F6311D /* ZoomMeeting.swift in Sources */,
+				CD1435032536DB5400F6311D /* AccessTokenDrafts.swift in Sources */,
+				CD1435872537927200F6311D /* GoogleAPI.swift in Sources */,
 				CD16ACA625269B9000F40F65 /* MenuItemView.swift in Sources */,
 				CD65C52925260AD300911834 /* EmailValidator.swift in Sources */,
-				CD121C3C25265ACF00CD7572 /* ZoomAPI.swift in Sources */,
+				CD1435A5253844CE00F6311D /* EventDrafts.swift in Sources */,
+				CD3A4A6A2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */,
+				CD5F8C912539828000BFD18E /* InAppFeedback.swift in Sources */,
+				CD32356E2528990500B74EC3 /* ZoomAPI.swift in Sources */,
 				CD121C43252661E900CD7572 /* ActivityIndicator.swift in Sources */,
-				CD121C7025267A2600CD7572 /* GoogleCalendarAPI.swift in Sources */,
-				CD121C5B252670C100CD7572 /* SyncGoogleCalendarScreen.swift in Sources */,
-				CDBCD4F925221B2900B6B644 /* Meeting.swift in Sources */,
-				CD121C5225266EDC00CD7572 /* Preferences.swift in Sources */,
+				CD4495B6253453F200F3CCD8 /* Session.swift in Sources */,
+				CD3A4A782536C9CE00E70CD0 /* ZoomAPIError.swift in Sources */,
+				CDFC7BAE253D545000BF5EB5 /* SharedExtensions.swift in Sources */,
+				CD1434FA2536DB3E00F6311D /* MeetingDrafts.swift in Sources */,
+				CD4496612535AEA700F3CCD8 /* Target.swift in Sources */,
+				CD1435982538355F00F6311D /* GoogleCalendar.swift in Sources */,
 				CDBCD4DD2521EB0100B6B644 /* zoom_schedulerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,25 +1030,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDFA709D2526F8790055DE9B /* MenuScreen.swift in Sources */,
+				CD1434FC2536DB3E00F6311D /* MeetingDrafts.swift in Sources */,
 				CD6E9F7D2525D3D0007B28E4 /* EnterMeetingNameView.swift in Sources */,
-				CDCC1E632523111F004BFC55 /* WelcomeScreen.swift in Sources */,
+				CDCC1E632523111F004BFC55 /* SignInZoomScreen.swift in Sources */,
 				CD65C52A25260AD300911834 /* EmailValidator.swift in Sources */,
-				CDBCD51625226D1500B6B644 /* Meeting.swift in Sources */,
+				CD1435B825389B7D00F6311D /* SettingsScreen.swift in Sources */,
 				CDFA70C6252733430055DE9B /* SelectCalendarView.swift in Sources */,
 				CD8E626E252692EE002824CF /* HomeScreen.swift in Sources */,
 				CD121C44252661E900CD7572 /* ActivityIndicator.swift in Sources */,
+				CD1435C52538D1A600F6311D /* SettingItemView.swift in Sources */,
+				CD4496632535AEA700F3CCD8 /* Target.swift in Sources */,
 				CDFA70BA2527166B0055DE9B /* Extensions.swift in Sources */,
 				CDBCD50225226C4000B6B644 /* AppDelegate.swift in Sources */,
+				CD14359A2538355F00F6311D /* GoogleCalendar.swift in Sources */,
+				CD4495CF2534637C00F3CCD8 /* Model.swift in Sources */,
+				CD3A4A7A2536C9CE00E70CD0 /* ZoomAPIError.swift in Sources */,
+				CD5F8C8A25396E3E00BFD18E /* ToastView.swift in Sources */,
 				CDFA70C025271DCC0055DE9B /* EnterMeetingDurationView.swift in Sources */,
 				CD8E62722526933D002824CF /* MenuItemView.swift in Sources */,
 				CD121BEA252636B700CD7572 /* LogoView.swift in Sources */,
-				CD121C3D25265ACF00CD7572 /* ZoomAPI.swift in Sources */,
+				CD1435A7253844CE00F6311D /* EventDrafts.swift in Sources */,
+				CD14351A2536DBBD00F6311D /* ZoomMeeting.swift in Sources */,
 				CD6E9F832525D463007B28E4 /* EnterMeetingDateView.swift in Sources */,
-				CD121C5C252670C100CD7572 /* SyncGoogleCalendarScreen.swift in Sources */,
-				CD121C7125267A2600CD7572 /* GoogleCalendarAPI.swift in Sources */,
-				CD121C5325266EDC00CD7572 /* Preferences.swift in Sources */,
+				CD1435052536DB5400F6311D /* AccessTokenDrafts.swift in Sources */,
+				CD32356F2528990500B74EC3 /* ZoomAPI.swift in Sources */,
+				CD121C5C252670C100CD7572 /* SignInGoogleScreen.swift in Sources */,
+				CD4495B7253453F200F3CCD8 /* Session.swift in Sources */,
+				CD1435892537927200F6311D /* GoogleAPI.swift in Sources */,
 				CD6E9F8B2525DD64007B28E4 /* EnterMeetingInviteesView.swift in Sources */,
+				CD5F8C932539828000BFD18E /* InAppFeedback.swift in Sources */,
 				CD8057AE2523D670008527FF /* ScheduleMeetingScreen.swift in Sources */,
+				CDFC7BB0253D545000BF5EB5 /* SharedExtensions.swift in Sources */,
+				CD3A4A6C2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */,
 				CD8057A62523CC37008527FF /* RootScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,6 +1069,114 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		CD4495F62535A7B000F3CCD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0527531F0AC96C7D13F7337 /* Pods-zoom-scheduler.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler/Resources/Assets/Preview Assets.xcassets\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "zoom-scheduler/Sources/Target Support Files/zoom-scheduler-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD4495F72535A7B000F3CCD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C623569C9EC17F6058B1C262 /* Pods-zoom-scheduler.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler/Resources/Assets/Preview Assets.xcassets\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "zoom-scheduler/Sources/Target Support Files/zoom-scheduler-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CD4496292535A7BF00F3CCD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45A0BC80AD0E408F0FF7ADF0 /* Pods-zoom-scheduler-mac.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "zoom-scheduler-mac/Sources/Target Support Files/zoom_scheduler_mac.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler-mac/Resources/Assets/Preview Assets.xcassets\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "zoom-scheduler-mac/Sources/Target Support Files/zoom-scheduler-mac-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CD44962A2535A7BF00F3CCD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2917D3FDF016358E9617B8F /* Pods-zoom-scheduler-mac.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "zoom-scheduler-mac/Sources/Target Support Files/zoom_scheduler_mac.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler-mac/Resources/Assets/Preview Assets.xcassets\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "zoom-scheduler-mac/Sources/Target Support Files/zoom-scheduler-mac-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		CDBCD4E62521EB0100B6B644 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -757,7 +1295,7 @@
 		};
 		CDBCD4E92521EB0100B6B644 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 214893AC1E0FD6C3E24DC6E8 /* Pods-zoom-scheduler.debug.xcconfig */;
+			baseConfigurationReference = E7BD8395B5CD5E47AEE2253F /* Pods-zoom-scheduler-dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -766,13 +1304,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler/Resources/Assets/Preview Assets.xcassets\"";
 				DEVELOPMENT_TEAM = W9875NV3WF;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "zoom-scheduler/Sources/Target Support Files/Info.plist";
+				INFOPLIST_FILE = "zoom-scheduler/Sources/Target Support Files/zoom-scheduler-dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -782,7 +1320,7 @@
 		};
 		CDBCD4EA2521EB0100B6B644 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBA562BDE4334A2123DA94C4 /* Pods-zoom-scheduler.release.xcconfig */;
+			baseConfigurationReference = F266833B277B97FDF7371530 /* Pods-zoom-scheduler-dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -791,13 +1329,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler/Resources/Assets/Preview Assets.xcassets\"";
 				DEVELOPMENT_TEAM = W9875NV3WF;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "zoom-scheduler/Sources/Target Support Files/Info.plist";
+				INFOPLIST_FILE = "zoom-scheduler/Sources/Target Support Files/zoom-scheduler-dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -807,11 +1345,11 @@
 		};
 		CDBCD51025226C4300B6B644 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CFB0AA63643C83B263ED0D02 /* Pods-zoom-scheduler-mac.debug.xcconfig */;
+			baseConfigurationReference = F373D0B6F324CD54F885F4BA /* Pods-zoom-scheduler-mac-dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "zoom-scheduler-mac/Sources/Target Support Files/zoom_scheduler_mac.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "zoom-scheduler-mac/Sources/Target Support Files/zoom_scheduler_mac_dev.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -819,14 +1357,15 @@
 				DEVELOPMENT_TEAM = W9875NV3WF;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "zoom-scheduler-mac/Sources/Target Support Files/Info.plist";
+				INFOPLIST_FILE = "zoom-scheduler-mac/Sources/Target Support Files/zoom-scheduler-mac-dev-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
@@ -834,11 +1373,11 @@
 		};
 		CDBCD51125226C4300B6B644 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8C664F68CF12E2CC6005B31 /* Pods-zoom-scheduler-mac.release.xcconfig */;
+			baseConfigurationReference = C194A9A35AB653E2E32D8323 /* Pods-zoom-scheduler-mac-dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "zoom-scheduler-mac/Sources/Target Support Files/zoom_scheduler_mac.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "zoom-scheduler-mac/Sources/Target Support Files/zoom_scheduler_mac_dev.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -846,14 +1385,15 @@
 				DEVELOPMENT_TEAM = W9875NV3WF;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "zoom-scheduler-mac/Sources/Target Support Files/Info.plist";
+				INFOPLIST_FILE = "zoom-scheduler-mac/Sources/Target Support Files/zoom-scheduler-mac-dev-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
@@ -862,6 +1402,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CD4495F52535A7B000F3CCD8 /* Build configuration list for PBXNativeTarget "zoom-scheduler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD4495F62535A7B000F3CCD8 /* Debug */,
+				CD4495F72535A7B000F3CCD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD4496282535A7BF00F3CCD8 /* Build configuration list for PBXNativeTarget "zoom-scheduler-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD4496292535A7BF00F3CCD8 /* Debug */,
+				CD44962A2535A7BF00F3CCD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CDBCD4D42521EB0100B6B644 /* Build configuration list for PBXProject "zoom-scheduler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -871,7 +1429,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CDBCD4E82521EB0100B6B644 /* Build configuration list for PBXNativeTarget "zoom-scheduler" */ = {
+		CDBCD4E82521EB0100B6B644 /* Build configuration list for PBXNativeTarget "zoom-scheduler-dev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CDBCD4E92521EB0100B6B644 /* Debug */,
@@ -880,7 +1438,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CDBCD50F25226C4300B6B644 /* Build configuration list for PBXNativeTarget "zoom-scheduler-mac" */ = {
+		CDBCD50F25226C4300B6B644 /* Build configuration list for PBXNativeTarget "zoom-scheduler-mac-dev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CDBCD51025226C4300B6B644 /* Debug */,

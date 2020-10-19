@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct EnterMeetingInviteesView: View {
-    @ObservedObject
-    var meeting: Meeting
+    @Binding
+    var draft: CreateEventDraft
 
     @State
     private var emailInput = ""
@@ -17,7 +17,18 @@ struct EnterMeetingInviteesView: View {
     private var isEditing = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        let inviteesView = VStack(alignment: .leading, spacing: 0) {
+            ForEach(draft.invitees, id: \.id) { invitee in
+                MeetingInviteeView(invitee: invitee) {
+                    if let idx = draft.invitees.firstIndex(of: invitee) {
+                        draft.invitees.remove(at: idx)
+                    }
+                }
+            }
+        }
+        .padding(.leading, 16)
+
+        return VStack(alignment: .leading, spacing: 0) {
             Text("Invitees")
                 .font(.custom("SFProText-Regular", size: 13))
                 .kerning(-0.08)
@@ -44,31 +55,37 @@ struct EnterMeetingInviteesView: View {
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(
-                        isEditing ? Color("Views/TextField/Border/Editing/primary") : Color("Views/TextField/Border/primary"),
+                        isEditing
+                            ? Color("Views/TextField/Border/Editing/primary")
+                            : Color("Views/TextField/Border/primary"),
                         lineWidth: 2
                     )
             )
             .shadow(
-                color: isEditing ?  Color("Views/TextField/Shadow/primary") : Color.clear,
+                color: isEditing
+                    ? Color("Views/TextField/Shadow/primary")
+                    : Color.clear,
                 radius: 4,
                 x: 0.0,
                 y: 0.0
             )
             .padding(.top, 8)
 
-            VStack(alignment: .leading, spacing: 0) {
-                ForEach(meeting.invitees, id: \.email) { invitee in
-                    MeetingInviteeView(invitee: invitee) {
-                        if let idx = meeting.invitees.firstIndex(of: invitee) {
-                            meeting.invitees.remove(at: idx)
-                        }
+            Group {
+                if draft.invitees.count > 2 {
+                    ScrollView {
+                        inviteesView
                     }
+                    .colorScheme(.dark)
+                    .frame(height: 120)
+                } else {
+                    inviteesView
                 }
             }
-            .padding(.leading, 16)
+            .frame(maxWidth: .infinity)
             .background(Color("Views/Attributes/Background/primary"))
             .cornerRadius(12)
-            .padding(.top, 12)
+            .padding(.top, 7)
         }
     }
 }
@@ -77,17 +94,19 @@ extension EnterMeetingInviteesView {
     private func extractValidEmails() {
         let validator = EmailValidator()
 
-        meeting.invitees += emailInput.components(separatedBy: ",").compactMap { input in
+        draft.invitees += emailInput.components(separatedBy: ",").compactMap { input in
             let trimmedInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
-            return validator.validate(trimmedInput) ? Meeting.Invitee(email: trimmedInput) : nil
+            return validator.validate(trimmedInput)
+                ? CreateEventDraft.Invitee(email: trimmedInput)
+                : nil
         }
 
         emailInput = ""
     }
 }
 
-struct MeetingInviteeView: View {
-    var invitee: Meeting.Invitee
+private struct MeetingInviteeView: View {
+    var invitee: CreateEventDraft.Invitee
     var onRemove: () -> Void
 
     var body: some View {
@@ -112,7 +131,7 @@ struct MeetingInviteeView: View {
 
 struct EnterMeetingInviteesView_Previews: PreviewProvider {
     static var previews: some View {
-        EnterMeetingInviteesView(meeting: Meeting())
+        EnterMeetingInviteesView(draft: .constant(CreateEventDraft()))
             .background(Color("Screens/Attributes/Background/primary"))
     }
 }

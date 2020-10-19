@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.2.2)
   - AppAuth/Core (1.4.0)
   - GTMAppAuth (1.1.0):
     - AppAuth/Core (~> 1.4)
@@ -8,21 +9,45 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
+  - Magpie/Alamofire (2.0.1):
+    - Alamofire (~> 5.2)
+    - Magpie/Core
+  - Magpie/Core (2.0.1):
+    - Magpie/HIPUtils
+  - Magpie/HIPAPI (2.0.1):
+    - Magpie/Alamofire
+    - Magpie/HIPExceptions
+    - Valet (~> 4.1)
+  - Magpie/HIPExceptions (2.0.1):
+    - Magpie/HIPUtils
+  - Magpie/HIPUtils (2.0.1)
+  - SwiftDate (5.1.0)
+  - Valet (4.1.1)
 
 DEPENDENCIES:
   - GTMAppAuth
+  - Magpie/HIPAPI
+  - SwiftDate (~> 5.0)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - AppAuth
     - GTMAppAuth
     - GTMSessionFetcher
+    - Magpie
+    - SwiftDate
+    - Valet
 
 SPEC CHECKSUMS:
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  Magpie: 4b42d34817d0237c21a511d54a8930bf6f6873c2
+  SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
+  Valet: 11ab0e318b7284888a81392e36136563b4af5deb
 
-PODFILE CHECKSUM: 90b6eaac3dbf9f2461622fa804a05a2c0c21eefc
+PODFILE CHECKSUM: d6eb65d4633469f2ff4e3cc8601ef20e908013f4
 
 COCOAPODS: 1.9.3

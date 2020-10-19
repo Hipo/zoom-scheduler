@@ -6,65 +6,156 @@
 //
 
 import AppKit
+import Magpie
 import SwiftUI
 
 struct MenuScreen: View {
-    @ObservedObject
-    var zoomAPI: ZoomAPI
+    @EnvironmentObject
+    var session: Session
 
-    @State
-    private var quickCallMenuIcon = "Screens/Icons/quick_call"
-    @State
-    private var quickCallMenuTitle = "Quick Call"
-    @State
-    private var newEventMenuIcon = "Screens/Icons/new_event"
-    @State
-    private var newEventMenuTitle = "New Event"
-    @State
-    private var menuItemSize = CGSize(width: 96, height: 96)
+    @Binding
+    var mode: HomeScreen.Mode
 
     @State
     private var isCreatingNewQuickMeeting = false
+    @State
+    private var lastQuickMeetingResult: Swift.Result<URL?, ZoomAPIError>?
 
-    var onClickNewEvent: () -> Void
+    let zoomAPI: ZoomAPI
+    let googleAPI: GoogleAPI
 
     var body: some View {
-        HStack(alignment: .top, spacing: 72) {
-            MenuItemView(
-                icon: $quickCallMenuIcon,
-                iconSize: $menuItemSize,
-                title: $quickCallMenuTitle,
-                isLoading: $isCreatingNewQuickMeeting,
-                onClick: createQuickMeeting
-            )
+        let menuItemSize = CGSize(width: 96, height: 96)
 
-            MenuItemView(
-                icon: $newEventMenuIcon,
-                iconSize: $menuItemSize,
-                title: $newEventMenuTitle,
-                isLoading: .constant(false),
-                onClick: onClickNewEvent
-            )
-            .disabled(isCreatingNewQuickMeeting)
+        return GeometryReader { geometry in
+            ZStack(alignment: .bottom) {
+                HStack(alignment: .top, spacing: 72) {
+                    MenuItemView(
+                        isLoading: $isCreatingNewQuickMeeting,
+                        icon: "Screens/Icons/quick_call",
+                        iconSize: menuItemSize,
+                        title: "Quick Call",
+                        action: createQuickMeeting
+                    )
+                    .disabled(!session.isAuthorized)
+                    .allowsHitTesting(!isCreatingNewQuickMeeting)
+
+                    MenuItemView(
+                        isLoading: .constant(false),
+                        icon: "Screens/Icons/new_event",
+                        iconSize: menuItemSize,
+                        title: "New Event",
+                        action: createNewMeeting
+                    )
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+                VStack(spacing: 10) {
+                    if let result = lastQuickMeetingResult {
+                        switch result {
+                            case .success:
+                                ToastView(
+                                    feedback: InAppFeedback(
+                                        reason: .info,
+                                        message: "Zoom url is copied to pasteboard.",
+                                        actionName: "OK",
+                                        action: hideLastQuickMeetingResult
+                                    )
+                                )
+                            case .failure(let error):
+                                ToastView(
+                                    feedback: InAppFeedback(
+                                        reason: .error,
+                                        message: error.displayMessage,
+                                        actionName: "OK",
+                                        action: hideLastQuickMeetingResult
+                                    )
+                                )
+                        }
+                    }
+
+                    if let statusError = session.statusError {
+                        ToastView(
+                            feedback: InAppFeedback(
+                                reason: .error,
+                                message: statusError.displayMessage,
+                                actionName: "OK",
+                                action: session.hideStatusError
+                            )
+                        )
+                    }
+
+                    if let googleAuthorizationStatusError = session.googleAuthorizationStatusError {
+                        ToastView(
+                            feedback: InAppFeedback(
+                                reason: .error,
+                                message: googleAuthorizationStatusError.localizedDescription,
+                                actionName: "Try Again",
+                                action: toggleGoogleAuthorization
+                            )
+                        )
+                    }
+                }
+                .frame(maxWidth: geometry.size.width * 0.8)
+                .alignmentGuide(.bottom) { $0[.bottom] + 10 }
+            }
         }
-        .frame(
-            maxWidth: .infinity,
-            maxHeight: .infinity
-        )
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onDisappear(perform: hideLastQuickMeetingResult)
+        .onReceive(NotificationCenter.default.publisher(for: .newQuickCall)) { _ in
+            createQuickMeeting()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .newEvent)) { _ in
+            createNewMeeting()
+        }
+        .onReceive(
+            NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)
+        ) { _ in
+            hideLastQuickMeetingResult()
+        }
     }
 }
 
 extension MenuScreen {
     func createQuickMeeting() {
+        hideLastQuickMeetingResult()
+
         isCreatingNewQuickMeeting = true
 
-        zoomAPI.createQuickMeeting { zoomMeeting in
+        let draft = CreateMeetingDraft(reason: .instant)
+        zoomAPI.createMeeting(draft) { result in
             isCreatingNewQuickMeeting = false
 
-            if let joinURL = zoomMeeting?.joinUrl {
-                NSPasteboard.general.clearContents()
-                NSPasteboard.general.setString(joinURL.absoluteString, forType: .string)
+            switch result {
+                case .success(let zoomMeeting):
+                    zoomMeeting.copyToClipboard()
+                    lastQuickMeetingResult = .success(zoomMeeting.joinUrl)
+                case .failure(let apiError, let apiErrorDetail):
+                    let error = ZoomAPIError(apiError: apiError, apiErrorDetail: apiErrorDetail)
+                    lastQuickMeetingResult = .failure(error)
             }
+        }
+    }
+
+    func createNewMeeting() {
+        mode = .newEvent
+    }
+}
+
+extension MenuScreen {
+    private func hideLastQuickMeetingResult() {
+        lastQuickMeetingResult = nil
+    }
+}
+
+extension MenuScreen {
+    private func toggleGoogleAuthorization() {
+        session.hideGoogleAuthorizationStatusError()
+
+        if session.isGoogleAccountConnected {
+            googleAPI.revokeAuthorization()
+        } else {
+            googleAPI.requestAuthorization()
         }
     }
 }
@@ -72,12 +163,32 @@ extension MenuScreen {
 struct MenuScreen_Previews: PreviewProvider {
     static var previews: some View {
         MenuScreen(
-            zoomAPI: ZoomAPI()
-        ) {
-        }
+            mode: .constant(.menu),
+            zoomAPI: ZoomAPI(
+                config: ZoomConfig(),
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
+            ),
+            googleAPI: GoogleAPI(
+                config: GoogleConfig(),
+                session: Session(
+                    keychain: HIPKeychain(identifier: "preview"),
+                    userCache: HIPCache()
+                )
+            )
+        )
         .frame(
             width: windowSize.width,
             height: windowSize.height
+        )
+        .background(Color("Screens/Attributes/Background/primary"))
+        .environmentObject(
+            Session(
+                keychain: HIPKeychain(identifier: "preview"),
+                userCache: HIPCache()
+            )
         )
     }
 }
