@@ -84,3 +84,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.makeKeyAndOrderFront(nil)
     }
 }
+
+extension AppDelegate {
+    @IBAction
+    func newQuickCall(_ sender: Any) {
+        NotificationCenter.default.post(Notification(name: .newQuickCall))
+    }
+
+    @IBAction
+    func newEvent(_ sender: Any) {
+        NotificationCenter.default.post(Notification(name: .newEvent))
+    }
+
+    @IBAction
+    func save(_ sender: Any) {
+        NotificationCenter.default.post(Notification(name: .save))
+    }
+
+    @IBAction
+    func cancel(_ sender: Any) {
+        NotificationCenter.default.post(Notification(name: .cancel))
+    }
+}
+
+extension Notification.Name {
+    static let newQuickCall = Notification.Name("new.quick.call")
+    static let newEvent = Notification.Name("new.event")
+    static let save = Notification.Name("save")
+    static let cancel = Notification.Name("cancel")
+}

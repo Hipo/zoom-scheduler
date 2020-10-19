@@ -187,6 +187,14 @@ struct ScheduleMeetingScreen: View {
         .onDisappear {
             hideLastResult()
         }
+        .onReceive(NotificationCenter.default.publisher(for: .save)) { _ in
+            if canCreateMeeting() {
+                createMeeting()
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .cancel)) { _ in
+            cancel()
+        }
         .onReceive(
             NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)
         ) { _ in
@@ -196,8 +204,8 @@ struct ScheduleMeetingScreen: View {
 }
 
 extension ScheduleMeetingScreen {
-    private func cancel() {
-        mode = .menu
+    private func canCreateMeeting() -> Bool {
+        return session.isAuthorized && !isCreating
     }
 
     private func createMeeting() {
@@ -244,6 +252,10 @@ extension ScheduleMeetingScreen {
                 lastEventResult = .success(true)
             }
         }
+    }
+
+    private func cancel() {
+        mode = .menu
     }
 }
 

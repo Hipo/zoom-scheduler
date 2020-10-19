@@ -102,6 +102,12 @@ struct MenuScreen: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onDisappear(perform: hideLastQuickMeetingResult)
+        .onReceive(NotificationCenter.default.publisher(for: .newQuickCall)) { _ in
+            createQuickMeeting()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .newEvent)) { _ in
+            createNewMeeting()
+        }
         .onReceive(
             NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)
         ) { _ in

@@ -100,6 +100,9 @@ struct SignInGoogleScreen: View {
             maxWidth: .infinity,
             maxHeight: .infinity
         )
+        .onReceive(NotificationCenter.default.publisher(for: .cancel)) { _ in
+            session.skipGoogleAuthorization()
+        }
     }
 }
 
