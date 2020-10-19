@@ -9,9 +9,6 @@ import Magpie
 import SwiftUI
 
 struct HomeScreen: View {
-    @EnvironmentObject
-    var session: Session
-
     @State
     private var mode: Mode = .menu
 
@@ -20,31 +17,19 @@ struct HomeScreen: View {
 
     var body: some View {
         Group {
-            switch session.status {
-                case .authorized:
-                    switch mode {
-                        case .menu:
-                            MenuScreen(zoomAPI: zoomAPI) {
-                                mode = .newEvent
-                            }
-                        case .newEvent:
-                            ScheduleMeetingScreen(
-                                zoomAPI: zoomAPI,
-                                googleAPI: googleAPI,
-                                onSave: {
-                                    mode = .menu
-                                },
-                                onCancel: {
-                                    mode = .menu
-                                }
-                            )
-                    }
-                default:
-                    ActivityIndicator()
-                        .frame(
-                            width: 50,
-                            height: 50
-                        )
+            switch mode {
+                case .menu:
+                    MenuScreen(
+                        mode: $mode,
+                        zoomAPI: zoomAPI,
+                        googleAPI: googleAPI
+                    )
+                case .newEvent:
+                    ScheduleMeetingScreen(
+                        mode: $mode,
+                        zoomAPI: zoomAPI,
+                        googleAPI: googleAPI
+                    )
             }
         }
         .frame(
@@ -55,7 +40,7 @@ struct HomeScreen: View {
 }
 
 extension HomeScreen {
-    private enum Mode {
+    enum Mode {
         case menu
         case newEvent
     }

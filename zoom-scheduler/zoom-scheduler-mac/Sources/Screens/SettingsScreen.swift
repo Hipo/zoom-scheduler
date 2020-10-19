@@ -61,7 +61,7 @@ struct SettingsScreen: View {
                 .background(Color("Screens/Attributes/Background/secondary"))
                 .cornerRadius(8)
                 .shadow(
-                    color: Color("Views/Attributes/Shadow/secondary"),
+                    color: Color("Views/Attributes/Shadow/tertiary"),
                     radius: 16,
                     x: 0,
                     y: 8

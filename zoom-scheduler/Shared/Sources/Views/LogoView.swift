@@ -19,10 +19,10 @@ struct LogoView: View {
                 Image(icon)
                     .offset(x: offset.x, y: offset.y)
                     .shadow(
-                        color: Color("Views/Attributes/Shadow/primary"),
+                        color: Color("Views/Attributes/Shadow/secondary"),
                         radius: 12,
                         x: 0,
-                        y: 7
+                        y: 4
                     )
             }
         }

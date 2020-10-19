@@ -40,7 +40,7 @@ struct SignInZoomScreen: View {
                         .lineLimit(nil)
                         .padding(.bottom, 40)
 
-                    Button(action: requestAuthorization) {
+                    Button(action: zoomAPI.requestAuthorization) {
                         HStack {
                             if session.isConnecting {
                                 ActivityIndicator()
@@ -73,9 +73,7 @@ struct SignInZoomScreen: View {
                             reason: .error,
                             message: statusError.displayMessage,
                             actionName: "OK",
-                            action: {
-                                session.statusError = nil
-                            }
+                            action: session.hideStatusError
                         )
                     )
                     .frame(maxWidth: geometry.size.width * 0.8)
@@ -87,12 +85,6 @@ struct SignInZoomScreen: View {
             maxWidth: .infinity,
             maxHeight: .infinity
         )
-    }
-}
-
-extension SignInZoomScreen {
-    private func requestAuthorization() {
-        zoomAPI.requestAuthorization()
     }
 }
 

@@ -48,7 +48,7 @@ struct SignInGoogleScreen: View {
                         .lineLimit(nil)
                         .padding(.bottom, 40)
 
-                    Button(action: requestAuthorization) {
+                    Button(action: googleAPI.requestAuthorization) {
                         HStack {
                             Image("Screens/Icons/google")
 
@@ -69,7 +69,7 @@ struct SignInGoogleScreen: View {
                     .buttonStyle(PlainButtonStyle())
                     .cornerRadius(8)
 
-                    Button(action: skipAuthorization) {
+                    Button(action: session.skipGoogleAuthorization) {
                         Text("Skip for now")
                             .font(.custom("SFProText-Regular", size: 13))
                             .kerning(-0.08)
@@ -91,9 +91,7 @@ struct SignInGoogleScreen: View {
                             reason: .error,
                             message: statusError.localizedDescription,
                             actionName: "OK",
-                            action: {
-                                session.googleAuthorizationStatusError = nil
-                            }
+                            action: session.hideGoogleAuthorizationStatusError
                         )
                     )
                     .frame(maxWidth: geometry.size.width * 0.8)
@@ -105,16 +103,6 @@ struct SignInGoogleScreen: View {
             maxWidth: .infinity,
             maxHeight: .infinity
         )
-    }
-}
-
-extension SignInGoogleScreen {
-    private func requestAuthorization() {
-        googleAPI.requestAuthorization()
-    }
-
-    private func skipAuthorization() {
-        session.requiresGoogleAuthorization = false
     }
 }
 

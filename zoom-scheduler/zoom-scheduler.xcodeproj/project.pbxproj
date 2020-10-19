@@ -144,6 +144,10 @@
 		CDFA70BA2527166B0055DE9B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70B92527166A0055DE9B /* Extensions.swift */; };
 		CDFA70C025271DCC0055DE9B /* EnterMeetingDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70BF25271DCC0055DE9B /* EnterMeetingDurationView.swift */; };
 		CDFA70C6252733430055DE9B /* SelectCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70C5252733430055DE9B /* SelectCalendarView.swift */; };
+		CDFC7BAD253D545000BF5EB5 /* SharedExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC7BAC253D545000BF5EB5 /* SharedExtensions.swift */; };
+		CDFC7BAE253D545000BF5EB5 /* SharedExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC7BAC253D545000BF5EB5 /* SharedExtensions.swift */; };
+		CDFC7BAF253D545000BF5EB5 /* SharedExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC7BAC253D545000BF5EB5 /* SharedExtensions.swift */; };
+		CDFC7BB0253D545000BF5EB5 /* SharedExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC7BAC253D545000BF5EB5 /* SharedExtensions.swift */; };
 		F5D13EBB69D5314229FDE89A /* Pods_zoom_scheduler_mac_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 772EEF4B33CFA1156D36AD21 /* Pods_zoom_scheduler_mac_dev.framework */; };
 		F89BD593A0672051C9A916A8 /* Pods_zoom_scheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 322F7A2C683A7979D684AFDB /* Pods_zoom_scheduler.framework */; };
 		FC397B7B29EA1C2BFF485715 /* Pods_zoom_scheduler_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE7FC55DCB8EEF021CAD17E /* Pods_zoom_scheduler_dev.framework */; };
@@ -213,6 +217,7 @@
 		CDFA70B92527166A0055DE9B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CDFA70BF25271DCC0055DE9B /* EnterMeetingDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMeetingDurationView.swift; sourceTree = "<group>"; };
 		CDFA70C5252733430055DE9B /* SelectCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCalendarView.swift; sourceTree = "<group>"; };
+		CDFC7BAC253D545000BF5EB5 /* SharedExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedExtensions.swift; sourceTree = "<group>"; };
 		D0527531F0AC96C7D13F7337 /* Pods-zoom-scheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler.debug.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler/Pods-zoom-scheduler.debug.xcconfig"; sourceTree = "<group>"; };
 		E7BD8395B5CD5E47AEE2253F /* Pods-zoom-scheduler-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler-dev.debug.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler-dev/Pods-zoom-scheduler-dev.debug.xcconfig"; sourceTree = "<group>"; };
 		F266833B277B97FDF7371530 /* Pods-zoom-scheduler-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zoom-scheduler-dev.release.xcconfig"; path = "Target Support Files/Pods-zoom-scheduler-dev/Pods-zoom-scheduler-dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -338,6 +343,7 @@
 			children = (
 				CD65C52825260AD300911834 /* EmailValidator.swift */,
 				CD5F8C8F2539828000BFD18E /* InAppFeedback.swift */,
+				CDFC7BAC253D545000BF5EB5 /* SharedExtensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -943,6 +949,7 @@
 				CD4495E32535A7B000F3CCD8 /* ActivityIndicator.swift in Sources */,
 				CD4495E42535A7B000F3CCD8 /* Session.swift in Sources */,
 				CD3A4A772536C9CE00E70CD0 /* ZoomAPIError.swift in Sources */,
+				CDFC7BAD253D545000BF5EB5 /* SharedExtensions.swift in Sources */,
 				CD1434F92536DB3E00F6311D /* MeetingDrafts.swift in Sources */,
 				CD4496602535AEA700F3CCD8 /* Target.swift in Sources */,
 				CD1435972538355F00F6311D /* GoogleCalendar.swift in Sources */,
@@ -985,6 +992,7 @@
 				CD4496192535A7BF00F3CCD8 /* EnterMeetingInviteesView.swift in Sources */,
 				CD5F8C922539828000BFD18E /* InAppFeedback.swift in Sources */,
 				CD44961A2535A7BF00F3CCD8 /* ScheduleMeetingScreen.swift in Sources */,
+				CDFC7BAF253D545000BF5EB5 /* SharedExtensions.swift in Sources */,
 				CD3A4A6B2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */,
 				CD44961B2535A7BF00F3CCD8 /* RootScreen.swift in Sources */,
 			);
@@ -1009,6 +1017,7 @@
 				CD121C43252661E900CD7572 /* ActivityIndicator.swift in Sources */,
 				CD4495B6253453F200F3CCD8 /* Session.swift in Sources */,
 				CD3A4A782536C9CE00E70CD0 /* ZoomAPIError.swift in Sources */,
+				CDFC7BAE253D545000BF5EB5 /* SharedExtensions.swift in Sources */,
 				CD1434FA2536DB3E00F6311D /* MeetingDrafts.swift in Sources */,
 				CD4496612535AEA700F3CCD8 /* Target.swift in Sources */,
 				CD1435982538355F00F6311D /* GoogleCalendar.swift in Sources */,
@@ -1051,6 +1060,7 @@
 				CD6E9F8B2525DD64007B28E4 /* EnterMeetingInviteesView.swift in Sources */,
 				CD5F8C932539828000BFD18E /* InAppFeedback.swift in Sources */,
 				CD8057AE2523D670008527FF /* ScheduleMeetingScreen.swift in Sources */,
+				CDFC7BB0253D545000BF5EB5 /* SharedExtensions.swift in Sources */,
 				CD3A4A6C2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */,
 				CD8057A62523CC37008527FF /* RootScreen.swift in Sources */,
 			);

@@ -8,7 +8,7 @@
 import Foundation
 import Magpie
 
-enum ZoomAPIError {
+enum ZoomAPIError: Error {
     case sessionExpired
     case sessionCancelled
     case client(HTTPError, Detail?)
@@ -44,7 +44,7 @@ enum ZoomAPIError {
     var displayMessage: String {
         switch self {
             case .sessionExpired:
-                return "Your session is expired. Wait a moment while we are refreshing it."
+                return "Wait a moment while we are refreshing your session."
             case .sessionCancelled:
                 return "We cancelled your session because we couldn't refresh your session multiple times."
             case .client(_, let detail):

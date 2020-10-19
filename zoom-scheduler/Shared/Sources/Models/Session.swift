@@ -60,6 +60,14 @@ final class Session: ObservableObject {
                 return false
         }
     }
+    var isAuthorized: Bool {
+        switch status {
+            case .authorized:
+                return true
+            default:
+                return false
+        }
+    }
 
     var isGoogleAccountConnected: Bool {
         switch googleAuthorizationStatus {
@@ -89,10 +97,26 @@ final class Session: ObservableObject {
 }
 
 extension Session {
+    func hideStatusError() {
+        statusError = nil
+    }
+
+    func hideGoogleAuthorizationStatusError() {
+        googleAuthorizationStatusError = nil
+    }
+
+    func skipGoogleAuthorization() {
+        requiresGoogleAuthorization = false
+    }
+}
+
+extension Session {
     private func statusDidChange() {
         switch status {
             case .none(let error):
                 statusError = error
+            case .refreshing:
+                statusError = .sessionExpired
             case .unauthorized(let error):
                 statusError = error
             default:

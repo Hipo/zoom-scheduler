@@ -12,6 +12,9 @@ struct ScheduleMeetingScreen: View {
     @EnvironmentObject
     var session: Session
 
+    @Binding
+    var mode: HomeScreen.Mode
+
     @State
     private var meetingDraft = CreateMeetingDraft(reason: .scheduled)
     @State
@@ -22,9 +25,6 @@ struct ScheduleMeetingScreen: View {
 
     let zoomAPI: ZoomAPI
     let googleAPI: GoogleAPI
-
-    let onSave: () -> Void
-    let onCancel: () -> Void
 
     var body: some View {
         ScrollView {
@@ -69,7 +69,7 @@ struct ScheduleMeetingScreen: View {
                     .background(Color("Views/Button/Background/primary"))
                     .cornerRadius(8)
 
-                    Button(action: onCancel) {
+                    Button(action: cancel) {
                         Text("Cancel")
                             .font(.custom("SFProText-Medium", size: 15))
                             .kerning(-0.24)
@@ -97,6 +97,10 @@ struct ScheduleMeetingScreen: View {
 }
 
 extension ScheduleMeetingScreen {
+    private func cancel() {
+        mode = .menu
+    }
+
     private func createMeeting() {
         isCreatingMeeting = true
 
@@ -119,7 +123,8 @@ extension ScheduleMeetingScreen {
                         googleAPI.createEvent(eventDraft) { _ in
                         }
                     }
-                    onSave()
+
+                    mode = .menu
                 case .failure(let apiError, let apiErrorDetail):
                     break
             }
@@ -130,6 +135,7 @@ extension ScheduleMeetingScreen {
 struct ScheduleMeetingScreen_Previews: PreviewProvider {
     static var previews: some View {
         ScheduleMeetingScreen(
+            mode: .constant(.newEvent),
             zoomAPI: ZoomAPI(
                 config: ZoomConfig(),
                 session: Session(
@@ -143,9 +149,7 @@ struct ScheduleMeetingScreen_Previews: PreviewProvider {
                     keychain: HIPKeychain(identifier: "preview"),
                     userCache: HIPCache()
                 )
-            ),
-            onSave: { },
-            onCancel: { }
+            )
         )
         .background(Color("Screens/Attributes/Background/primary"))
         .frame(

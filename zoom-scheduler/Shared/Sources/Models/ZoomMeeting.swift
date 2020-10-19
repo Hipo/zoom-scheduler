@@ -21,3 +21,12 @@ final class ZoomMeeting: Model {
     let duration: Int?
     let joinUrl: URL?
 }
+
+extension ZoomMeeting {
+    func copyToClipboard() {
+        guard let url = joinUrl else { return }
+
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(url.absoluteString, forType: .string)
+    }
+}
