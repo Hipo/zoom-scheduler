@@ -7,11 +7,16 @@
 
 import Foundation
 import Magpie
+import SwiftUI
 
 final class GoogleCalendar: Model, Identifiable, Equatable {
+    var color: Color? {
+        return hexColor.map(Color.init(hex:))
+    }
+
     let id: String
     let title: String?
-    let color: String?
+    let hexColor: String?
 
     static var encodingStrategy: JSONEncodingStrategy {
         return JSONEncodingStrategy()
@@ -29,7 +34,7 @@ extension GoogleCalendar {
     private enum CodingKeys: String, CodingKey {
         case id
         case title = "summary"
-        case color = "backgroundColor"
+        case hexColor = "backgroundColor"
     }
 }
 

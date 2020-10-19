@@ -43,12 +43,16 @@ struct EnterMeetingNameView: View {
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(
-                        isEditing ? Color("Views/TextField/Border/Editing/primary") : Color("Views/TextField/Border/primary"),
+                        isEditing
+                            ? Color("Views/TextField/Border/Editing/primary")
+                            : Color("Views/TextField/Border/primary"),
                         lineWidth: 2
                     )
             )
             .shadow(
-                color: isEditing ?  Color("Views/TextField/Shadow/primary") : Color.clear,
+                color: isEditing
+                    ? Color("Views/TextField/Shadow/primary")
+                    : Color.clear,
                 radius: 4,
                 x: 0.0,
                 y: 0.0

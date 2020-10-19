@@ -80,10 +80,7 @@ struct SignInGoogleScreen: View {
                     .buttonStyle(PlainButtonStyle())
                     .padding(.top, 6)
                 }
-                .frame(
-                    maxWidth: .infinity,
-                    maxHeight: .infinity
-                )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                 if let statusError = session.googleAuthorizationStatusError {
                     ToastView(

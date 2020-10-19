@@ -15,10 +15,13 @@ struct SelectCalendarView: View {
     @Binding
     var draft: CreateEventDraft
 
-    let googleAPI: GoogleAPI
-
     @State
     private var isEditing = false
+
+    @State
+    private var status: CalendarsStatus = .ready
+
+    let googleAPI: GoogleAPI
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -29,6 +32,12 @@ struct SelectCalendarView: View {
                 .foregroundColor(Color("Views/TextField/Placeholder/primary"))
 
             HStack {
+                if let color = draft.calendar?.color {
+                    Circle()
+                        .fill(color)
+                        .frame(width: 6, height: 6)
+                }
+
                 Text(draft.calendar?.title ?? "")
                     .font(.custom("SFProText-Regular", size: 15))
                     .foregroundColor(Color("Views/TextField/Input/primary"))
@@ -37,7 +46,8 @@ struct SelectCalendarView: View {
 
                 Image("Screens/Accessories/dropdown")
             }
-            .padding(.horizontal, 10)
+            .padding(.leading, 16)
+            .padding(.trailing, 10)
             .frame(height: 44)
             .frame(maxWidth: .infinity)
             .background(Color("Views/TextField/Background/primary"))
@@ -45,12 +55,16 @@ struct SelectCalendarView: View {
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(
-                        isEditing ? Color("Views/TextField/Border/Editing/primary") : Color("Views/TextField/Border/primary"),
+                        isEditing
+                            ? Color("Views/TextField/Border/Editing/primary")
+                            : Color("Views/TextField/Border/primary"),
                         lineWidth: 2
                     )
             )
             .shadow(
-                color: isEditing ?  Color("Views/TextField/Shadow/primary") : Color.clear,
+                color: isEditing
+                    ? Color("Views/TextField/Shadow/primary")
+                    : Color.clear,
                 radius: 4,
                 x: 0.0,
                 y: 0.0
@@ -60,28 +74,88 @@ struct SelectCalendarView: View {
             }
 
             if isEditing {
-                VStack(alignment: .leading, spacing: 0) {
-                    ForEach(session.googleCalendars) { calendar in
-                        CalendarView(calendar: calendar, isSelected: draft.calendar == calendar)
-                            .padding(.vertical, 8)
-                            .frame(maxWidth: .infinity)
-                            .background(Color("Views/Attributes/Background/primary"))
-                            .onTapGesture {
-                                draft.calendar = calendar
-                                isEditing = false
+                Group {
+                    switch status {
+                        case .loading:
+                            VStack {
+                                ActivityIndicator()
+                                    .frame(width: 20, height: 20)
+                                    .padding(.top, 20)
+
+                                Spacer()
                             }
+                        case .failed(let error):
+                            VStack(spacing: 16) {
+                                Text(error.localizedDescription)
+                                    .font(.custom("SFProText-Medium", size: 11))
+                                    .kerning(-0.08)
+                                    .lineSpacing(3.5)
+                                    .foregroundColor(Color("Views/Text/Body/primary"))
+                                    .multilineTextAlignment(.center)
+
+                                Button(action: loadCalendars) {
+                                    Text("Try Again")
+                                        .font(.custom("SFProText-Medium", size: 11))
+                                        .foregroundColor(Color("Views/Button/Title/tertiary"))
+                                        .kerning(-0.08)
+                                        .padding(10)
+                                        .background(Color("Views/Button/Background/secondary"))
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                .cornerRadius(6)
+                            }
+                            .padding(.horizontal, 16)
+                        case .ready:
+                            ScrollView {
+                                VStack(alignment: .leading, spacing: 0) {
+                                    ForEach(session.googleCalendars) { calendar in
+                                        CalendarView(calendar: calendar, isSelected: draft.calendar == calendar)
+                                            .padding(.vertical, 8)
+                                            .background(Color("Views/Attributes/Background/primary"))
+                                            .onTapGesture {
+                                                draft.calendar = calendar
+                                                isEditing = false
+                                            }
+                                    }
+                                }
+                            }
+                            .colorScheme(.dark)
+                            .padding(.leading, 16)
                     }
                 }
-                .padding(.leading, 16)
+                .frame(height: 120)
+                .frame(maxWidth: .infinity)
                 .background(Color("Views/Attributes/Background/primary"))
                 .cornerRadius(12)
-                .padding(.top, 12)
+            }
+        }
+        .onAppear(perform: loadCalendars)
+    }
+}
+
+extension SelectCalendarView {
+    private func loadCalendars() {
+        status = session.googleCalendars.isEmpty ? .loading : .ready
+
+        googleAPI.loadCalendars { error in
+            if let error = error {
+                status = .failed(error)
+            } else {
+                status = .ready
             }
         }
     }
 }
 
-struct CalendarView: View {
+extension SelectCalendarView {
+    private enum CalendarsStatus {
+        case loading
+        case failed(Error)
+        case ready
+    }
+}
+
+private struct CalendarView: View {
     let calendar: GoogleCalendar
     let isSelected: Bool
 
@@ -116,6 +190,13 @@ struct SelectCalendarView_Previews: PreviewProvider {
                 )
             )
         )
+        .frame(width: 350)
         .background(Color("Screens/Attributes/Background/primary"))
+        .environmentObject(
+            Session(
+                keychain: HIPKeychain(identifier: "preview"),
+                userCache: HIPCache()
+            )
+        )
     }
 }

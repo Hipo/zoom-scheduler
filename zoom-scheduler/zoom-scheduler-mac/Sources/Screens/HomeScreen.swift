@@ -32,10 +32,7 @@ struct HomeScreen: View {
                     )
             }
         }
-        .frame(
-            maxWidth: .infinity,
-            maxHeight: .infinity
-        )
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
@@ -64,9 +61,6 @@ struct HomeScreen_Previews: PreviewProvider {
                 )
             )
         )
-        .frame(
-            width: windowSize.width,
-            height: windowSize.height
-        )
+        .frame(width: windowSize.width, height: windowSize.height)
     }
 }

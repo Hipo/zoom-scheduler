@@ -18,7 +18,6 @@ struct MenuScreen: View {
 
     @State
     private var isCreatingNewQuickMeeting = false
-
     @State
     private var lastQuickMeetingResult: Swift.Result<URL?, ZoomAPIError>?
 
@@ -101,10 +100,7 @@ struct MenuScreen: View {
                 .alignmentGuide(.bottom) { $0[.bottom] + 10 }
             }
         }
-        .frame(
-            maxWidth: .infinity,
-            maxHeight: .infinity
-        )
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onDisappear(perform: hideLastQuickMeetingResult)
         .onReceive(
             NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)

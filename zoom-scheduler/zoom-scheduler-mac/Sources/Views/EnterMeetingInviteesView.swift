@@ -17,7 +17,18 @@ struct EnterMeetingInviteesView: View {
     private var isEditing = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        let inviteesView = VStack(alignment: .leading, spacing: 0) {
+            ForEach(draft.invitees, id: \.id) { invitee in
+                MeetingInviteeView(invitee: invitee) {
+                    if let idx = draft.invitees.firstIndex(of: invitee) {
+                        draft.invitees.remove(at: idx)
+                    }
+                }
+            }
+        }
+        .padding(.leading, 16)
+
+        return VStack(alignment: .leading, spacing: 0) {
             Text("Invitees")
                 .font(.custom("SFProText-Regular", size: 13))
                 .kerning(-0.08)
@@ -44,31 +55,37 @@ struct EnterMeetingInviteesView: View {
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(
-                        isEditing ? Color("Views/TextField/Border/Editing/primary") : Color("Views/TextField/Border/primary"),
+                        isEditing
+                            ? Color("Views/TextField/Border/Editing/primary")
+                            : Color("Views/TextField/Border/primary"),
                         lineWidth: 2
                     )
             )
             .shadow(
-                color: isEditing ?  Color("Views/TextField/Shadow/primary") : Color.clear,
+                color: isEditing
+                    ? Color("Views/TextField/Shadow/primary")
+                    : Color.clear,
                 radius: 4,
                 x: 0.0,
                 y: 0.0
             )
             .padding(.top, 8)
 
-            VStack(alignment: .leading, spacing: 0) {
-                ForEach(draft.invitees, id: \.id) { invitee in
-                    MeetingInviteeView(invitee: invitee) {
-                        if let idx = draft.invitees.firstIndex(of: invitee) {
-                            draft.invitees.remove(at: idx)
-                        }
+            Group {
+                if draft.invitees.count > 2 {
+                    ScrollView {
+                        inviteesView
                     }
+                    .colorScheme(.dark)
+                    .frame(height: 120)
+                } else {
+                    inviteesView
                 }
             }
-            .padding(.leading, 16)
+            .frame(maxWidth: .infinity)
             .background(Color("Views/Attributes/Background/primary"))
             .cornerRadius(12)
-            .padding(.top, 12)
+            .padding(.top, 7)
         }
     }
 }
@@ -88,7 +105,7 @@ extension EnterMeetingInviteesView {
     }
 }
 
-struct MeetingInviteeView: View {
+private struct MeetingInviteeView: View {
     var invitee: CreateEventDraft.Invitee
     var onRemove: () -> Void
 

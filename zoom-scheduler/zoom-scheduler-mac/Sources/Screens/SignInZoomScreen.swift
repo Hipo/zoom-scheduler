@@ -62,10 +62,7 @@ struct SignInZoomScreen: View {
                     .cornerRadius(8)
                     .allowsHitTesting(!session.isConnecting)
                 }
-                .frame(
-                    maxWidth: .infinity,
-                    maxHeight: .infinity
-                )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                 if let statusError = session.statusError {
                     ToastView(
