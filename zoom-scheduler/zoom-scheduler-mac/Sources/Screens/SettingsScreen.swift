@@ -15,6 +15,9 @@ struct SettingsScreen: View {
     @State
     private var isActive = false
 
+    @State
+    private var isDisconnecting = false
+
     let zoomAPI: ZoomAPI
     let googleAPI: GoogleAPI
 
@@ -34,9 +37,15 @@ struct SettingsScreen: View {
                 Group {
                     VStack(spacing: 4) {
                         SettingItemView(title: "Disconnect Zoom Account") {
+                            isDisconnecting = true
+
                             googleAPI.revokeAuthorization()
-                            zoomAPI.revokeAccessToken()
+
+                            zoomAPI.revokeAccessToken() { _ in
+                                isDisconnecting = false
+                            }
                         }
+                        .disabled(session.isRefreshing || isDisconnecting)
 
                         if session.isGoogleAccountConnected {
                             SettingItemView(
