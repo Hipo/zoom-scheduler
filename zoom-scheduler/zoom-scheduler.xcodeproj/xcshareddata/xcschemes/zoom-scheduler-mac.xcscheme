@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CD4496002535A7BF00F3CCD8"
-               BuildableName = "zoom-scheduler-mac.app"
+               BuildableName = "Zoom Scheduler.app"
                BlueprintName = "zoom-scheduler-mac"
                ReferencedContainer = "container:zoom-scheduler.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD4496002535A7BF00F3CCD8"
-            BuildableName = "zoom-scheduler-mac.app"
+            BuildableName = "Zoom Scheduler.app"
             BlueprintName = "zoom-scheduler-mac"
             ReferencedContainer = "container:zoom-scheduler.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD4496002535A7BF00F3CCD8"
-            BuildableName = "zoom-scheduler-mac.app"
+            BuildableName = "Zoom Scheduler.app"
             BlueprintName = "zoom-scheduler-mac"
             ReferencedContainer = "container:zoom-scheduler.xcodeproj">
          </BuildableReference>
