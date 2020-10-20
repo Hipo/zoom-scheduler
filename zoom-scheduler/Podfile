@@ -17,6 +17,9 @@ def mac_pods
   platform :macos, '10.15'
 
   shared_pods
+
+  pod 'KeyboardShortcuts', '~> 0.6.0'
+  pod 'Preferences', :git => 'https://github.com/Hipo/Preferences.git'
 end
 
 target 'zoom-scheduler' do

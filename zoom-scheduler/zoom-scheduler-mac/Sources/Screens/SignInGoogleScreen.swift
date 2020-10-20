@@ -108,7 +108,9 @@ struct SignInGoogleScreen: View {
 
 struct SignInGoogleScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SignInGoogleScreen(
+        let windowSize = MainWindow.windowSize
+
+        return SignInGoogleScreen(
             googleAPI: GoogleAPI(
                 config: GoogleConfig(),
                 session: Session(

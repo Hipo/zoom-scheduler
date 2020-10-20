@@ -288,7 +288,9 @@ extension ScheduleMeetingScreen {
 
 struct ScheduleMeetingScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleMeetingScreen(
+        let windowSize = MainWindow.windowSize
+
+        return ScheduleMeetingScreen(
             mode: .constant(.newEvent),
             zoomAPI: ZoomAPI(
                 config: ZoomConfig(),

@@ -87,7 +87,9 @@ struct SignInZoomScreen: View {
 
 struct SignInZoomScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SignInZoomScreen(
+        let windowSize = MainWindow.windowSize
+
+        return SignInZoomScreen(
             zoomAPI: ZoomAPI(
                 config: ZoomConfig(),
                 session: Session(

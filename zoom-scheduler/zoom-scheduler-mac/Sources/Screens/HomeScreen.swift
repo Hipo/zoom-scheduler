@@ -45,7 +45,9 @@ extension HomeScreen {
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreen(
+        let windowSize = MainWindow.windowSize
+
+        return HomeScreen(
             zoomAPI: ZoomAPI(
                 config: ZoomConfig(),
                 session: Session(

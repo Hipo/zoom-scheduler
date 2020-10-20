@@ -112,6 +112,14 @@
 		CD4496612535AEA700F3CCD8 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44965F2535AEA700F3CCD8 /* Target.swift */; };
 		CD4496622535AEA700F3CCD8 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44965F2535AEA700F3CCD8 /* Target.swift */; };
 		CD4496632535AEA700F3CCD8 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44965F2535AEA700F3CCD8 /* Target.swift */; };
+		CD59072D253DCD8A007DA667 /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD59072C253DCD8A007DA667 /* MainWindow.swift */; };
+		CD59072E253DCD8A007DA667 /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD59072C253DCD8A007DA667 /* MainWindow.swift */; };
+		CD590749253DD29D007DA667 /* PreferencesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD590748253DD29D007DA667 /* PreferencesScreen.swift */; };
+		CD59074A253DD29D007DA667 /* PreferencesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD590748253DD29D007DA667 /* PreferencesScreen.swift */; };
+		CD590787253DDB36007DA667 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD590786253DDB36007DA667 /* UserPreferences.swift */; };
+		CD590788253DDB36007DA667 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD590786253DDB36007DA667 /* UserPreferences.swift */; };
+		CD5907FA253E37C5007DA667 /* UserPreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5907F9253E37C5007DA667 /* UserPreferencesWindowController.swift */; };
+		CD5907FB253E37C5007DA667 /* UserPreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5907F9253E37C5007DA667 /* UserPreferencesWindowController.swift */; };
 		CD5F8C8925396E3E00BFD18E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F8C8825396E3E00BFD18E /* ToastView.swift */; };
 		CD5F8C8A25396E3E00BFD18E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F8C8825396E3E00BFD18E /* ToastView.swift */; };
 		CD5F8C902539828000BFD18E /* InAppFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F8C8F2539828000BFD18E /* InAppFeedback.swift */; };
@@ -188,6 +196,10 @@
 		CD4496462535AAF500F3CCD8 /* zoom-scheduler-mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zoom-scheduler-mac-Info.plist"; sourceTree = "<group>"; };
 		CD4496472535AAF500F3CCD8 /* zoom-scheduler-mac-dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zoom-scheduler-mac-dev-Info.plist"; sourceTree = "<group>"; };
 		CD44965F2535AEA700F3CCD8 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
+		CD59072C253DCD8A007DA667 /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
+		CD590748253DD29D007DA667 /* PreferencesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesScreen.swift; sourceTree = "<group>"; };
+		CD590786253DDB36007DA667 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		CD5907F9253E37C5007DA667 /* UserPreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesWindowController.swift; sourceTree = "<group>"; };
 		CD5F8C8825396E3E00BFD18E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		CD5F8C8F2539828000BFD18E /* InAppFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppFeedback.swift; sourceTree = "<group>"; };
 		CD65C52825260AD300911834 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
@@ -516,6 +528,7 @@
 			children = (
 				CD8E626D252692EE002824CF /* HomeScreen.swift */,
 				CDFA709C2526F8790055DE9B /* MenuScreen.swift */,
+				CD590748253DD29D007DA667 /* PreferencesScreen.swift */,
 				CD8057A52523CC37008527FF /* RootScreen.swift */,
 				CD8057AD2523D670008527FF /* ScheduleMeetingScreen.swift */,
 				CD1435B425389B7C00F6311D /* SettingsScreen.swift */,
@@ -537,6 +550,7 @@
 			isa = PBXGroup;
 			children = (
 				CDBCD50125226C4000B6B644 /* AppDelegate.swift */,
+				CD59072C253DCD8A007DA667 /* MainWindow.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -573,6 +587,8 @@
 			isa = PBXGroup;
 			children = (
 				CDFA70B92527166A0055DE9B /* Extensions.swift */,
+				CD590786253DDB36007DA667 /* UserPreferences.swift */,
+				CD5907F9253E37C5007DA667 /* UserPreferencesWindowController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -988,11 +1004,15 @@
 				CD4496132535A7BF00F3CCD8 /* ZoomAPI.swift in Sources */,
 				CD4496142535A7BF00F3CCD8 /* SignInGoogleScreen.swift in Sources */,
 				CD4496172535A7BF00F3CCD8 /* Session.swift in Sources */,
+				CD59072D253DCD8A007DA667 /* MainWindow.swift in Sources */,
+				CD590749253DD29D007DA667 /* PreferencesScreen.swift in Sources */,
 				CD1435882537927200F6311D /* GoogleAPI.swift in Sources */,
 				CD4496192535A7BF00F3CCD8 /* EnterMeetingInviteesView.swift in Sources */,
 				CD5F8C922539828000BFD18E /* InAppFeedback.swift in Sources */,
 				CD44961A2535A7BF00F3CCD8 /* ScheduleMeetingScreen.swift in Sources */,
+				CD590787253DDB36007DA667 /* UserPreferences.swift in Sources */,
 				CDFC7BAF253D545000BF5EB5 /* SharedExtensions.swift in Sources */,
+				CD5907FA253E37C5007DA667 /* UserPreferencesWindowController.swift in Sources */,
 				CD3A4A6B2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */,
 				CD44961B2535A7BF00F3CCD8 /* RootScreen.swift in Sources */,
 			);
@@ -1056,11 +1076,15 @@
 				CD32356F2528990500B74EC3 /* ZoomAPI.swift in Sources */,
 				CD121C5C252670C100CD7572 /* SignInGoogleScreen.swift in Sources */,
 				CD4495B7253453F200F3CCD8 /* Session.swift in Sources */,
+				CD59072E253DCD8A007DA667 /* MainWindow.swift in Sources */,
+				CD59074A253DD29D007DA667 /* PreferencesScreen.swift in Sources */,
 				CD1435892537927200F6311D /* GoogleAPI.swift in Sources */,
 				CD6E9F8B2525DD64007B28E4 /* EnterMeetingInviteesView.swift in Sources */,
 				CD5F8C932539828000BFD18E /* InAppFeedback.swift in Sources */,
 				CD8057AE2523D670008527FF /* ScheduleMeetingScreen.swift in Sources */,
+				CD590788253DDB36007DA667 /* UserPreferences.swift in Sources */,
 				CDFC7BB0253D545000BF5EB5 /* SharedExtensions.swift in Sources */,
+				CD5907FB253E37C5007DA667 /* UserPreferencesWindowController.swift in Sources */,
 				CD3A4A6C2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */,
 				CD8057A62523CC37008527FF /* RootScreen.swift in Sources */,
 			);

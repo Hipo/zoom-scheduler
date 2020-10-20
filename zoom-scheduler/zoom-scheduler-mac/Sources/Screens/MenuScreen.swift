@@ -162,7 +162,9 @@ extension MenuScreen {
 
 struct MenuScreen_Previews: PreviewProvider {
     static var previews: some View {
-        MenuScreen(
+        let windowSize = MainWindow.windowSize
+
+        return MenuScreen(
             mode: .constant(.menu),
             zoomAPI: ZoomAPI(
                 config: ZoomConfig(),

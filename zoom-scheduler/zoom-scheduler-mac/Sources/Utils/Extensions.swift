@@ -14,3 +14,12 @@ extension NSTextField {
         set { }
     }
 }
+
+extension NSApplication {
+    var appDelegate: AppDelegate {
+        if let delegate = delegate as? AppDelegate {
+            return delegate
+        }
+        fatalError("We shouldn't have a problem with the app delegate.")
+    }
+}
