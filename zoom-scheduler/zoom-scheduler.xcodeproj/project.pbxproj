@@ -195,7 +195,7 @@
 		CD4495B5253453F200F3CCD8 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		CD4495CD2534637C00F3CCD8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CD4495F82535A7B000F3CCD8 /* zoom-scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD44962B2535A7BF00F3CCD8 /* zoom-scheduler-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD44962B2535A7BF00F3CCD8 /* Zoom Scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zoom Scheduler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD4496452535AAA800F3CCD8 /* zoom-scheduler-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zoom-scheduler-Info.plist"; sourceTree = "<group>"; };
 		CD4496462535AAF500F3CCD8 /* zoom-scheduler-mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zoom-scheduler-mac-Info.plist"; sourceTree = "<group>"; };
 		CD4496472535AAF500F3CCD8 /* zoom-scheduler-mac-dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zoom-scheduler-mac-dev-Info.plist"; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 		CDBCD4E02521EB0100B6B644 /* PhoneAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PhoneAssets.xcassets; sourceTree = "<group>"; };
 		CDBCD4E32521EB0100B6B644 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CDBCD4E52521EB0100B6B644 /* zoom-scheduler-dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zoom-scheduler-dev-Info.plist"; sourceTree = "<group>"; };
-		CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zoom-scheduler-mac-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDBCD4FF25226C4000B6B644 /* Zoom Scheduler Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zoom Scheduler Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBCD50125226C4000B6B644 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDBCD50525226C4300B6B644 /* MacAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MacAssets.xcassets; sourceTree = "<group>"; };
 		CDBCD50825226C4300B6B644 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -398,9 +398,9 @@
 			isa = PBXGroup;
 			children = (
 				CDBCD4D92521EB0100B6B644 /* zoom-scheduler-dev.app */,
-				CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac-dev.app */,
+				CDBCD4FF25226C4000B6B644 /* Zoom Scheduler Beta.app */,
 				CD4495F82535A7B000F3CCD8 /* zoom-scheduler.app */,
-				CD44962B2535A7BF00F3CCD8 /* zoom-scheduler-mac.app */,
+				CD44962B2535A7BF00F3CCD8 /* Zoom Scheduler.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -660,7 +660,7 @@
 				CDDF35EF253F2D9E00B53B29 /* LaunchAtLogin */,
 			);
 			productName = "zoom-scheduler-mac";
-			productReference = CD44962B2535A7BF00F3CCD8 /* zoom-scheduler-mac.app */;
+			productReference = CD44962B2535A7BF00F3CCD8 /* Zoom Scheduler.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CDBCD4D82521EB0100B6B644 /* zoom-scheduler-dev */ = {
@@ -705,7 +705,7 @@
 				CDDF35F1253F2DA600B53B29 /* LaunchAtLogin */,
 			);
 			productName = "zoom-scheduler-mac";
-			productReference = CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac-dev.app */;
+			productReference = CDBCD4FF25226C4000B6B644 /* Zoom Scheduler Beta.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1194,11 +1194,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "zoom-scheduler-mac/Sources/Target Support Files/zoom_scheduler_mac.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler-mac/Resources/Assets/Preview Assets.xcassets\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = W9875NV3WF;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "zoom-scheduler-mac/Sources/Target Support Files/zoom-scheduler-mac-Info.plist";
@@ -1208,8 +1208,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PRODUCT_NAME = "Zoom Scheduler";
+				PROVISIONING_PROFILE_SPECIFIER = "Zoom Scheduler Mac App Store";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1222,11 +1222,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "zoom-scheduler-mac/Sources/Target Support Files/zoom_scheduler_mac.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"zoom-scheduler-mac/Resources/Assets/Preview Assets.xcassets\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = W9875NV3WF;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "zoom-scheduler-mac/Sources/Target Support Files/zoom-scheduler-mac-Info.plist";
@@ -1236,8 +1236,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PRODUCT_NAME = "Zoom Scheduler";
+				PROVISIONING_PROFILE_SPECIFIER = "Zoom Scheduler Mac App Store";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1430,7 +1430,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler.dev;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Zoom Scheduler Beta";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -1458,7 +1458,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hipo.zoomscheduler.dev;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Zoom Scheduler Beta";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
