@@ -7,6 +7,7 @@
 
 import AppKit
 import KeyboardShortcuts
+import LaunchAtLogin
 import Magpie
 import Preferences
 import SwiftUI
@@ -18,7 +19,7 @@ struct PreferencesScreen: View {
     var body: some View {
         Preferences.Container(contentWidth: 400) {
             Preferences.Section(title: "Startup:") {
-                Toggle("Launch At Login", isOn: $userPreferences.launchAtLogin)
+                LaunchAtLogin.Toggle()
             }
 
             Preferences.Section(title: "HotKey:") {
