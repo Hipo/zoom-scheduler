@@ -6,10 +6,10 @@
 //
 
 import Cocoa
+import KeyboardShortcuts
 import Magpie
+import Preferences
 import SwiftUI
-
-let windowSize = CGSize(width: 720.0, height: 562.0)
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -26,9 +26,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var zoomAPI = ZoomAPI(config: target.zoomConfig, session: session)
     private lazy var googleAPI = GoogleAPI(config: target.googleConfig, session: session)
 
+    private lazy var userPreferences = UserPreferences(userCache: userCache)
+    private lazy var preferencesWindowController =
+        UserPreferencesWindowController(userPreferences: userPreferences)
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: windowSize.width, height: windowSize.height),
+        window = MainWindow(
+            contentRect: NSRect(origin: .zero, size: MainWindow.windowSize),
             styleMask: [
                 .titled,
                 .closable,
@@ -54,6 +58,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         window.setFrameAutosaveName("Main Window")
         window.center()
+
+        setupHotKey()
     }
 
     func applicationDidBecomeActive(_ notification: Notification) {
@@ -83,6 +89,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         window.makeKeyAndOrderFront(nil)
     }
+
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if flag { return false }
+
+        window.makeKeyAndOrderFront(nil)
+        return true
+    }
+}
+
+extension AppDelegate {
+    private func setupHotKey() {
+        KeyboardShortcuts.onKeyDown(for: .autoLaunchHotKey) {
+            let application = NSApplication.shared
+            let mainWindow = application.orderedWindows.first { $0 is MainWindow }
+
+            guard let aMainWindow = mainWindow as? MainWindow else { return }
+
+            if application.isActive {
+                if aMainWindow.isMiniaturized {
+                    application.unhideWithoutActivation()
+
+                    aMainWindow.deminiaturize(nil)
+                    aMainWindow.makeKeyAndOrderFront(nil)
+                } else {
+                    application.hide(nil)
+                }
+            } else {
+                application.unhideWithoutActivation()
+                application.activate(ignoringOtherApps: true)
+
+                aMainWindow.makeKeyAndOrderFront(nil)
+            }
+        }
+    }
 }
 
 extension AppDelegate {
@@ -105,6 +145,11 @@ extension AppDelegate {
     func cancel(_ sender: Any) {
         NotificationCenter.default.post(Notification(name: .cancel))
     }
+
+    @IBAction
+    func openPreferences(_ sender: Any) {
+        preferencesWindowController.show()
+    }
 }
 
 extension Notification.Name {
@@ -112,4 +157,8 @@ extension Notification.Name {
     static let newEvent = Notification.Name("new.event")
     static let save = Notification.Name("save")
     static let cancel = Notification.Name("cancel")
+}
+
+extension KeyboardShortcuts.Name {
+    static let autoLaunchHotKey = Self("preferences.autoLaunchHotKey")
 }

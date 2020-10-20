@@ -9,6 +9,7 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
+  - KeyboardShortcuts (0.6.0)
   - Magpie/Alamofire (2.0.1):
     - Alamofire (~> 5.2)
     - Magpie/Core
@@ -21,12 +22,15 @@ PODS:
   - Magpie/HIPExceptions (2.0.1):
     - Magpie/HIPUtils
   - Magpie/HIPUtils (2.0.1)
+  - Preferences (2.0.1)
   - SwiftDate (5.1.0)
   - Valet (4.1.1)
 
 DEPENDENCIES:
   - GTMAppAuth
+  - KeyboardShortcuts (~> 0.6.0)
   - Magpie/HIPAPI
+  - Preferences (from `https://github.com/Hipo/Preferences.git`)
   - SwiftDate (~> 5.0)
 
 SPEC REPOS:
@@ -35,19 +39,31 @@ SPEC REPOS:
     - AppAuth
     - GTMAppAuth
     - GTMSessionFetcher
+    - KeyboardShortcuts
     - Magpie
     - SwiftDate
     - Valet
+
+EXTERNAL SOURCES:
+  Preferences:
+    :git: https://github.com/Hipo/Preferences.git
+
+CHECKOUT OPTIONS:
+  Preferences:
+    :commit: 9ea25670912fc1c2a060d6a28bd8d9c30aaa874a
+    :git: https://github.com/Hipo/Preferences.git
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  KeyboardShortcuts: 5b3d5e370913615eb92ffbe0e3ebba8eed616966
   Magpie: 4b42d34817d0237c21a511d54a8930bf6f6873c2
+  Preferences: 1ce41315ecadd28a9a4dd92ccd5dea7ca3437f92
   SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
   Valet: 11ab0e318b7284888a81392e36136563b4af5deb
 
-PODFILE CHECKSUM: d6eb65d4633469f2ff4e3cc8601ef20e908013f4
+PODFILE CHECKSUM: 392e28401b6d2974fc6baaf92548dd9ceace253e
 
 COCOAPODS: 1.9.3

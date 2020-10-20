@@ -16,7 +16,9 @@ struct RootScreen: View {
     let googleAPI: GoogleAPI
 
     var body: some View {
-        ZStack(alignment: .topTrailing) {
+        let windowSize = MainWindow.windowSize
+
+        return ZStack(alignment: .topTrailing) {
             if session.isConnected {
                 if session.requiresGoogleAuthorization {
                     SignInGoogleScreen(googleAPI: googleAPI)

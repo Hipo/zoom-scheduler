@@ -9,7 +9,7 @@ import Foundation
 import Magpie
 import SwiftUI
 
-final class GoogleCalendar: Model, Identifiable, Equatable {
+final class GoogleCalendar: Model, Identifiable, Hashable {
     var color: Color? {
         return hexColor.map(Color.init(hex:))
     }
@@ -23,6 +23,10 @@ final class GoogleCalendar: Model, Identifiable, Equatable {
     }
     static var decodingStrategy: JSONDecodingStrategy {
         return JSONDecodingStrategy()
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 
     static func == (lhs: GoogleCalendar, rhs: GoogleCalendar) -> Bool {

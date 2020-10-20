@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -112,6 +112,14 @@
 		CD4496612535AEA700F3CCD8 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44965F2535AEA700F3CCD8 /* Target.swift */; };
 		CD4496622535AEA700F3CCD8 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44965F2535AEA700F3CCD8 /* Target.swift */; };
 		CD4496632535AEA700F3CCD8 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44965F2535AEA700F3CCD8 /* Target.swift */; };
+		CD59072D253DCD8A007DA667 /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD59072C253DCD8A007DA667 /* MainWindow.swift */; };
+		CD59072E253DCD8A007DA667 /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD59072C253DCD8A007DA667 /* MainWindow.swift */; };
+		CD590749253DD29D007DA667 /* PreferencesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD590748253DD29D007DA667 /* PreferencesScreen.swift */; };
+		CD59074A253DD29D007DA667 /* PreferencesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD590748253DD29D007DA667 /* PreferencesScreen.swift */; };
+		CD590787253DDB36007DA667 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD590786253DDB36007DA667 /* UserPreferences.swift */; };
+		CD590788253DDB36007DA667 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD590786253DDB36007DA667 /* UserPreferences.swift */; };
+		CD5907FA253E37C5007DA667 /* UserPreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5907F9253E37C5007DA667 /* UserPreferencesWindowController.swift */; };
+		CD5907FB253E37C5007DA667 /* UserPreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5907F9253E37C5007DA667 /* UserPreferencesWindowController.swift */; };
 		CD5F8C8925396E3E00BFD18E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F8C8825396E3E00BFD18E /* ToastView.swift */; };
 		CD5F8C8A25396E3E00BFD18E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F8C8825396E3E00BFD18E /* ToastView.swift */; };
 		CD5F8C902539828000BFD18E /* InAppFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F8C8F2539828000BFD18E /* InAppFeedback.swift */; };
@@ -140,6 +148,10 @@
 		CDBCD561252282E100B6B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD560252282E100B6B644 /* Assets.xcassets */; };
 		CDBCD562252282E100B6B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBCD560252282E100B6B644 /* Assets.xcassets */; };
 		CDCC1E632523111F004BFC55 /* SignInZoomScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCC1E622523111F004BFC55 /* SignInZoomScreen.swift */; };
+		CDDF35B8253F2CC900B53B29 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = CDDF35B7253F2CC900B53B29 /* LaunchAtLogin */; };
+		CDDF35EE253F2D9500B53B29 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = CDDF35ED253F2D9500B53B29 /* LaunchAtLogin */; };
+		CDDF35F0253F2D9E00B53B29 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = CDDF35EF253F2D9E00B53B29 /* LaunchAtLogin */; };
+		CDDF35F2253F2DA600B53B29 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = CDDF35F1253F2DA600B53B29 /* LaunchAtLogin */; };
 		CDFA709D2526F8790055DE9B /* MenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA709C2526F8790055DE9B /* MenuScreen.swift */; };
 		CDFA70BA2527166B0055DE9B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70B92527166A0055DE9B /* Extensions.swift */; };
 		CDFA70C025271DCC0055DE9B /* EnterMeetingDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA70BF25271DCC0055DE9B /* EnterMeetingDurationView.swift */; };
@@ -188,6 +200,10 @@
 		CD4496462535AAF500F3CCD8 /* zoom-scheduler-mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zoom-scheduler-mac-Info.plist"; sourceTree = "<group>"; };
 		CD4496472535AAF500F3CCD8 /* zoom-scheduler-mac-dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "zoom-scheduler-mac-dev-Info.plist"; sourceTree = "<group>"; };
 		CD44965F2535AEA700F3CCD8 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
+		CD59072C253DCD8A007DA667 /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
+		CD590748253DD29D007DA667 /* PreferencesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesScreen.swift; sourceTree = "<group>"; };
+		CD590786253DDB36007DA667 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		CD5907F9253E37C5007DA667 /* UserPreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesWindowController.swift; sourceTree = "<group>"; };
 		CD5F8C8825396E3E00BFD18E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		CD5F8C8F2539828000BFD18E /* InAppFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppFeedback.swift; sourceTree = "<group>"; };
 		CD65C52825260AD300911834 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
@@ -229,6 +245,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDDF35B8253F2CC900B53B29 /* LaunchAtLogin in Frameworks */,
 				CD4495EB2535A7B000F3CCD8 /* Pods_zoom_scheduler.framework in Frameworks */,
 				F89BD593A0672051C9A916A8 /* Pods_zoom_scheduler.framework in Frameworks */,
 			);
@@ -238,6 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDDF35F0253F2D9E00B53B29 /* LaunchAtLogin in Frameworks */,
 				CD44961D2535A7BF00F3CCD8 /* Pods_zoom_scheduler_mac.framework in Frameworks */,
 				745EBD4E01597B632E44FCB2 /* Pods_zoom_scheduler_mac.framework in Frameworks */,
 			);
@@ -247,6 +265,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDDF35EE253F2D9500B53B29 /* LaunchAtLogin in Frameworks */,
 				FC397B7B29EA1C2BFF485715 /* Pods_zoom_scheduler_dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,6 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDDF35F2253F2DA600B53B29 /* LaunchAtLogin in Frameworks */,
 				F5D13EBB69D5314229FDE89A /* Pods_zoom_scheduler_mac_dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +536,7 @@
 			children = (
 				CD8E626D252692EE002824CF /* HomeScreen.swift */,
 				CDFA709C2526F8790055DE9B /* MenuScreen.swift */,
+				CD590748253DD29D007DA667 /* PreferencesScreen.swift */,
 				CD8057A52523CC37008527FF /* RootScreen.swift */,
 				CD8057AD2523D670008527FF /* ScheduleMeetingScreen.swift */,
 				CD1435B425389B7C00F6311D /* SettingsScreen.swift */,
@@ -537,6 +558,7 @@
 			isa = PBXGroup;
 			children = (
 				CDBCD50125226C4000B6B644 /* AppDelegate.swift */,
+				CD59072C253DCD8A007DA667 /* MainWindow.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -573,6 +595,8 @@
 			isa = PBXGroup;
 			children = (
 				CDFA70B92527166A0055DE9B /* Extensions.swift */,
+				CD590786253DDB36007DA667 /* UserPreferences.swift */,
+				CD5907F9253E37C5007DA667 /* UserPreferencesWindowController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -610,6 +634,9 @@
 			dependencies = (
 			);
 			name = "zoom-scheduler";
+			packageProductDependencies = (
+				CDDF35B7253F2CC900B53B29 /* LaunchAtLogin */,
+			);
 			productName = "zoom-scheduler";
 			productReference = CD4495F82535A7B000F3CCD8 /* zoom-scheduler.app */;
 			productType = "com.apple.product-type.application";
@@ -629,6 +656,9 @@
 			dependencies = (
 			);
 			name = "zoom-scheduler-mac";
+			packageProductDependencies = (
+				CDDF35EF253F2D9E00B53B29 /* LaunchAtLogin */,
+			);
 			productName = "zoom-scheduler-mac";
 			productReference = CD44962B2535A7BF00F3CCD8 /* zoom-scheduler-mac.app */;
 			productType = "com.apple.product-type.application";
@@ -648,6 +678,9 @@
 			dependencies = (
 			);
 			name = "zoom-scheduler-dev";
+			packageProductDependencies = (
+				CDDF35ED253F2D9500B53B29 /* LaunchAtLogin */,
+			);
 			productName = "zoom-scheduler";
 			productReference = CDBCD4D92521EB0100B6B644 /* zoom-scheduler-dev.app */;
 			productType = "com.apple.product-type.application";
@@ -661,12 +694,16 @@
 				CDBCD4FC25226C4000B6B644 /* Frameworks */,
 				CDBCD4FD25226C4000B6B644 /* Resources */,
 				52486E2D040AD6CEE7E18C13 /* [CP] Embed Pods Frameworks */,
+				CDDF360F253F2E1700B53B29 /* LaunchAtLogin */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "zoom-scheduler-mac-dev";
+			packageProductDependencies = (
+				CDDF35F1253F2DA600B53B29 /* LaunchAtLogin */,
+			);
 			productName = "zoom-scheduler-mac";
 			productReference = CDBCD4FF25226C4000B6B644 /* zoom-scheduler-mac-dev.app */;
 			productType = "com.apple.product-type.application";
@@ -697,6 +734,9 @@
 				Base,
 			);
 			mainGroup = CDBCD4D02521EB0100B6B644;
+			packageReferences = (
+				CDDF35B6253F2CC900B53B29 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+			);
 			productRefGroup = CDBCD4DA2521EB0100B6B644 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -910,6 +950,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CDDF360F253F2E1700B53B29 /* LaunchAtLogin */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = LaunchAtLogin;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
+		};
 		E686B62D5B05086133550C3C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -988,11 +1046,15 @@
 				CD4496132535A7BF00F3CCD8 /* ZoomAPI.swift in Sources */,
 				CD4496142535A7BF00F3CCD8 /* SignInGoogleScreen.swift in Sources */,
 				CD4496172535A7BF00F3CCD8 /* Session.swift in Sources */,
+				CD59072D253DCD8A007DA667 /* MainWindow.swift in Sources */,
+				CD590749253DD29D007DA667 /* PreferencesScreen.swift in Sources */,
 				CD1435882537927200F6311D /* GoogleAPI.swift in Sources */,
 				CD4496192535A7BF00F3CCD8 /* EnterMeetingInviteesView.swift in Sources */,
 				CD5F8C922539828000BFD18E /* InAppFeedback.swift in Sources */,
 				CD44961A2535A7BF00F3CCD8 /* ScheduleMeetingScreen.swift in Sources */,
+				CD590787253DDB36007DA667 /* UserPreferences.swift in Sources */,
 				CDFC7BAF253D545000BF5EB5 /* SharedExtensions.swift in Sources */,
+				CD5907FA253E37C5007DA667 /* UserPreferencesWindowController.swift in Sources */,
 				CD3A4A6B2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */,
 				CD44961B2535A7BF00F3CCD8 /* RootScreen.swift in Sources */,
 			);
@@ -1056,11 +1118,15 @@
 				CD32356F2528990500B74EC3 /* ZoomAPI.swift in Sources */,
 				CD121C5C252670C100CD7572 /* SignInGoogleScreen.swift in Sources */,
 				CD4495B7253453F200F3CCD8 /* Session.swift in Sources */,
+				CD59072E253DCD8A007DA667 /* MainWindow.swift in Sources */,
+				CD59074A253DD29D007DA667 /* PreferencesScreen.swift in Sources */,
 				CD1435892537927200F6311D /* GoogleAPI.swift in Sources */,
 				CD6E9F8B2525DD64007B28E4 /* EnterMeetingInviteesView.swift in Sources */,
 				CD5F8C932539828000BFD18E /* InAppFeedback.swift in Sources */,
 				CD8057AE2523D670008527FF /* ScheduleMeetingScreen.swift in Sources */,
+				CD590788253DDB36007DA667 /* UserPreferences.swift in Sources */,
 				CDFC7BB0253D545000BF5EB5 /* SharedExtensions.swift in Sources */,
+				CD5907FB253E37C5007DA667 /* UserPreferencesWindowController.swift in Sources */,
 				CD3A4A6C2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */,
 				CD8057A62523CC37008527FF /* RootScreen.swift in Sources */,
 			);
@@ -1448,6 +1514,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CDDF35B6253F2CC900B53B29 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CDDF35B7253F2CC900B53B29 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDDF35B6253F2CC900B53B29 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+		CDDF35ED253F2D9500B53B29 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDDF35B6253F2CC900B53B29 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+		CDDF35EF253F2D9E00B53B29 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDDF35B6253F2CC900B53B29 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+		CDDF35F1253F2DA600B53B29 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDDF35B6253F2CC900B53B29 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CDBCD4D12521EB0100B6B644 /* Project object */;
 }
