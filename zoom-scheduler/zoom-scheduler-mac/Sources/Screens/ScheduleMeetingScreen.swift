@@ -184,6 +184,11 @@ struct ScheduleMeetingScreen: View {
         }
         .colorScheme(.dark)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onAppear {
+            if eventDraft.calendar == nil {
+                eventDraft.calendar = session.lastSelectedGoogleCalendar
+            }
+        }
         .onDisappear {
             hideLastResult()
         }
@@ -237,8 +242,14 @@ extension ScheduleMeetingScreen {
     }
 
     private func createEvent() {
+        func openMenu() {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                mode = .menu
+            }
+        }
+
         if !session.isGoogleAccountConnected || eventDraft.calendar == nil {
-            isCreatingEvent = false
+            openMenu()
             return
         }
 
@@ -250,6 +261,10 @@ extension ScheduleMeetingScreen {
                 lastEventResult = .failure(error)
             } else {
                 lastEventResult = .success(true)
+
+                session.lastSelectedGoogleCalendar = eventDraft.calendar
+
+                openMenu()
             }
         }
     }

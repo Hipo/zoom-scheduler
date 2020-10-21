@@ -20,7 +20,8 @@ struct RootScreen: View {
 
         return ZStack(alignment: .topTrailing) {
             if session.isConnected {
-                if session.requiresGoogleAuthorization {
+                if session.requiresGoogleAuthorization,
+                   !session.isGoogleAccountConnected {
                     SignInGoogleScreen(googleAPI: googleAPI)
                 } else {
                     HomeScreen(

@@ -63,12 +63,14 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="Quick Call" keyEquivalent="c" id="Was-JA-tGl">
+                                        <menuItem title="Quick Call" keyEquivalent="q" id="Was-JA-tGl">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="newQuickCall:" target="Voe-Tx-rLC" id="1nV-s5-fNd"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="New Event" keyEquivalent="e" id="VwO-2d-Tit">
+                                        <menuItem title="New Event" keyEquivalent="n" id="VwO-2d-Tit">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="newEvent:" target="Voe-Tx-rLC" id="oAd-3v-EPg"/>
                                             </connections>
@@ -180,7 +182,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="zoom-scheduler-mac Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="Zoom Scheduler Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -194,7 +196,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="zoom_scheduler_mac" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Zoom_Scheduler" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

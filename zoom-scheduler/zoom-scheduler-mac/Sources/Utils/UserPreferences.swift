@@ -10,9 +10,9 @@ import Magpie
 
 class UserPreferences: ObservableObject {
     @Published
-    var launchAtLogin = false {
+    var hideFromDock: Bool {
         didSet {
-            saveLaunchAtLogin()
+            saveHideFromDock()
         }
     }
 
@@ -20,22 +20,19 @@ class UserPreferences: ObservableObject {
 
     init(userCache: HIPCacheConvertible) {
         self.userCache = userCache
-        readLaunchAtLogin()
+        self.hideFromDock = userCache.getObject(for: Key.hideFromDock) ?? false
     }
 }
 
 extension UserPreferences {
-    private func readLaunchAtLogin() {
-        launchAtLogin = userCache.getObject(for: Key.launchAtLogin) ?? false
-    }
-
-    private func saveLaunchAtLogin() {
-        userCache.set(object: launchAtLogin, for: Key.launchAtLogin)
+    private func saveHideFromDock() {
+        NSApplication.shared.appDelegate.setupActivationPolicy(isHidden: hideFromDock)
+        userCache.set(object: hideFromDock, for: Key.hideFromDock)
     }
 }
 
 extension UserPreferences {
     private enum Key: String, HIPCacheKeyConvertible {
-        case launchAtLogin = "preferences.launchAtLogin"
+        case hideFromDock
     }
 }

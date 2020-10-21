@@ -15,14 +15,13 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
 
-    private lazy var target = Target()
-    private lazy var userCache = HIPCache()
-    private lazy var session = Session(
-        keychain: HIPKeychain(
-            identifier: "\(Bundle.main.bundleIdentifier ?? "com.hipo.zoomscheduler").keychain"
-        ),
-        userCache: userCache
+    private let target = Target()
+    private let keychain = HIPKeychain(
+        identifier: "\(Bundle.main.bundleIdentifier ?? "com.hipo.zoomscheduler").keychain"
     )
+    private let userCache = HIPCache()
+
+    private lazy var session = Session(keychain: keychain, userCache: userCache)
     private lazy var zoomAPI = ZoomAPI(config: target.zoomConfig, session: session)
     private lazy var googleAPI = GoogleAPI(config: target.googleConfig, session: session)
 
@@ -54,10 +53,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .environmentObject(target)
             .environmentObject(session)
         )
-        window.makeKeyAndOrderFront(nil)
-
         window.setFrameAutosaveName("Main Window")
         window.center()
+
+        if userPreferences.hideFromDock {
+            setupActivationPolicy(isHidden: true)
+        } else {
+            window.makeKeyAndOrderFront(nil)
+        }
 
         setupHotKey()
     }
@@ -99,6 +102,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 extension AppDelegate {
+    func setupActivationPolicy(isHidden: Bool) {
+        if isHidden {
+            hidePreferences()
+        }
+        NSApplication.shared.setActivationPolicy(isHidden ? .accessory : .regular)
+    }
+}
+
+extension AppDelegate {
     private func setupHotKey() {
         KeyboardShortcuts.onKeyDown(for: .autoLaunchHotKey) {
             let application = NSApplication.shared
@@ -121,6 +133,14 @@ extension AppDelegate {
 
                 aMainWindow.makeKeyAndOrderFront(nil)
             }
+        }
+    }
+}
+
+extension AppDelegate {
+    private func hidePreferences() {
+        if let preferencesWindow = preferencesWindowController.window, preferencesWindow.isVisible {
+            preferencesWindow.orderOut(nil)
         }
     }
 }

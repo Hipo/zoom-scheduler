@@ -48,7 +48,7 @@ struct SignInZoomScreen: View {
                             } else {
                                 Image("Screens/Icons/zoom")
 
-                                Text("Sign in Zoom Account")
+                                Text("Connect Zoom Account")
                                     .font(.custom("SFProText-Medium", size: 15))
                                     .kerning(-0.24)
                                     .lineSpacing(6.5)

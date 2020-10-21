@@ -35,6 +35,7 @@ struct MenuScreen: View {
                         icon: "Screens/Icons/quick_call",
                         iconSize: menuItemSize,
                         title: "Quick Call",
+                        shortcut: "Q",
                         action: createQuickMeeting
                     )
                     .disabled(!session.isAuthorized)
@@ -45,6 +46,7 @@ struct MenuScreen: View {
                         icon: "Screens/Icons/new_event",
                         iconSize: menuItemSize,
                         title: "New Event",
+                        shortcut: "N",
                         action: createNewMeeting
                     )
                 }
