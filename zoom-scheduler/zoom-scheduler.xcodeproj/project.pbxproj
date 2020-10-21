@@ -50,6 +50,10 @@
 		CD16ACA625269B9000F40F65 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E62712526933D002824CF /* MenuItemView.swift */; };
 		CD32356E2528990500B74EC3 /* ZoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32356D2528990500B74EC3 /* ZoomAPI.swift */; };
 		CD32356F2528990500B74EC3 /* ZoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32356D2528990500B74EC3 /* ZoomAPI.swift */; };
+		CD391DA225403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD391DA125403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf */; };
+		CD391DA325403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD391DA125403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf */; };
+		CD391DA425403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD391DA125403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf */; };
+		CD391DA525403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD391DA125403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf */; };
 		CD3A4A692536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A4A682536C80C00E70CD0 /* ZoomAPIInterceptor.swift */; };
 		CD3A4A6A2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A4A682536C80C00E70CD0 /* ZoomAPIInterceptor.swift */; };
 		CD3A4A6B2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A4A682536C80C00E70CD0 /* ZoomAPIInterceptor.swift */; };
@@ -190,6 +194,7 @@
 		CD1435B425389B7C00F6311D /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		CD1435C12538D1A600F6311D /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
 		CD32356D2528990500B74EC3 /* ZoomAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAPI.swift; sourceTree = "<group>"; };
+		CD391DA125403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		CD3A4A682536C80C00E70CD0 /* ZoomAPIInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAPIInterceptor.swift; sourceTree = "<group>"; };
 		CD3A4A762536C9CE00E70CD0 /* ZoomAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAPIError.swift; sourceTree = "<group>"; };
 		CD4495B5253453F200F3CCD8 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -309,6 +314,7 @@
 				CD121C2E2526499000CD7572 /* SF-Pro-Display-Medium.otf */,
 				CD121C2D2526499000CD7572 /* SF-Pro-Text-Medium.otf */,
 				CD121C2F2526499000CD7572 /* SF-Pro-Text-Regular.otf */,
+				CD391DA125403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -650,6 +656,7 @@
 				CD44961C2535A7BF00F3CCD8 /* Frameworks */,
 				CD44961E2535A7BF00F3CCD8 /* Resources */,
 				CD4496272535A7BF00F3CCD8 /* [CP] Embed Pods Frameworks */,
+				CD4A277C25406D3800E3EB99 /* LaunchAtLogin */,
 			);
 			buildRules = (
 			);
@@ -758,6 +765,7 @@
 				CD4495EE2535A7B000F3CCD8 /* Preview Assets.xcassets in Resources */,
 				CD4495EF2535A7B000F3CCD8 /* Colors.xcassets in Resources */,
 				CD4495F02535A7B000F3CCD8 /* Assets.xcassets in Resources */,
+				CD391DA225403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf in Resources */,
 				CD4495F12535A7B000F3CCD8 /* SF-Pro-Text-Medium.otf in Resources */,
 				CD4495F22535A7B000F3CCD8 /* PhoneAssets.xcassets in Resources */,
 				CD4495F32535A7B000F3CCD8 /* SF-Pro-Text-Regular.otf in Resources */,
@@ -774,6 +782,7 @@
 				CD4496222535A7BF00F3CCD8 /* Preview Assets.xcassets in Resources */,
 				CD4496232535A7BF00F3CCD8 /* Assets.xcassets in Resources */,
 				CD4496242535A7BF00F3CCD8 /* MacAssets.xcassets in Resources */,
+				CD391DA425403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf in Resources */,
 				CD4496252535A7BF00F3CCD8 /* SF-Pro-Text-Regular.otf in Resources */,
 				CD4496262535A7BF00F3CCD8 /* SF-Pro-Display-Medium.otf in Resources */,
 			);
@@ -787,6 +796,7 @@
 				CDBCD4E42521EB0100B6B644 /* Preview Assets.xcassets in Resources */,
 				CD65C55025261BBA00911834 /* Colors.xcassets in Resources */,
 				CDBCD561252282E100B6B644 /* Assets.xcassets in Resources */,
+				CD391DA325403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf in Resources */,
 				CD121C302526499000CD7572 /* SF-Pro-Text-Medium.otf in Resources */,
 				CDBCD4E12521EB0100B6B644 /* PhoneAssets.xcassets in Resources */,
 				CD121C342526499000CD7572 /* SF-Pro-Text-Regular.otf in Resources */,
@@ -803,6 +813,7 @@
 				CDBCD50925226C4300B6B644 /* Preview Assets.xcassets in Resources */,
 				CDBCD562252282E100B6B644 /* Assets.xcassets in Resources */,
 				CDBCD50625226C4300B6B644 /* MacAssets.xcassets in Resources */,
+				CD391DA525403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf in Resources */,
 				CD121C352526499000CD7572 /* SF-Pro-Text-Regular.otf in Resources */,
 				CD121C332526499000CD7572 /* SF-Pro-Display-Medium.otf in Resources */,
 			);
@@ -949,6 +960,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zoom-scheduler-mac/Pods-zoom-scheduler-mac-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CD4A277C25406D3800E3EB99 /* LaunchAtLogin */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = LaunchAtLogin;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
 		};
 		CDDF360F253F2E1700B53B29 /* LaunchAtLogin */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -26,11 +26,17 @@ final class Session: ObservableObject {
     var googleAuthorizationStatusError: NSError?
     @Published
     var requiresGoogleAuthorization = true {
-        didSet { requiresGoogleAuthorizationFlagDidChange() }
+        didSet { saveRequiresGoogleAuthorizationFlagToVault() }
     }
 
     @Published
     var googleCalendars: [GoogleCalendar] = []
+
+    var lastSelectedGoogleCalendar: GoogleCalendar? {
+        didSet {
+            saveLastSelectedGoogleCalendarToVault()
+        }
+    }
 
     private(set) var credentials: Credentials?
     private(set) var googleAuthorizationCredentials: GTMAppAuthFetcherAuthorization?
@@ -93,6 +99,7 @@ final class Session: ObservableObject {
         readRequiresGoogleAuthorizationFlagFromVault()
         readGoogleAuthorizationStatusFromVault()
 
+        readLastSelectedGoogleCalendarFromVault()
     }
 }
 
@@ -191,10 +198,6 @@ extension Session {
 }
 
 extension Session {
-    private func requiresGoogleAuthorizationFlagDidChange() {
-        saveRequiresGoogleAuthorizationFlagToVault()
-    }
-
     private func readRequiresGoogleAuthorizationFlagFromVault() {
         requiresGoogleAuthorization =
             userCache.getObject(for: Key.requiresGoogleAuthorization) ?? true
@@ -202,6 +205,20 @@ extension Session {
 
     private func saveRequiresGoogleAuthorizationFlagToVault() {
         userCache.set(object: requiresGoogleAuthorization, for: Key.requiresGoogleAuthorization)
+    }
+}
+
+extension Session {
+    private func readLastSelectedGoogleCalendarFromVault() {
+        lastSelectedGoogleCalendar = userCache.getModel(for: Key.lastSelectedGoogleCalendar)
+    }
+
+    private func saveLastSelectedGoogleCalendarToVault() {
+        if let lastSelectedGoogleCalendar = lastSelectedGoogleCalendar {
+            userCache.set(model: lastSelectedGoogleCalendar, for: Key.lastSelectedGoogleCalendar)
+        } else {
+            userCache.remove(for: Key.lastSelectedGoogleCalendar)
+        }
     }
 }
 
@@ -254,5 +271,6 @@ extension Session {
         case credentials = "session.credentials"
         case googleAuthorizationCredentials = "session.google.authorization.credentials"
         case requiresGoogleAuthorization = "session.requiresGoogleAuthorization"
+        case lastSelectedGoogleCalendar = "session.lastSelectedGoogleCalendar"
     }
 }

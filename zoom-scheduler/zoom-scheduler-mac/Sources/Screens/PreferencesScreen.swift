@@ -19,7 +19,15 @@ struct PreferencesScreen: View {
     var body: some View {
         Preferences.Container(contentWidth: 400) {
             Preferences.Section(title: "Startup:") {
-                LaunchAtLogin.Toggle()
+                VStack(alignment: .leading) {
+                    LaunchAtLogin.Toggle()
+
+                    Toggle("Hide From Dock", isOn: $userPreferences.hideFromDock)
+                }
+            }
+
+            Preferences.Section(title: "") {
+                Spacer()
             }
 
             Preferences.Section(title: "HotKey:") {

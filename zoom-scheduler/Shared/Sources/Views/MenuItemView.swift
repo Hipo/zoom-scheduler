@@ -14,11 +14,12 @@ struct MenuItemView: View {
     let icon: String
     let iconSize: CGSize
     let title: String
+    let shortcut: String?
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
-            VStack {
+            VStack(spacing: 0) {
                 Group {
                     if isLoading {
                         ActivityIndicator()
@@ -28,7 +29,7 @@ struct MenuItemView: View {
                     }
                 }
                 .frame(width: iconSize.width, height: iconSize.height)
-                .background(Color("Views/Custom/MenuItemView/background"))
+                .background(Color("Views/Custom/MenuItemView/Background/primary"))
                 .cornerRadius(24)
                 .shadow(
                     color: Color("Views/Attributes/Shadow/tertiary"),
@@ -56,9 +57,22 @@ struct MenuItemView: View {
                 Text(title)
                     .font(.custom("SFProText-Regular", size: 13))
                     .kerning(-0.08)
-                    .lineSpacing(7.5)
                     .foregroundColor(Color("Views/Custom/MenuItemView/title"))
-                    .padding(.top, 12)
+                    .padding(.top, 18)
+
+                if let shortcut = shortcut {
+                    Group {
+                        Text(shortcut)
+                            .font(.custom("SFProText-Semibold", size: 13))
+                            .kerning(-0.08)
+                            .foregroundColor(Color("Views/Custom/MenuItemView/title"))
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 3)
+                            .background(Color("Views/Custom/MenuItemView/Background/secondary"))
+                            .cornerRadius(4)
+                    }
+                    .padding(.top, 10)
+                }
             }
         }
         .buttonStyle(PlainButtonStyle())
@@ -72,6 +86,7 @@ struct MenuItemView_Previews: PreviewProvider {
             icon: "Screens/Icons/quick_call",
             iconSize: CGSize(width: 96, height: 96),
             title: "Quick Call",
+            shortcut: "Q",
             action: { }
         )
         .background(Color("Views/Attributes/Background/primary"))
