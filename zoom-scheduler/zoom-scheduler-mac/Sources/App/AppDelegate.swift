@@ -44,6 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
         window.backgroundColor = NSColor(named: "Screens/Attributes/Background/primary")
         window.titlebarAppearsTransparent = true
+        window.collectionBehavior = .transient
         window.isReleasedWhenClosed = false
         window.contentView = NSHostingView(
             rootView: RootScreen(
@@ -167,7 +168,7 @@ extension AppDelegate {
     }
 
     @IBAction
-    func openPreferences(_ sender: Any) {
+    func openPreferences(_ sender: Any?) {
         preferencesWindowController.show()
     }
 }

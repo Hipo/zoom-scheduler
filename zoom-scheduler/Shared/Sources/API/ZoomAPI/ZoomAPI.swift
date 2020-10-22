@@ -73,9 +73,7 @@ extension ZoomAPI {
             )
         ]
 
-        if let url = components?.url {
-            NSWorkspace.shared.open(url)
-        }
+        NSApplication.shared.openSafari(components?.url)
     }
 }
 

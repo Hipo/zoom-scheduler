@@ -86,7 +86,7 @@ struct SelectCalendarView: View {
                             }
                         case .failed(let error):
                             VStack(spacing: 16) {
-                                Text(error.localizedDescription)
+                                Text(error.displayMessage)
                                     .font(.custom("SFProText-Medium", size: 11))
                                     .kerning(-0.08)
                                     .lineSpacing(3.5)
@@ -150,7 +150,7 @@ extension SelectCalendarView {
 extension SelectCalendarView {
     private enum CalendarsStatus {
         case loading
-        case failed(Error)
+        case failed(GoogleAPIError)
         case ready
     }
 }

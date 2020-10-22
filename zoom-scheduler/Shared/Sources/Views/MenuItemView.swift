@@ -14,7 +14,7 @@ struct MenuItemView: View {
     let icon: String
     let iconSize: CGSize
     let title: String
-    let shortcut: String?
+    let shortcut: [String]?
     let action: () -> Void
 
     var body: some View {
@@ -62,14 +62,18 @@ struct MenuItemView: View {
 
                 if let shortcut = shortcut {
                     Group {
-                        Text(shortcut)
-                            .font(.custom("SFProText-Semibold", size: 13))
-                            .kerning(-0.08)
-                            .foregroundColor(Color("Views/Custom/MenuItemView/title"))
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 3)
-                            .background(Color("Views/Custom/MenuItemView/Background/secondary"))
-                            .cornerRadius(4)
+                        HStack(spacing: 4) {
+                            ForEach(shortcut, id: \.self) {
+                                Text($0)
+                                    .font(.custom("SFProText-Semibold", size: 13))
+                                    .kerning(-0.08)
+                                    .foregroundColor(Color("Views/Custom/MenuItemView/title"))
+                                    .padding(.horizontal, 6)
+                                    .padding(.vertical, 3)
+                                    .background(Color("Views/Custom/MenuItemView/Background/secondary"))
+                                    .cornerRadius(4)
+                            }
+                        }
                     }
                     .padding(.top, 10)
                 }
@@ -86,7 +90,7 @@ struct MenuItemView_Previews: PreviewProvider {
             icon: "Screens/Icons/quick_call",
             iconSize: CGSize(width: 96, height: 96),
             title: "Quick Call",
-            shortcut: "Q",
+            shortcut: ["Q"],
             action: { }
         )
         .background(Color("Views/Attributes/Background/primary"))

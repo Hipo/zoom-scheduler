@@ -48,6 +48,14 @@
 		CD1435C42538D1A600F6311D /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435C12538D1A600F6311D /* SettingItemView.swift */; };
 		CD1435C52538D1A600F6311D /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1435C12538D1A600F6311D /* SettingItemView.swift */; };
 		CD16ACA625269B9000F40F65 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E62712526933D002824CF /* MenuItemView.swift */; };
+		CD1A657B2541609E00AD246C /* CalendarDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A657A2541609E00AD246C /* CalendarDrafts.swift */; };
+		CD1A657C2541609E00AD246C /* CalendarDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A657A2541609E00AD246C /* CalendarDrafts.swift */; };
+		CD1A657D2541609E00AD246C /* CalendarDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A657A2541609E00AD246C /* CalendarDrafts.swift */; };
+		CD1A657E2541609E00AD246C /* CalendarDrafts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A657A2541609E00AD246C /* CalendarDrafts.swift */; };
+		CD1A6584254179AE00AD246C /* GoogleAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A6583254179AE00AD246C /* GoogleAPIError.swift */; };
+		CD1A6585254179AE00AD246C /* GoogleAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A6583254179AE00AD246C /* GoogleAPIError.swift */; };
+		CD1A6586254179AE00AD246C /* GoogleAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A6583254179AE00AD246C /* GoogleAPIError.swift */; };
+		CD1A6587254179AE00AD246C /* GoogleAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A6583254179AE00AD246C /* GoogleAPIError.swift */; };
 		CD32356E2528990500B74EC3 /* ZoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32356D2528990500B74EC3 /* ZoomAPI.swift */; };
 		CD32356F2528990500B74EC3 /* ZoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32356D2528990500B74EC3 /* ZoomAPI.swift */; };
 		CD391DA225403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD391DA125403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf */; };
@@ -193,6 +201,8 @@
 		CD1435A3253844CE00F6311D /* EventDrafts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDrafts.swift; sourceTree = "<group>"; };
 		CD1435B425389B7C00F6311D /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		CD1435C12538D1A600F6311D /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
+		CD1A657A2541609E00AD246C /* CalendarDrafts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDrafts.swift; sourceTree = "<group>"; };
+		CD1A6583254179AE00AD246C /* GoogleAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIError.swift; sourceTree = "<group>"; };
 		CD32356D2528990500B74EC3 /* ZoomAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAPI.swift; sourceTree = "<group>"; };
 		CD391DA125403C0400BFAFB2 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		CD3A4A682536C80C00E70CD0 /* ZoomAPIInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAPIInterceptor.swift; sourceTree = "<group>"; };
@@ -332,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				CD1435852537927200F6311D /* GoogleAPI.swift */,
+				CD1A6583254179AE00AD246C /* GoogleAPIError.swift */,
 			);
 			path = GoogleCalendarAPI;
 			sourceTree = "<group>";
@@ -340,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				CD1435012536DB5400F6311D /* AccessTokenDrafts.swift */,
+				CD1A657A2541609E00AD246C /* CalendarDrafts.swift */,
 				CD1434F82536DB3E00F6311D /* MeetingDrafts.swift */,
 				CD1435A3253844CE00F6311D /* EventDrafts.swift */,
 			);
@@ -1029,8 +1041,10 @@
 				CD1435862537927200F6311D /* GoogleAPI.swift in Sources */,
 				CD4495DE2535A7B000F3CCD8 /* MenuItemView.swift in Sources */,
 				CD4495DF2535A7B000F3CCD8 /* EmailValidator.swift in Sources */,
+				CD1A6584254179AE00AD246C /* GoogleAPIError.swift in Sources */,
 				CD1435A4253844CE00F6311D /* EventDrafts.swift in Sources */,
 				CD3A4A692536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */,
+				CD1A657B2541609E00AD246C /* CalendarDrafts.swift in Sources */,
 				CD5F8C902539828000BFD18E /* InAppFeedback.swift in Sources */,
 				CD4495E12535A7B000F3CCD8 /* ZoomAPI.swift in Sources */,
 				CD4495E32535A7B000F3CCD8 /* ActivityIndicator.swift in Sources */,
@@ -1064,6 +1078,7 @@
 				CD1435992538355F00F6311D /* GoogleCalendar.swift in Sources */,
 				CD44960D2535A7BF00F3CCD8 /* Model.swift in Sources */,
 				CD3A4A792536C9CE00E70CD0 /* ZoomAPIError.swift in Sources */,
+				CD1A6586254179AE00AD246C /* GoogleAPIError.swift in Sources */,
 				CD5F8C8925396E3E00BFD18E /* ToastView.swift in Sources */,
 				CD44960E2535A7BF00F3CCD8 /* EnterMeetingDurationView.swift in Sources */,
 				CD44960F2535A7BF00F3CCD8 /* MenuItemView.swift in Sources */,
@@ -1073,6 +1088,7 @@
 				CD4496122535A7BF00F3CCD8 /* EnterMeetingDateView.swift in Sources */,
 				CD1435042536DB5400F6311D /* AccessTokenDrafts.swift in Sources */,
 				CD4496132535A7BF00F3CCD8 /* ZoomAPI.swift in Sources */,
+				CD1A657D2541609E00AD246C /* CalendarDrafts.swift in Sources */,
 				CD4496142535A7BF00F3CCD8 /* SignInGoogleScreen.swift in Sources */,
 				CD4496172535A7BF00F3CCD8 /* Session.swift in Sources */,
 				CD59072D253DCD8A007DA667 /* MainWindow.swift in Sources */,
@@ -1101,8 +1117,10 @@
 				CD1435872537927200F6311D /* GoogleAPI.swift in Sources */,
 				CD16ACA625269B9000F40F65 /* MenuItemView.swift in Sources */,
 				CD65C52925260AD300911834 /* EmailValidator.swift in Sources */,
+				CD1A6585254179AE00AD246C /* GoogleAPIError.swift in Sources */,
 				CD1435A5253844CE00F6311D /* EventDrafts.swift in Sources */,
 				CD3A4A6A2536C80C00E70CD0 /* ZoomAPIInterceptor.swift in Sources */,
+				CD1A657C2541609E00AD246C /* CalendarDrafts.swift in Sources */,
 				CD5F8C912539828000BFD18E /* InAppFeedback.swift in Sources */,
 				CD32356E2528990500B74EC3 /* ZoomAPI.swift in Sources */,
 				CD121C43252661E900CD7572 /* ActivityIndicator.swift in Sources */,
@@ -1136,6 +1154,7 @@
 				CD14359A2538355F00F6311D /* GoogleCalendar.swift in Sources */,
 				CD4495CF2534637C00F3CCD8 /* Model.swift in Sources */,
 				CD3A4A7A2536C9CE00E70CD0 /* ZoomAPIError.swift in Sources */,
+				CD1A6587254179AE00AD246C /* GoogleAPIError.swift in Sources */,
 				CD5F8C8A25396E3E00BFD18E /* ToastView.swift in Sources */,
 				CDFA70C025271DCC0055DE9B /* EnterMeetingDurationView.swift in Sources */,
 				CD8E62722526933D002824CF /* MenuItemView.swift in Sources */,
@@ -1145,6 +1164,7 @@
 				CD6E9F832525D463007B28E4 /* EnterMeetingDateView.swift in Sources */,
 				CD1435052536DB5400F6311D /* AccessTokenDrafts.swift in Sources */,
 				CD32356F2528990500B74EC3 /* ZoomAPI.swift in Sources */,
+				CD1A657E2541609E00AD246C /* CalendarDrafts.swift in Sources */,
 				CD121C5C252670C100CD7572 /* SignInGoogleScreen.swift in Sources */,
 				CD4495B7253453F200F3CCD8 /* Session.swift in Sources */,
 				CD59072E253DCD8A007DA667 /* MainWindow.swift in Sources */,
