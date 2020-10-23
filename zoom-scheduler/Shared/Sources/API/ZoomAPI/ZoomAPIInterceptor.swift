@@ -76,10 +76,3 @@ extension ZoomAPIJWTPayload {
         case expiration = "exp"
     }
 }
-
-extension AuthorizationHeader {
-    public static func basic(_ value: String?) -> Self {
-        let tokenValue = value.map { "Basic \($0)" }
-        return Self(tokenValue)
-    }
-}

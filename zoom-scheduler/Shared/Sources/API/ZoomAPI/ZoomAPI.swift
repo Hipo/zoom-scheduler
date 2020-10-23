@@ -44,15 +44,6 @@ final class ZoomAPI: API {
         #endif
     }
 
-    required init(
-        base: String,
-        networking: Networking,
-        interceptor: APIInterceptor? = nil,
-        networkMonitor: NetworkMonitor? = nil
-    ) {
-        fatalError("init(base:networking:interceptor:networkMonitor:) has not been implemented")
-    }
-
     deinit {
         removeListener(self)
     }
