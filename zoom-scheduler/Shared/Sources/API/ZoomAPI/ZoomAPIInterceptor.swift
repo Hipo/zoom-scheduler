@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import JWTKit
 import Magpie
+import SwiftDate
 
 struct ZoomAPIInterceptor: APIInterceptor {
     let config: ZoomConfig
@@ -20,9 +22,19 @@ struct ZoomAPIInterceptor: APIInterceptor {
             endpoint.set(additionalHeader: AuthorizationHeader.basic(config.oauthAuthorizationToken))
             return
         }
-        if let credentials = session.credentials {
-            endpoint.set(additionalHeader: AuthorizationHeader.bearer(credentials.accessToken))
-            return
+
+        switch session.authorizationMethod {
+            case .oauth:
+                if let credentials = session.credentials as? Session.Credentials {
+                    endpoint.set(additionalHeader: AuthorizationHeader.bearer(credentials.accessToken))
+                }
+            case .jwt:
+                if let credentials = session.credentials as? Session.JWTCredentials {
+                    let signer = JWTSigner.hs256(key: credentials.apiSecret)
+                    let payload = ZoomAPIJWTPayload(apiKey: credentials.apiKey)
+                    let token = try? signer.sign(payload)
+                    endpoint.set(additionalHeader: AuthorizationHeader.bearer(token))
+                }
         }
     }
 
@@ -41,6 +53,27 @@ extension ZoomAPIInterceptor {
         Config: \(config)
         session: \(session)
         """
+    }
+}
+
+struct ZoomAPIJWTPayload: JWTPayload {
+    var issuer: IssuerClaim
+    var expiration: ExpirationClaim
+
+    init(apiKey: String) {
+        self.issuer = .init(value: apiKey)
+        self.expiration = .init(value: Date() + 30.seconds)
+    }
+
+    func verify(using signer: JWTSigner) throws {
+        try expiration.verifyNotExpired()
+    }
+}
+
+extension ZoomAPIJWTPayload {
+    private enum CodingKeys: String, CodingKey {
+        case issuer = "iss"
+        case expiration = "exp"
     }
 }
 
