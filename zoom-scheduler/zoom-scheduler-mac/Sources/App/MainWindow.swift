@@ -9,5 +9,5 @@ import AppKit
 import Foundation
 
 class MainWindow: NSWindow {
-    static let windowSize = CGSize(width: 720.0, height: 562.0)
+    static let windowSize = CGSize(width: 720.0, height: 720.0)
 }

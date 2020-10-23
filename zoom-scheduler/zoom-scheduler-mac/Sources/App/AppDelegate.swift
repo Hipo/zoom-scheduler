@@ -67,27 +67,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ notification: Notification) {
-        switch session.status {
-            case .authorized(let credentials):
-                if credentials.isExpired {
-                    zoomAPI.refreshAccessToken()
-                }
-            case .unauthorized:
-                if session.credentials != nil {
-                    zoomAPI.refreshAccessToken()
-                }
-            default:
-                break
-        }
+        zoomAPI.refreshAuthorizationIfNeeded()
     }
 
     func application(_ application: NSApplication, open urls: [URL]) {
         guard let url = urls.first else { return }
 
         if url.scheme == "zoomscheduler" {
-            var draft = RequestAccessTokenDraft()
-            draft.authorizationCode = url.host
-            zoomAPI.requestAccessToken(draft)
+            var draft = CompleteAuthorizationDraft()
+            draft.oauth.authorizationCode = url.host
+            zoomAPI.completeAuthorization(draft)
         } else {
             googleAPI.completeAuthorization(redirectUrl: url)
         }

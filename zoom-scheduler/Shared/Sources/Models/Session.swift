@@ -12,7 +12,7 @@ import SwiftDate
 
 final class Session: ObservableObject {
     @Published
-    var status: Status = .none() {
+    var status: AuthorizationStatus = .none() {
         didSet { statusDidChange() }
     }
     @Published
@@ -32,13 +32,15 @@ final class Session: ObservableObject {
     @Published
     var googleCalendars: [GoogleCalendar] = []
 
+    var authorizationMethod: AuthorizationMethod = .jwt
+
     var lastSelectedGoogleCalendar: GoogleCalendar? {
         didSet {
             saveLastSelectedGoogleCalendarToVault()
         }
     }
 
-    private(set) var credentials: Credentials?
+    private(set) var credentials: SessionAuthorizationCredentials?
     private(set) var googleAuthorizationCredentials: GTMAppAuthFetcherAuthorization?
 
     var isConnected: Bool {
@@ -61,6 +63,14 @@ final class Session: ObservableObject {
     var isRefreshing: Bool {
         switch status {
             case .refreshing:
+                return true
+            default:
+                return false
+        }
+    }
+    var isDisconnecting: Bool {
+        switch status {
+            case .disconnecting:
                 return true
             default:
                 return false
@@ -133,9 +143,12 @@ extension Session {
     }
 
     private func readStatusFromVault() {
-        if let credentials: Credentials = try? keychain.getModel(for: Key.credentials) {
-            self.credentials = credentials
+        if let oauthCredentials: Credentials = try? keychain.getModel(for: Key.credentials) {
+            credentials = oauthCredentials
             status = .unauthorized(.sessionExpired)
+        } else if let jwtCredentials: JWTCredentials = try? keychain.getModel(for: Key.credentials) {
+            credentials = jwtCredentials
+            status = .authorized(jwtCredentials)
         } else {
             status = .none()
         }
@@ -150,7 +163,10 @@ extension Session {
                 try? keychain.remove(for: Key.credentials)
             case .authorized(let credentials):
                 self.credentials = credentials
-                try? keychain.set(credentials, for: Key.credentials)
+
+                if let credentialsData = try? credentials.encoded() {
+                    try? keychain.set(credentialsData, for: Key.credentials)
+                }
             default:
                 break
         }
@@ -223,13 +239,7 @@ extension Session {
 }
 
 extension Session {
-    struct Credentials: Model {
-        private enum CodingKeys: String, CodingKey {
-            case accessToken
-            case refreshToken
-            case expireDuration = "expiresIn"
-        }
-
+    struct Credentials: SessionAuthorizationCredentials {
         var isExpired: Bool {
             return expireTime.map { $0.isBeforeDate(Date(), granularity: .second) } ?? true
         }
@@ -238,6 +248,7 @@ extension Session {
         let refreshToken: String
         let expireDuration: Int?
         let expireTime: Date?
+        let method: Session.AuthorizationMethod = .oauth
 
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -248,16 +259,40 @@ extension Session {
             /// <warning> it will be considered as expired if there are 10 seconds to expire.
             expireTime = expireDuration.map { Date() + max(0, $0 - 10).seconds }
         }
+
+        private enum CodingKeys: String, CodingKey {
+            case accessToken
+            case refreshToken
+            case expireDuration = "expiresIn"
+        }
+    }
+
+    struct JWTCredentials: SessionAuthorizationCredentials {
+        let apiKey: String
+        let apiSecret: String
+        let method: Session.AuthorizationMethod = .jwt
+        let isExpired = false
+
+        private enum CodingKeys: String, CodingKey {
+            case apiKey
+            case apiSecret
+        }
     }
 }
 
 extension Session {
-    enum Status {
+    enum AuthorizationStatus {
         case none(ZoomAPIError? = nil) /// <note> Not having a connection to API
         case connecting /// <note> Waiting for API response to connect to API
         case refreshing /// <note> Waiting for API response to resume API
-        case authorized(Credentials)
+        case disconnecting
+        case authorized(SessionAuthorizationCredentials)
         case unauthorized(ZoomAPIError) /// <note> Attempt to authorize API(by refreshing) is failed
+    }
+
+    enum AuthorizationMethod {
+        case oauth
+        case jwt
     }
 
     enum GoogleAuthorizationStatus {
@@ -273,4 +308,9 @@ extension Session {
         case requiresGoogleAuthorization = "session.requiresGoogleAuthorization"
         case lastSelectedGoogleCalendar = "session.lastSelectedGoogleCalendar"
     }
+}
+
+protocol SessionAuthorizationCredentials: Model {
+    var method: Session.AuthorizationMethod { get }
+    var isExpired: Bool { get }
 }

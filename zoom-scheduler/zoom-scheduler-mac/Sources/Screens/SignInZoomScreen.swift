@@ -12,6 +12,9 @@ struct SignInZoomScreen: View {
     @EnvironmentObject
     var session: Session
 
+    @State
+    private var draft = RequestAuthorizationDraft(method: .jwt)
+
     let zoomAPI: ZoomAPI
 
     var body: some View {
@@ -38,9 +41,28 @@ struct SignInZoomScreen: View {
                         .foregroundColor(Color("Views/Text/Body/primary"))
                         .multilineTextAlignment(.center)
                         .lineLimit(nil)
-                        .padding(.bottom, 40)
+                        .padding(.bottom, 20)
+                        .fixedSize(horizontal: false, vertical: true)
 
-                    Button(action: zoomAPI.requestAuthorization) {
+                    TextInputView(
+                        text: $draft.jwt.apiKey,
+                        title: "API Key",
+                        placeholder: "Copy Your API Key Here"
+                    )
+                    .frame(width: 432)
+                    .focusable()
+
+                    TextInputView(
+                        text: $draft.jwt.apiSecret,
+                        title: "API Secret",
+                        placeholder: "Copy Your API Secret Here"
+                    )
+                    .padding(.top, 8)
+                    .padding(.bottom, 40)
+                    .frame(width: 432)
+                    .focusable()
+
+                    Button(action: requestAuthorization) {
                         HStack {
                             if session.isConnecting {
                                 ActivityIndicator()
@@ -60,6 +82,7 @@ struct SignInZoomScreen: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     .cornerRadius(8)
+                    .disabled(!draft.isValid)
                     .allowsHitTesting(!session.isConnecting)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -82,6 +105,12 @@ struct SignInZoomScreen: View {
             maxWidth: .infinity,
             maxHeight: .infinity
         )
+    }
+}
+
+extension SignInZoomScreen {
+    private func requestAuthorization() {
+        zoomAPI.requestAuthorization(draft)
     }
 }
 

@@ -44,22 +44,70 @@ final class ZoomAPI: API {
         #endif
     }
 
-    required init(
-        base: String,
-        networking: Networking,
-        interceptor: APIInterceptor? = nil,
-        networkMonitor: NetworkMonitor? = nil
-    ) {
-        fatalError("init(base:networking:interceptor:networkMonitor:) has not been implemented")
-    }
-
     deinit {
         removeListener(self)
     }
 }
 
 extension ZoomAPI {
-    func requestAuthorization() {
+    func requestAuthorization(_ draft: RequestAuthorizationDraft) {
+        switch draft.method {
+            case .oauth:
+                session.authorizationMethod = .oauth
+                requestOauthAuthorization()
+            case .jwt:
+                session.authorizationMethod = .jwt
+                requestJwtAuthorization(draft.jwt)
+        }
+    }
+
+    func completeAuthorization(_ draft: CompleteAuthorizationDraft) {
+        switch session.authorizationMethod {
+            case .oauth:
+                requestAccessToken(draft.oauth)
+            case .jwt:
+                break
+        }
+    }
+
+    func refreshAuthorizationIfNeeded(
+        _ draft: RefreshAuthorizationDraft = RefreshAuthorizationDraft()
+    ) {
+        switch session.status {
+            case .authorized(let credentials):
+                if credentials.isExpired {
+                    refreshAuthorization(draft)
+                }
+            case .unauthorized:
+                if session.credentials != nil {
+                    refreshAuthorization(draft)
+                }
+            default:
+                break
+        }
+    }
+
+    func refreshAuthorization(_ draft: RefreshAuthorizationDraft = RefreshAuthorizationDraft()) {
+        switch session.authorizationMethod {
+            case .oauth:
+                refreshOauthAuthorization(draft.oauth)
+            case .jwt:
+                break
+        }
+    }
+
+    func revokeAuthorization(_ draft: RevokeAuthorizationDraft = RevokeAuthorizationDraft()) {
+        switch session.authorizationMethod {
+            case .oauth:
+                revokeAccessToken(draft.oauth)
+            case .jwt:
+                revokeJwtAuthorization(afterSessionDidUnauthorize: false)
+        }
+    }
+}
+
+extension ZoomAPI {
+    private func requestOauthAuthorization() {
         var components = URLComponents(string: config.oauthAuthorizeUrl)
         components?.queryItems = [
             URLQueryItem(
@@ -75,20 +123,22 @@ extension ZoomAPI {
 
         NSApplication.shared.openSafari(components?.url)
     }
-}
 
-extension ZoomAPI {
+    private func refreshOauthAuthorization(
+        _ draft: RefreshAccessTokenDraft = RefreshAccessTokenDraft()
+    ) {
+        session.status = .unauthorized(.sessionExpired)
+        refreshAccessToken(draft)
+    }
+
     @discardableResult
-    func requestAccessToken(
-        _ draft: RequestAccessTokenDraft,
-        onCompleted completionHandler: AccessTokenCompletionHandler? = nil
-    ) -> EndpointOperatable {
+    private func requestAccessToken(_ draft: RequestAccessTokenDraft) -> EndpointOperatable {
         session.status = .connecting
 
         var aDraft = draft
         aDraft.config = config
 
-        let aCompletionHandler: AccessTokenCompletionHandler = { [weak self] result in
+        let completionHandler: AccessTokenCompletionHandler = { [weak self] result in
             guard let self = self else { return }
 
             switch result {
@@ -98,8 +148,6 @@ extension ZoomAPI {
                     let error = ZoomAPIError(apiError: apiError, apiErrorDetail: apiErrorDetail)
                     self.session.status = .none(error)
             }
-
-            completionHandler?(result)
         }
 
         return EndpointBuilder(api: self)
@@ -107,36 +155,31 @@ extension ZoomAPI {
             .path("/token")
             .method(.post)
             .query(aDraft)
-            .completionHandler(aCompletionHandler)
+            .completionHandler(completionHandler)
             .build()
             .send()
     }
 
     @discardableResult
-    func refreshAccessToken(
-        _ draft: RefreshAccessTokenDraft = RefreshAccessTokenDraft(),
-        onCompleted completionHandler: AccessTokenCompletionHandler? = nil
-    ) -> EndpointOperatable {
+    private func refreshAccessToken(_ draft: RefreshAccessTokenDraft) -> EndpointOperatable {
         session.status = .refreshing
 
         var aDraft = draft
-        aDraft.token = session.credentials?.refreshToken
+        aDraft.token = (session.credentials as? Session.Credentials)?.refreshToken
 
-        let aCompletionHandler: AccessTokenCompletionHandler = { [weak self] result in
+        let completionHandler: AccessTokenCompletionHandler = { [weak self] result in
             guard let self = self else { return }
 
             switch result {
                 case .success(let credentials):
                     self.session.status = .authorized(credentials)
-                    completionHandler?(result)
                 case .failure:
                     if aDraft.retryCount < 6 {
                         aDraft.retryCount += 1
-                        self.refreshAccessToken(aDraft, onCompleted: completionHandler)
+                        self.refreshAccessToken(aDraft)
                         return
                     }
                     self.session.status = .none(.sessionCancelled)
-                    completionHandler?(result)
             }
         }
 
@@ -145,22 +188,21 @@ extension ZoomAPI {
             .path("/token")
             .method(.post)
             .query(aDraft)
-            .completionHandler(aCompletionHandler)
+            .completionHandler(completionHandler)
             .build()
             .send()
     }
 
     @discardableResult
-    func revokeAccessToken(
-        _ draft: RevokeAccessTokenDraft = RevokeAccessTokenDraft(),
-        onCompleted completionHandler: ((Response.ErrorModelResult<ZoomAPIError.Detail>) -> Void)? = nil
-    ) -> EndpointOperatable {
+    private func revokeAccessToken(_ draft: RevokeAccessTokenDraft) -> EndpointOperatable {
+        session.status = .disconnecting
+
         cancelEndpoints()
 
         var aDraft = draft
-        aDraft.token = session.credentials?.accessToken
+        aDraft.token = (session.credentials as? Session.Credentials)?.accessToken
 
-        let aCompletionHandler: (Response.ErrorModelResult<ZoomAPIError.Detail>) -> Void
+        let completionHandler: (Response.ErrorModelResult<ZoomAPIError.Detail>) -> Void
             = { [weak self] result in
                 guard let self = self else { return }
 
@@ -171,8 +213,6 @@ extension ZoomAPI {
                         let error = ZoomAPIError(apiError: apiError, apiErrorDetail: apiErrorDetail)
                         self.session.status = .unauthorized(error)
                 }
-
-                completionHandler?(result)
             }
 
         return EndpointBuilder(api: self)
@@ -180,9 +220,20 @@ extension ZoomAPI {
             .path("/revoke")
             .method(.post)
             .query(aDraft)
-            .completionHandler(aCompletionHandler)
+            .completionHandler(completionHandler)
             .build()
             .send()
+    }
+}
+
+extension ZoomAPI {
+    private func requestJwtAuthorization(_ draft: RequestJWTAuthorizationDraft) {
+        let credentials = Session.JWTCredentials(apiKey: draft.apiKey, apiSecret: draft.apiSecret)
+        session.status = .authorized(credentials)
+    }
+
+    private func revokeJwtAuthorization(afterSessionDidUnauthorize: Bool) {
+        session.status = .none(afterSessionDidUnauthorize ? .sessionCancelled : nil)
     }
 }
 
@@ -204,8 +255,12 @@ extension ZoomAPI {
 
 extension ZoomAPI: APIListener {
     func api(_ api: API, endpointDidFailFromUnauthorizedRequest endpoint: EndpointOperatable) {
-        session.status = .unauthorized(.sessionExpired)
-        refreshAccessToken()
+        switch session.authorizationMethod {
+            case .oauth:
+                refreshOauthAuthorization()
+            case .jwt:
+                revokeJwtAuthorization(afterSessionDidUnauthorize: true)
+        }
     }
 }
 
