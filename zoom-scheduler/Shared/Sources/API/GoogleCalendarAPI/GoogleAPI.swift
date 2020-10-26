@@ -86,20 +86,25 @@ extension GoogleAPI {
 
 extension GoogleAPI {
     /// <note> Calendars are accessible from session.
-    func loadCalendars(onCompleted completionHandler: ((Error?) -> Void)? = nil) {
-        guard let url = URL(string: "\(base)/calendar/v3/users/me/calendarList") else {
+    func loadCalendars(onCompleted completionHandler: ((GoogleAPIError?) -> Void)? = nil) {
+        let request = Request(base: base, cachePolicy: .reloadIgnoringCacheData, timeout: 60)
+        request.path = "/calendar/v3/users/me/calendarList"
+        request.query = LoadCalendarsDraft()
+
+        guard let urlRequest = try? request.asUrlRequest() else {
             return
         }
 
         /// <todo> I don't know credentials are modifiable by the framework time to time, so it is being set to be sure.
         service.authorizer = session.googleAuthorizationCredentials
 
-        let fetcher = service.fetcher(with: url)
+        let fetcher = service.fetcher(with: urlRequest)
         fetcher.beginFetch { [weak self] data, error in
             guard let self = self else { return }
 
             if let error = error {
-                completionHandler?(error)
+                let apiError = GoogleAPIError(error: error)
+                completionHandler?(apiError)
                 return
             }
 
@@ -116,30 +121,33 @@ extension GoogleAPI {
 
                 completionHandler?(nil)
             } catch let serializationError {
-                completionHandler?(serializationError)
+                completionHandler?(.unexpected(serializationError))
             }
         }
     }
 }
 
 extension GoogleAPI {
-    func createEvent(_ draft: CreateEventDraft, onCompleted completionHandler: @escaping (Error?) -> Void) {
+    func createEvent(
+        _ draft: CreateEventDraft,
+        onCompleted completionHandler: @escaping (GoogleAPIError?) -> Void
+    ) {
         let request = Request(base: base, cachePolicy: .reloadIgnoringCacheData, timeout: 60)
         request.path = "/calendar/v3/calendars/\(draft.calendar?.id ?? "")/events"
         request.method = .post
         request.body = draft
         request.headers = [ AcceptHeader.json() ]
 
-        /// <todo> I don't know credentials are modifiable by the framework time to time, so it is being set to be sure.
-        service.authorizer = session.googleAuthorizationCredentials
-
         guard let urlRequest = try? request.asUrlRequest() else {
             return
         }
 
+        /// <todo> I don't know credentials are modifiable by the framework time to time, so it is being set to be sure.
+        service.authorizer = session.googleAuthorizationCredentials
+
         let fetcher = service.fetcher(with: urlRequest)
         fetcher.beginFetch { _, error in
-            completionHandler(error)
+            completionHandler(error.map(GoogleAPIError.init))
         }
     }
 }
@@ -168,6 +176,9 @@ enum GoogleAPIRequestParameter: String, CodingKey {
     case email
     case end
     case location
+    case maxResults
+    case minAccessRole
+    case showHidden
     case start
     case summary
     case timeZone

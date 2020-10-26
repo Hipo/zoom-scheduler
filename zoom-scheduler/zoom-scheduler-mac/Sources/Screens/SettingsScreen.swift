@@ -16,7 +16,7 @@ struct SettingsScreen: View {
     private var isActive = false
 
     @State
-    private var isDisconnecting = false
+    private var disconnectAccountAlertItem: DisconnectAccountAlertItem?
 
     let zoomAPI: ZoomAPI
     let googleAPI: GoogleAPI
@@ -37,21 +37,29 @@ struct SettingsScreen: View {
                 Group {
                     VStack(spacing: 4) {
                         SettingItemView(title: "Disconnect Zoom Account") {
-                            isDisconnecting = true
+                            disconnectAccountAlertItem = DisconnectAccountAlertItem(
+                                account: .zoom,
+                                confirmAction: {
+                                    googleAPI.revokeAuthorization()
 
-                            googleAPI.revokeAuthorization()
-
-                            zoomAPI.revokeAccessToken() { _ in
-                                isDisconnecting = false
-                            }
+                                    zoomAPI.revokeAuthorization()
+                                },
+                                cancelAction: { }
+                            )
                         }
-                        .disabled(session.isRefreshing || isDisconnecting)
+                        .disabled(session.isRefreshing || session.isDisconnecting)
 
                         if session.isGoogleAccountConnected {
                             SettingItemView(
                                 title: "Disconnect Google Account"
                             ) {
-                                googleAPI.revokeAuthorization()
+                                disconnectAccountAlertItem = DisconnectAccountAlertItem(
+                                    account: .google,
+                                    confirmAction: {
+                                        googleAPI.revokeAuthorization()
+                                    },
+                                    cancelAction: { }
+                                )
                             }
                         } else {
                             SettingItemView(
@@ -61,7 +69,16 @@ struct SettingsScreen: View {
                             }
                         }
 
+                        SettingItemView(title: "Preferences") {
+                            isActive = false
+
+                            NSApplication.shared.openPreferences()
+                        }
+
                         SettingItemView(title: "Help") {
+                            isActive = false
+
+                            NSApplication.shared.openSafari("https://zoomscheduler.app")
                         }
                     }
                     .padding(.vertical, 8)
@@ -81,6 +98,58 @@ struct SettingsScreen: View {
         .onHover { hovering in
             if !hovering {
                 isActive = false
+            }
+        }
+        .alert(item: $disconnectAccountAlertItem) { item in
+            Alert(
+                title: Text(item.title),
+                message: Text(item.message),
+                primaryButton: .default(Text("OK"), action: item.confirmAction),
+                secondaryButton: .cancel(item.cancelAction)
+            )
+        }
+    }
+}
+
+extension SettingsScreen {
+    private struct DisconnectAccountAlertItem: Identifiable {
+        typealias Action = () -> Void
+
+        let id: String
+        let title: String
+        let message: String
+        let account: Account
+        let confirmAction: () -> Void
+        let cancelAction: (() -> Void)?
+
+        init(
+            account: Account,
+            confirmAction: @escaping Action,
+            cancelAction: Action?
+        ) {
+            self.id = account.rawValue
+            self.title = account.title
+            self.message = account.message
+            self.account = account
+            self.confirmAction = confirmAction
+            self.cancelAction = cancelAction
+        }
+
+        enum Account: String {
+            case zoom
+            case google
+
+            var title: String {
+                return "Confirmation"
+            }
+
+            var message: String {
+                switch self {
+                    case .zoom:
+                        return "Are you sure you would like to disconnect your Zoom account?"
+                    case .google:
+                        return "Are you sure you would like to disconnect your Google account?"
+                }
             }
         }
     }

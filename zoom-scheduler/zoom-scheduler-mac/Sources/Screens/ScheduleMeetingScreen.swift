@@ -27,7 +27,7 @@ struct ScheduleMeetingScreen: View {
     @State
     private var isCreatingEvent = false
     @State
-    private var lastEventResult: Swift.Result<Bool, Error>?
+    private var lastEventResult: Swift.Result<Bool, GoogleAPIError>?
 
     var isCreating: Bool {
         return isCreatingMeeting || isCreatingEvent
@@ -145,7 +145,7 @@ struct ScheduleMeetingScreen: View {
                                 ToastView(
                                     feedback: InAppFeedback(
                                         reason: .error,
-                                        message: error.localizedDescription,
+                                        message: error.displayMessage,
                                         actionName: "Try Again",
                                         action: {
                                             hideLastEventResult()

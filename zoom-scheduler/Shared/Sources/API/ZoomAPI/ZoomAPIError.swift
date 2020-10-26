@@ -46,7 +46,7 @@ enum ZoomAPIError: Error {
             case .sessionExpired:
                 return "Wait a moment while we are refreshing your session."
             case .sessionCancelled:
-                return "We cancelled your session because we couldn't refresh your session multiple times."
+                return "We cancelled your session because we couldn't refresh your session."
             case .client(_, let detail):
                 return detail?.displayMessage ?? "Sorry, we couldn't fullfill your request."
             case .server:

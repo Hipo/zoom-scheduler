@@ -23,3 +23,18 @@ extension NSApplication {
         fatalError("We shouldn't have a problem with the app delegate.")
     }
 }
+
+extension NSApplication {
+    func openPreferences() {
+        appDelegate.openPreferences(nil)
+    }
+
+    func openSafari(_ urlString: String) {
+        openSafari(URL(string: urlString))
+    }
+
+    func openSafari(_ url: URL?) {
+        guard let url = url else { return }
+        NSWorkspace.shared.open(url)
+    }
+}
